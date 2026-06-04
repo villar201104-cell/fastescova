@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Fast Escova — Resumen Ejecutivo Miami 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--y:#F5C400;--b:#1A1A1A;--g:#27AE60;--r:#E74C3C;--bl:#2980B9;--or:#E67E22;--dg:#555;--lg:#F5F5F5;--w:#fff;--mg:#E0E0E0;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#EBEBEB;color:var(--b);font-size:13.5px;line-height:1.5;}
+
+/* ── NAV ── */
+nav{background:var(--b);position:sticky;top:0;z-index:999;padding:10px 32px;display:flex;align-items:center;gap:0;box-shadow:0 2px 12px rgba(0,0,0,.4);}
+.nl{font-size:1.5rem;font-weight:900;letter-spacing:-1px;margin-right:28px;}.nl span{color:var(--y);}
+.nav-links{display:flex;gap:2px;overflow-x:auto;flex:1;}
+.nav-links a{color:#888;text-decoration:none;padding:5px 10px;border-radius:6px;font-size:.75rem;font-weight:600;white-space:nowrap;transition:all .15s;}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1);}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
+.ltog{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:4px 11px;cursor:pointer;font-size:.73rem;}
+.lo{font-weight:700;color:#777;transition:color .2s;}.lo.active{color:var(--y);}
+.lo-sep{color:#444;}
+.conf{background:var(--y);color:var(--b);font-weight:700;padding:4px 10px;border-radius:12px;font-size:.72rem;}
+
+/* ── LAYOUT ── */
+.page{max-width:1300px;margin:0 auto;padding:24px 28px;}
+.sec{margin-bottom:32px;}
+.sec-hdr{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:10px;border-bottom:3px solid var(--y);}
+.sec-icon{font-size:1.6rem;}
+.sec-title{font-size:1.15rem;font-weight:800;}.sec-sub{font-size:.78rem;color:var(--dg);margin-top:1px;}
+
+/* ── CARDS ── */
+.card{background:var(--w);border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.08);padding:18px;}
+.ct{font-size:.84rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.ct::before{content:'';display:block;width:4px;height:14px;background:var(--y);border-radius:2px;flex-shrink:0;}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+@media(max-width:900px){.g3,.g4,.g5{grid-template-columns:1fr 1fr;}.g2{grid-template-columns:1fr;}}
+
+/* ── KPIs ── */
+.kpi{background:var(--w);border-radius:9px;padding:14px 12px;text-align:center;box-shadow:0 1px 5px rgba(0,0,0,.07);border-top:3px solid var(--y);}
+.kv{font-size:1.55rem;font-weight:900;line-height:1.1;}
+.kl{font-size:.68rem;color:var(--dg);margin-top:3px;line-height:1.3;}
+
+/* ── HERO COVER ── */
+.cover{background:var(--b);border-radius:12px;padding:32px 36px;margin-bottom:28px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;}
+.cover-logo{font-size:3rem;font-weight:900;letter-spacing:-2px;color:var(--w);line-height:1;margin-bottom:8px;}
+.cover-logo span{color:var(--y);}
+.cover-tagline{font-size:1rem;color:#CCC;margin-bottom:16px;}
+.cover-meta{font-size:.78rem;color:#888;line-height:1.8;}
+.cover-right{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.cover-kpi{background:rgba(255,255,255,.06);border-radius:8px;padding:12px;border-left:3px solid var(--y);}
+.cover-kv{font-size:1.4rem;font-weight:900;color:var(--y);}
+.cover-kl{font-size:.7rem;color:#AAA;margin-top:2px;}
+
+/* ── TABLES ── */
+.tbl{width:100%;border-collapse:collapse;font-size:.8rem;}
+.tbl th{background:var(--b);color:var(--w);padding:8px 10px;text-align:left;font-size:.74rem;font-weight:700;}
+.tbl td{padding:8px 10px;border-bottom:1px solid var(--lg);vertical-align:top;}
+.tbl tr:nth-child(even) td{background:var(--lg);}
+.tbl tr:hover td{background:#FFF9E0;}
+.tbl th.yh{background:var(--y);color:var(--b);}
+.tbl .hi td{background:#FFF9E0!important;font-weight:700;}
+
+/* ── BADGES ── */
+.bdg{display:inline-block;padding:2px 8px;border-radius:8px;font-size:.68rem;font-weight:700;}
+.bdg-g{background:#D5F5E3;color:#1E8449;}.bdg-y{background:#FEF9E7;color:#8B6F00;}
+.bdg-o{background:#FDEBD0;color:#8B4000;}.bdg-r{background:#FADBD8;color:#922B21;}
+
+/* ── CHART CONTAINERS ── */
+.ch{position:relative;width:100%;height:260px;}
+.ch-lg{position:relative;width:100%;height:320px;}
+.ch-sm{position:relative;width:100%;height:200px;}
+
+/* ── SWOT ── */
+.swot{display:grid;grid-template-columns:1fr 1fr;border-radius:10px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.08);}
+.sc{padding:16px 18px;}.sc-h{font-weight:800;font-size:.88rem;margin-bottom:8px;}
+.sc-li{font-size:.79rem;line-height:1.5;padding:2px 0 2px 12px;position:relative;}
+.sc-li::before{content:'•';position:absolute;left:0;opacity:.5;}
+
+/* ── TIMELINE ── */
+.tl{position:relative;padding-left:22px;}
+.tl::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:2px;background:var(--mg);}
+.tl-it{position:relative;margin-bottom:16px;}
+.tl-dot{position:absolute;left:-18px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--y);border:2px solid var(--w);box-shadow:0 0 0 2px var(--y);}
+.tl-t{font-weight:700;font-size:.85rem;margin-bottom:2px;}
+.tl-b{font-size:.79rem;color:var(--dg);line-height:1.5;}
+
+/* ── STEPS ── */
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;}
+.step{background:var(--w);border-radius:8px;border-left:4px solid var(--y);padding:12px;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.step-n{font-size:1.2rem;font-weight:900;color:var(--y);}
+.step-t{font-weight:700;font-size:.83rem;margin:3px 0;}
+.step-b{font-size:.76rem;color:var(--dg);line-height:1.5;}
+.step-m{font-size:.7rem;color:var(--dg);margin-top:5px;}
+
+/* ── ZONE CARDS MINI ── */
+.zmini{background:var(--w);border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.08);overflow:hidden;}
+.zmini-h{padding:10px 13px;display:flex;justify-content:space-between;align-items:center;}
+.zmini-n{font-weight:800;font-size:.86rem;}
+.zmini-body{padding:4px 13px 12px;}
+.mbar{display:flex;align-items:center;gap:6px;margin:3px 0;}
+.mbar-n{width:100px;font-size:.68rem;color:var(--dg);flex-shrink:0;}
+.mbar-t{flex:1;height:5px;background:var(--lg);border-radius:3px;overflow:hidden;}
+.mbar-f{height:100%;border-radius:3px;}
+.mbar-v{width:28px;font-size:.68rem;font-weight:700;text-align:right;}
+
+/* ── MAP ── */
+#map{height:440px;border-radius:10px;z-index:1;}
+
+/* ── FIN HERO ── */
+.fin-hero{background:linear-gradient(135deg,#1A1A1A,#2A2A2A);border-radius:10px;padding:20px 24px;margin-bottom:16px;}
+.fin-hero .kv{color:var(--y);}
+.fin-hero .kl{color:#CCC;}
+
+/* ── RISK ── */
+.risk{display:flex;align-items:flex-start;gap:10px;padding:10px;border-radius:7px;margin-bottom:8px;background:var(--w);box-shadow:0 1px 3px rgba(0,0,0,.06);}
+.rb{min-width:72px;text-align:center;padding:3px 6px;border-radius:6px;font-size:.67rem;font-weight:700;}
+
+/* ── INFO BOX ── */
+.ibox{border-left:3px solid var(--y);background:#FFFBE6;padding:10px 13px;border-radius:0 7px 7px 0;font-size:.8rem;margin-bottom:14px;}
+.ibox-b{border-left-color:var(--bl);background:#EBF5FB;}
+.ibox-g{border-left-color:var(--g);background:#EAFAF1;}
+
+/* ── SRC NOTE ── */
+.src{font-size:.68rem;color:#AAA;line-height:1.6;border-top:1px solid var(--mg);padding-top:8px;margin-top:14px;}
+
+/* ── PHASE BOXES ── */
+.phase{border-radius:9px;padding:16px;}.phase-y{background:#FFF9E0;border:2px solid var(--y);}
+.phase-b{background:#EBF5FB;border:2px solid var(--bl);}
+.phase-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px;}
+.phase-name{font-size:1rem;font-weight:800;margin-bottom:9px;}
+.phase li{font-size:.8rem;color:var(--dg);margin-left:14px;line-height:1.7;}
+
+/* ── CHIPS ── */
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;}
+.chip{background:var(--lg);border:1px solid var(--mg);border-radius:12px;padding:3px 9px;font-size:.72rem;font-weight:600;}
+.chip-y{background:#FFF9E0;border-color:var(--y);color:#8B6F00;}
+
+/* ── PROGRESS ── */
+.prog{background:var(--lg);border-radius:4px;height:8px;overflow:hidden;margin-top:4px;}
+.prog-f{height:100%;border-radius:4px;background:var(--y);}
+
+/* ── FOOTER ── */
+footer{background:var(--b);color:#AAA;padding:20px 32px;text-align:center;font-size:.75rem;margin-top:32px;}
+footer strong{color:var(--y);}
+
+/* hide for print-like styling */
+@media print{nav{position:relative!important;}*{box-shadow:none!important;}}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nl"><span>fast</span>escova</div>
+  <div class="nav-links">
+    <a href="#resumen">📊 Resumen</a>
+    <a href="#concepto">🏪 Concepto</a>
+    <a href="#mercado">📈 Mercado</a>
+    <a href="#demo">👥 Demografía</a>
+    <a href="#competencia">⚔️ Competencia</a>
+    <a href="#zonas">🗺️ Zonas</a>
+    <a href="#financiero">💰 Financiero</a>
+    <a href="#foda">🔷 FODA</a>
+    <a href="#estrategia">🚀 Estrategia</a>
+    <a href="#riesgos">⚠️ Riesgos</a>
+    <a href="#pasos">✅ Próximos Pasos</a>
+  </div>
+  <div class="nav-right">
+    <div class="ltog" onclick="toggleLang()">
+      <span class="lo active" id="loES">🇦🇷 ES</span>
+      <span class="lo-sep">|</span>
+      <span class="lo" id="loPT">🇧🇷 PT</span>
+    </div>
+    <div class="conf" id="lbl-conf">🔒 Confidencial</div>
+  </div>
+</nav>
+
+<div class="page">
+
+<!-- ═══ COVER ═══ -->
+<div class="cover">
+  <div>
+    <div class="cover-logo"><span>fast</span>escova</div>
+    <div class="cover-tagline" id="cv-tag">Resumen Ejecutivo — Análisis de Mercado Miami</div>
+    <div class="cover-meta" id="cv-meta">
+      Junio 2026 &nbsp;·&nbsp; Confidencial<br>
+      Zona recomendada: <strong style="color:var(--y)">Doral</strong> &nbsp;·&nbsp;
+      Escenario de referencia: <strong style="color:var(--y)">Base</strong>
+    </div>
+  </div>
+  <div class="cover-right">
+    <div class="cover-kpi"><div class="cover-kv">450K</div><div class="cover-kl" id="ck1">Brasileños en área metropolitana</div></div>
+    <div class="cover-kpi"><div class="cover-kv">89/100</div><div class="cover-kl" id="ck2">Score Doral — zona #1</div></div>
+    <div class="cover-kpi"><div class="cover-kv">$540K</div><div class="cover-kl" id="ck3">Ingreso anual proyectado (base)</div></div>
+    <div class="cover-kpi"><div class="cover-kv">$135K–</div><div class="cover-kl" id="ck4">Inversión mínima estimada</div></div>
+    <div class="cover-kpi"><div class="cover-kv">$60,6B</div><div class="cover-kl" id="ck5">Mercado salones EE.UU. 2024</div></div>
+    <div class="cover-kpi"><div class="cover-kv">69,1%</div><div class="cover-kl" id="ck6">Población hispana Miami-Dade</div></div>
+  </div>
+</div>
+
+<!-- ═══ 1. RESUMEN EJECUTIVO ═══ -->
+<div class="sec" id="resumen">
+  <div class="sec-hdr">
+    <div class="sec-icon">📊</div>
+    <div><div class="sec-title" id="s1t">1. Resumen Ejecutivo</div>
+    <div class="sec-sub" id="s1s">Síntesis de la oportunidad de mercado para Fast Escova en Miami</div></div>
+  </div>
+  <div class="ibox-g ibox" id="exec-p1">
+    Miami reúne las condiciones ideales para Fast Escova: es el hub brasileño número 1 de EE.UU. (300.000–450.000 personas de origen brasileño), tiene una población hispana del 69,1% con alto índice de gasto en belleza, y un clima subtropical de alta humedad que genera demanda estructural de blowouts 2–4 veces por mes. Ningún competidor actual combina autenticidad brasileña + servicio express + portafolio completo de belleza.
+  </div>
+  <div class="g5" style="margin-bottom:16px;">
+    <div class="kpi"><div class="kv">$60,6B</div><div class="kl" id="k1">Mercado salones cabello EE.UU.</div></div>
+    <div class="kpi"><div class="kv">450K</div><div class="kl" id="k2">Brasileños en Miami (est.)</div></div>
+    <div class="kpi"><div class="kv">69,1%</div><div class="kl" id="k3">Hispanos en Miami-Dade</div></div>
+    <div class="kpi"><div class="kv">89/100</div><div class="kl" id="k4">Score Doral (recomendada)</div></div>
+    <div class="kpi"><div class="kv">+12,2%</div><div class="kl" id="k5">CAGR blowout bars 2020–2025</div></div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="ct" id="ct-rank">Ranking de Zonas — Score Fast Escova (/ 100)</div><div class="ch-lg"><canvas id="cRanking"></canvas></div></div>
+    <div class="card"><div class="ct" id="ct-radar">Comparativo Top 3 Zonas</div><div class="ch-lg"><canvas id="cRadar"></canvas></div></div>
+  </div>
+</div>
+
+<!-- ═══ 2. EL CONCEPTO ═══ -->
+<div class="sec" id="concepto">
+  <div class="sec-hdr"><div class="sec-icon">🏪</div>
+    <div><div class="sec-title" id="s2t">2. El Concepto Fast Escova</div>
+    <div class="sec-sub" id="s2s">Franquicia brasileña de salones de belleza express — rapidez, practicidad, cuidado</div></div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="ct" id="ct-modelo">Modelo de Negocio</div>
+      <p style="font-size:.82rem;line-height:1.65;margin-bottom:10px;" id="con-p">Fast Escova opera bajo el concepto de <strong>salón de belleza express</strong>: el tiempo de la cliente es el activo más valioso. La propuesta de valor es <em>"minutos que transforman, belleza que dura"</em> — servicios de alta calidad en tiempos reducidos con procesos estandarizados.</p>
+      <div class="ibox" id="con-tag"><strong>Tagline local:</strong> "Beautiful. Fast. Your Way."</div>
+      <div style="font-size:.72rem;font-weight:700;color:var(--dg);text-transform:uppercase;margin-bottom:5px;" id="pil-lbl">Pilares de la marca</div>
+      <div class="chips">
+        <span class="chip chip-y">⚡ Rapidez</span><span class="chip chip-y">🎯 Practicidad</span>
+        <span class="chip chip-y">💛 Cuidado</span><span class="chip chip-y">🇧🇷 Autenticidad</span><span class="chip chip-y">💰 Accesibilidad</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ct" id="ct-vs">Posicionamiento vs. Competidores</div>
+      <div class="ch"><canvas id="cPositioning"></canvas></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px;">
+    <div class="ct" id="ct-srv">Portafolio de Servicios</div>
+    <table class="tbl">
+      <thead><tr><th id="th-cat">Categoría</th><th id="th-srv">Servicios</th><th id="th-dif">Diferenciador clave</th><th id="th-tick">Ticket est. (USD)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Escovas Fast</strong></td><td id="srv1">Lisa, Modelada, Babyliss, Chapinha, Difusor</td><td id="dif1">Blowout express 30-45 min — servicio insignia</td><td>$50–$85</td></tr>
+        <tr><td><strong>Tratamientos</strong></td><td id="srv2">Hidratación, Nutrición, Reconstrucción, LEDterapia, Ozonioterapia</td><td id="dif2">Salud capilar premium — sin en Blo/Drybar</td><td>$45–$120</td></tr>
+        <tr><td><strong>Peinados / Trenzas</strong></td><td id="srv3">Topete, Rabo de Cavalo, Bubble, Wet, Boxeadora, Nagô, Lateral, Tiara</td><td id="dif3">Diversidad cultural — clientela afro/latina</td><td>$35–$80</td></tr>
+        <tr><td><strong>Fast Make</strong></td><td id="srv4">Casual y VIP (prep. piel + maquillaje completo)</td><td id="dif4">Maquillaje express — exclusivo en blowout bars</td><td>$45–$95</td></tr>
+        <tr><td><strong>Cejas + Retoque</strong></td><td id="srv5">Diseño cejas, epilación, retoque de raíz</td><td id="dif5">Add-ons de alto margen — fidelización</td><td>$18–$75</td></tr>
+        <tr><td><strong>Uñas y Pies</strong></td><td id="srv6">Manicura, Pedicura, Plástica de Pies, Velaterapia</td><td id="dif6">Servicio complementario completo</td><td>$25–$65</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══ 3. MERCADO ═══ -->
+<div class="sec" id="mercado">
+  <div class="sec-hdr"><div class="sec-icon">📈</div>
+    <div><div class="sec-title" id="s3t">3. Mercado & Industria</div>
+    <div class="sec-sub" id="s3s">El sector blowout bar crece a doble dígito. Fast Escova puede superar a Blo por su portafolio más amplio.</div></div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="ct" id="ct-bench">Benchmark Revenue Anual por Unidad (USD)</div><div class="ch-lg"><canvas id="cBenchmark"></canvas></div></div>
+    <div class="card">
+      <div class="ct" id="ct-trend">Tendencias Clave 2025–2026</div>
+      <div class="tl">
+        <div class="tl-it"><div class="tl-dot"></div><div class="tl-t" id="tr1t">Premiumización accesible</div><div class="tl-b" id="tr1b">Los consumidores buscan salón premium a precios accesibles — ideal para el modelo express de Fast Escova.</div></div>
+        <div class="tl-it"><div class="tl-dot"></div><div class="tl-t" id="tr2t">Wellness y self-care</div><div class="tl-b" id="tr2b">La belleza como bienestar cotidiano impulsa frecuencia de visita y adopción de tratamientos complementarios.</div></div>
+        <div class="tl-it"><div class="tl-dot"></div><div class="tl-t" id="tr3t">Digitalización del booking</div><div class="tl-b" id="tr3b">Booksy/Fresha son estándar. 70%+ de nuevas clientas llegan por Google. Alta adopción digital en comunidad brasileña.</div></div>
+        <div class="tl-it"><div class="tl-dot"></div><div class="tl-t" id="tr4t">Autenticidad cultural</div><div class="tl-b" id="tr4b">En Miami, las consumidoras hispanas/brasileñas valoran marcas con raíces culturales auténticas — ventaja competitiva directa.</div></div>
+        <div class="tl-it"><div class="tl-dot"></div><div class="tl-t" id="tr5t">Membresías y recurrencia</div><div class="tl-b" id="tr5b">El modelo de membresía mensual genera ingresos predecibles y fideliza. Implementar desde el mes 1.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 4. DEMOGRAFÍA ═══ -->
+<div class="sec" id="demo">
+  <div class="sec-hdr"><div class="sec-icon">👥</div>
+    <div><div class="sec-title" id="s4t">4. Demografía — Por qué Miami</div>
+    <div class="sec-sub" id="s4s">Hub brasileño #1 de EE.UU. + mayoría hispana + clima húmedo = demanda estructural única</div></div>
+  </div>
+  <div class="g4" style="margin-bottom:16px;">
+    <div class="kpi"><div class="kv">450K</div><div class="kl" id="dk1">Brasileños estimados en Miami Metro</div></div>
+    <div class="kpi"><div class="kv">69,1%</div><div class="kl" id="dk2">Población hispana en Miami-Dade</div></div>
+    <div class="kpi"><div class="kv">$10,7B</div><div class="kl" id="dk3">Aporte anual brasileño a economía FL</div></div>
+    <div class="kpi"><div class="kv">78%</div><div class="kl" id="dk4">Humedad relativa promedio Miami</div></div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="ct" id="ct-ing">Ingreso Mediano del Hogar por Zona (USD/año)</div><div class="ch"><canvas id="cIngreso"></canvas></div></div>
+    <div class="card"><div class="ct" id="ct-braz">Concentración Comunidad Brasileña vs. % Hispano</div><div class="ch"><canvas id="cBrazilian"></canvas></div></div>
+  </div>
+  <div class="ibox" style="margin-top:16px;" id="clima-ibox">🌊 <strong>Factor climático:</strong> Con 78% de humedad relativa promedio, Miami genera demanda estructural de blowouts de 2–4 veces por mes por cliente — significativamente mayor que ciudades como NY o LA. Esto impulsa directamente la frecuencia de visita y los ingresos recurrentes.</div>
+</div>
+
+<!-- ═══ 5. COMPETENCIA ═══ -->
+<div class="sec" id="competencia">
+  <div class="sec-hdr"><div class="sec-icon">⚔️</div>
+    <div><div class="sec-title" id="s5t">5. Análisis Competitivo</div>
+    <div class="sec-sub" id="s5s">La brecha: ningún competidor combina autenticidad brasileña + express + portafolio completo</div></div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="ct" id="ct-pos">Matriz de Posicionamiento</div>
+      <table class="tbl">
+        <thead><tr><th id="th-atr">Atributo</th><th class="yh">Fast Escova</th><th id="th-blo">Blo/Drybar</th><th id="th-bri">Salones BR Indep.</th></tr></thead>
+        <tbody>
+          <tr><td id="pa1">Autenticidad cultural brasileña</td><td style="color:var(--g);font-weight:700">⭐ Alta</td><td id="pb1">✗ Ninguna</td><td id="pc1">✓ Alta</td></tr>
+          <tr><td id="pa2">Servicio express</td><td style="color:var(--g);font-weight:700">⭐ Alta</td><td id="pb2">✓ Alta</td><td id="pc2">✗ Baja</td></tr>
+          <tr><td id="pa3">Portafolio completo</td><td style="color:var(--g);font-weight:700">⭐ Completo</td><td id="pb3">✗ Solo cabello</td><td id="pc3">~ Variable</td></tr>
+          <tr><td id="pa4">Precio accesible</td><td style="color:var(--g);font-weight:700">⭐ Media</td><td id="pb4">~ Media-Alta</td><td id="pc4">✗ Alta (keratina)</td></tr>
+          <tr><td id="pa5">Estandarización</td><td style="color:var(--g);font-weight:700">⭐ Alta</td><td id="pb5">✓ Alta</td><td id="pc5">✗ Muy baja</td></tr>
+          <tr><td id="pa6">Reconocimiento EE.UU.</td><td style="color:var(--or)">~ Bajo (nuevo)</td><td id="pb6">✓ Alto</td><td id="pc6">✗ Muy bajo</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="ct" id="ct-compz">Competidores Directos y Precio Promedio por Zona</div>
+      <div class="ch"><canvas id="cCompZona"></canvas></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px;">
+    <div class="ct" id="ct-comp-tbl">Principales Competidores en Miami</div>
+    <table class="tbl">
+      <thead><tr><th id="th-cn">Competidor</th><th id="th-cub">Ubicación</th><th id="th-cp">Precio Blowout</th><th id="th-cdeb">Debilidad clave vs. Fast Escova</th><th id="th-csat">Saturación</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Blo Blow Dry Bar</strong></td><td>Aventura, Coral Gables, Worldcenter</td><td>$45–$80</td><td id="cdeb1">Solo cabello, sin maquillaje ni uñas, no culturalmente brasileño</td><td><span class="bdg bdg-y">Media</span></td></tr>
+        <tr><td><strong>Drybar</strong></td><td>Múltiples en Miami-Dade</td><td>$60–$90</td><td id="cdeb2">Precio alto, solo blowouts, marca anglosajona</td><td><span class="bdg bdg-y">Media</span></td></tr>
+        <tr><td><strong>Open Hair Miami</strong></td><td>Miami Springs</td><td>$200–$500</td><td id="cdeb3">No es express, precio muy alto, sin estandarización</td><td><span class="bdg bdg-g">Baja</span></td></tr>
+        <tr><td><strong>SoBe Glam Express</strong></td><td>Lincoln Road, South Beach</td><td>$55–$80</td><td id="cdeb4">Sin autenticidad brasileña, foco turístico</td><td><span class="bdg bdg-y">Media</span></td></tr>
+        <tr class="hi"><td><strong>Fast Escova (entrada)</strong></td><td>Doral (propuesto)</td><td>$50–$75</td><td id="cdeb5" style="color:var(--g)">✓ Brecha no cubierta por ningún competidor</td><td><span class="bdg bdg-g">Sin competencia</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══ 6. ZONAS ═══ -->
+<div class="sec" id="zonas">
+  <div class="sec-hdr"><div class="sec-icon">🗺️</div>
+    <div><div class="sec-title" id="s6t">6. Estudio de Zonas — Miami</div>
+    <div class="sec-sub" id="s6s">9 zonas analizadas con 6 criterios ponderados. Doral es la recomendación estratégica.</div></div>
+  </div>
+  <div class="g2" style="margin-bottom:16px;">
+    <div class="card"><div id="map"></div></div>
+    <div>
+      <div class="ibox-g ibox" id="zona-rec-box">
+        <strong>🥇 Zona recomendada: Doral (Score 89/100)</strong><br>
+        Mayor concentración de comunidad brasileña de EE.UU. · Alquiler controlado ($30–$60/sqft) · Sin competencia directa de blowout express · Ingreso mediano $94K · Efecto boca en boca acelerado.
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;" id="zoneMiniGrid"></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ct" id="ct-zona-tbl">Comparativa Completa — 9 Zonas</div>
+    <div style="overflow-x:auto;">
+    <table class="tbl" style="min-width:700px;">
+      <thead><tr>
+        <th id="th-zt">Zona</th><th>Rank</th>
+        <th id="th-zpob">Población</th><th id="th-zing">Ingreso HH</th>
+        <th id="th-zhisp">% Hispano</th><th id="th-zbr">% Brasileño</th>
+        <th id="th-zalq">Alquiler ($/sqft/año)</th>
+        <th id="th-zcomp">Competidores</th>
+        <th id="th-zscore">Score</th><th id="th-zprio">Prioridad</th>
+      </tr></thead>
+      <tbody id="zTbody"></tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 7. FINANCIERO ═══ -->
+<div class="sec" id="financiero">
+  <div class="sec-hdr"><div class="sec-icon">💰</div>
+    <div><div class="sec-title" id="s7t">7. Proyecciones Financieras — Doral (Zona Recomendada)</div>
+    <div class="sec-sub" id="s7s">Estimaciones basadas en benchmarks de la industria. Escenario de referencia: Base. Local tipo 150–200 m², 5–6 estaciones.</div></div>
+  </div>
+  <div class="fin-hero">
+    <div class="g4">
+      <div class="kpi" style="background:transparent;border:none;text-align:left;padding:0;box-shadow:none;">
+        <div class="kv" id="fh-inv">$135K–$249K</div><div class="kl" id="fhl-inv">Inversión inicial estimada</div></div>
+      <div class="kpi" style="background:transparent;border:none;text-align:left;padding:0;box-shadow:none;">
+        <div class="kv" id="fh-rev">$450K–$672K</div><div class="kl" id="fhl-rev">Ingresos anuales (escenario base)</div></div>
+      <div class="kpi" style="background:transparent;border:none;text-align:left;padding:0;box-shadow:none;">
+        <div class="kv" id="fh-ebitda">~$181K</div><div class="kl" id="fhl-ebitda">EBITDA estimado (escenario base)</div></div>
+      <div class="kpi" style="background:transparent;border:none;text-align:left;padding:0;box-shadow:none;">
+        <div class="kv" id="fh-margin">~30%</div><div class="kl" id="fhl-margin">Margen EBITDA</div></div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="ct" id="ct-inv">Inversión Inicial por Ítem — Doral (Primer Local)</div>
+      <table class="tbl">
+        <thead><tr><th id="th-ii">Ítem</th><th id="th-imin">Mínimo (USD)</th><th id="th-imax">Máximo (USD)</th></tr></thead>
+        <tbody>
+          <tr><td id="ii1">Adecuación del local</td><td>$40.000</td><td>$70.000</td></tr>
+          <tr><td id="ii2">Equipamiento (sillas, secadores, lavatórios)</td><td>$25.000</td><td>$45.000</td></tr>
+          <tr><td id="ii3">Tecnología (POS, booking, cámaras)</td><td>$4.000</td><td>$8.000</td></tr>
+          <tr><td id="ii4">Mobiliario y decoración (branding)</td><td>$10.000</td><td>$20.000</td></tr>
+          <tr><td id="ii5">Productos e inventario inicial</td><td>$5.000</td><td>$10.000</td></tr>
+          <tr><td id="ii6">Depósito de alquiler (3–6 meses)</td><td>$8.000</td><td>$18.000</td></tr>
+          <tr><td id="ii7">Gastos legales y licencias</td><td>$5.000</td><td>$8.000</td></tr>
+          <tr><td id="ii8">Marketing de apertura</td><td>$6.000</td><td>$12.000</td></tr>
+          <tr><td id="ii9">Capital de trabajo (3 meses)</td><td>$20.000</td><td>$35.000</td></tr>
+          <tr><td id="ii10">Contingencia (10%)</td><td>$12.000</td><td>$23.000</td></tr>
+          <tr class="hi"><td><strong id="ii-tot">TOTAL</strong></td><td><strong>$135.000</strong></td><td><strong>$249.000</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:16px;"><div class="ct" id="ct-scen">Comparativa de Escenarios — Doral</div><div class="ch"><canvas id="cScenarios"></canvas></div></div>
+      <div class="card"><div class="ct" id="ct-pnl">Distribución de Costos — Escenario Base</div><div class="ch-sm"><canvas id="cDonut"></canvas></div></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px;">
+    <div class="ct" id="ct-labor">Marco Laboral — Florida 2025–2026</div>
+    <div class="g2">
+      <table class="tbl">
+        <thead><tr><th id="th-lp">Período</th><th id="th-lsal">Salario Mínimo</th><th id="th-ltip">Con propinas</th></tr></thead>
+        <tbody>
+          <tr><td id="lp1">Hasta sep. 30, 2025</td><td><strong>$14,00/hora</strong></td><td>$10,98/hora</td></tr>
+          <tr><td id="lp2">Desde oct. 1, 2025</td><td><strong>$15,00/hora</strong></td><td>$11,98/hora</td></tr>
+        </tbody>
+      </table>
+      <table class="tbl">
+        <thead><tr><th id="th-lpu">Puesto</th><th id="th-lra">Rango Anual</th></tr></thead>
+        <tbody>
+          <tr><td id="lpu1">Cosmetóloga Junior</td><td>$32.317 – $38.000</td></tr>
+          <tr><td id="lpu2">Cosmetóloga Senior</td><td>$48.000 – $58.000</td></tr>
+          <tr><td id="lpu3">Gerente de Salón</td><td>$45.000 – $70.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="src" id="fin-src">Fuentes: Blo FDD 2024 · Drybar FDD 2025 · IBIS World Blow Dry Bars US 2024 · joinblvd.com Salon Industry Trends 2025 · Cushman & Wakefield Miami Retail Market 2025. Las proyecciones son estimaciones de referencia y no constituyen proyección financiera auditada.</div>
+</div>
+
+<!-- ═══ 8. FODA ═══ -->
+<div class="sec" id="foda">
+  <div class="sec-hdr"><div class="sec-icon">🔷</div>
+    <div><div class="sec-title" id="s8t">8. Análisis FODA</div>
+    <div class="sec-sub" id="s8s">Evaluación interna y externa de Fast Escova para el mercado de Miami</div></div>
+  </div>
+  <div class="swot">
+    <div class="sc" style="background:#FFF9D6;">
+      <div class="sc-h" id="sw-f">💪 FORTALEZAS</div>
+      <div class="sc-li" id="swf1">Marca con identidad cultural auténtica — la más relevante para el hub brasileño #1 de EE.UU.</div>
+      <div class="sc-li" id="swf2">Portafolio completo (cabello + uñas + make + cejas) vs. competidores mono-servicio</div>
+      <div class="sc-li" id="swf3">Modelo operativo probado y estandarizado en Brasil</div>
+      <div class="sc-li" id="swf4">Propuesta de velocidad y practicidad valorada por profesionales urbanos</div>
+      <div class="sc-li" id="swf5">Amplia variedad de tratamientos capilares — diferencial frente a Blo/Drybar</div>
+    </div>
+    <div class="sc" style="background:#D6F5E3;">
+      <div class="sc-h" id="sw-o">🚀 OPORTUNIDADES</div>
+      <div class="sc-li" id="swo1">300–450K brasileños en Miami sin cadena express de referencia</div>
+      <div class="sc-li" id="swo2">69,1% población hispana con superíndice de gasto en belleza</div>
+      <div class="sc-li" id="swo3">Clima subtropical: demanda estructural de blowouts 2–4 veces/mes</div>
+      <div class="sc-li" id="swo4">"Brazilian Boom" 2023-2025: crecimiento acelerado en Doral</div>
+      <div class="sc-li" id="swo5">Turismo internacional + potencial de escala a franquicia en EE.UU.</div>
+    </div>
+    <div class="sc" style="background:#FFE5E5;">
+      <div class="sc-h" id="sw-d">⚠️ DEBILIDADES</div>
+      <div class="sc-li" id="swd1">Marca desconocida en EE.UU. — requiere inversión en brand awareness</div>
+      <div class="sc-li" id="swd2">Sin historial de operaciones en EE.UU. — curva de aprendizaje regulatoria</div>
+      <div class="sc-li" id="swd3">Dependencia de personal bilingüe (portugués/español/inglés)</div>
+      <div class="sc-li" id="swd4">Menor acceso a proveedores locales que cadenas establecidas</div>
+    </div>
+    <div class="sc" style="background:#E5EEFF;">
+      <div class="sc-h" id="sw-a">🎯 AMENAZAS</div>
+      <div class="sc-li" id="swa1">Blo y Drybar establecidos con fuerte reconocimiento de marca en Miami</div>
+      <div class="sc-li" id="swa2">Alquiler y nómina elevados — presión sobre márgenes operativos</div>
+      <div class="sc-li" id="swa3">Salario mínimo en aumento ($14→$15/hora en oct. 2025)</div>
+      <div class="sc-li" id="swa4">Mercado laboral competitivo: retención de personal calificado</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 9. ESTRATEGIA ═══ -->
+<div class="sec" id="estrategia">
+  <div class="sec-hdr"><div class="sec-icon">🚀</div>
+    <div><div class="sec-title" id="s9t">9. Estrategia de Entrada</div>
+    <div class="sec-sub" id="s9s">2 fases: validar en Doral (menor riesgo) y escalar a Brickell con datos reales</div></div>
+  </div>
+  <div class="g2" style="margin-bottom:16px;">
+    <div class="phase phase-y">
+      <div class="phase-label" style="color:#8B6F00;" id="f1-lbl">FASE 1 — Meses 1 a 12</div>
+      <div class="phase-name">🥇 Doral — Score 89/100</div>
+      <ul id="f1-list">
+        <li>Local 150–200 m², 5–6 estaciones · Inversión $135K–$249K</li>
+        <li>Público primario: comunidad brasileña y latina</li>
+        <li>Meta: 25–35 clientes/día en el mes 4</li>
+        <li>KPIs: ticket promedio, NPS, frecuencia de visita</li>
+        <li>Marketing: WhatsApp grupos brasileños, Instagram, influencers locales</li>
+      </ul>
+    </div>
+    <div class="phase phase-b">
+      <div class="phase-label" style="color:#1A5276;" id="f2-lbl">FASE 2 — Meses 13 a 24</div>
+      <div class="phase-name">🥈 Brickell — Score 77/100</div>
+      <ul id="f2-list">
+        <li>Local 200–250 m², 7–9 estaciones · Inversión $180K–$320K</li>
+        <li>Público: profesionales urbanos 25–45 años + expats</li>
+        <li>Meta: 35–50 clientes/día en el mes 4</li>
+        <li>Implementar membresía "Fast Pass" (X escovas/mes a precio fijo)</li>
+        <li>Escalar branding y evaluar franquicia para terceros</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ct" id="ct-growth">Curva de Crecimiento Proyectada — Clientes/día</div>
+    <div class="ch"><canvas id="cGrowth"></canvas></div>
+  </div>
+</div>
+
+<!-- ═══ 10. RIESGOS ═══ -->
+<div class="sec" id="riesgos">
+  <div class="sec-hdr"><div class="sec-icon">⚠️</div>
+    <div><div class="sec-title" id="s10t">10. Gestión de Riesgos</div>
+    <div class="sec-sub" id="s10s">Riesgos identificados con estrategias de mitigación</div></div>
+  </div>
+  <div id="riskList"></div>
+</div>
+
+<!-- ═══ 11. PRÓXIMOS PASOS ═══ -->
+<div class="sec" id="pasos">
+  <div class="sec-hdr"><div class="sec-icon">✅</div>
+    <div><div class="sec-title" id="s11t">11. Próximos Pasos — Plan de Acción</div>
+    <div class="sec-sub" id="s11s">10 acciones concretas para apertura en Doral en 6–7 meses</div></div>
+  </div>
+  <div class="steps" id="stepsGrid"></div>
+  <div class="src" style="margin-top:16px;" id="src-all">Fuentes: Census Bureau QuickFacts Miami-Dade (2024) · Neilsberg Brazilian Population FL (2025) · InfoNegocios Miami (2025) · GM Insights Hair Salon Market (2024–2032) · FranchiseChatter Blo Review (2025) · SharpSheets Drybar FDD (2025) · IBIS World (2024) · Florida DBPR (2026) · Cushman & Wakefield Miami Retail (2025) · Salary.com Miami FL (2025) · Doral Chamber of Commerce (2024) · Google Maps / Booksy / Yelp (investigación junio 2026).</div>
+</div>
+
+</div><!-- /page -->
+
+<footer>
+  <strong>fast</strong>escova &nbsp;·&nbsp; fastescova.com.br &nbsp;·&nbsp; @fastescova
+  &nbsp;&nbsp;|&nbsp;&nbsp; Resumen Ejecutivo — Área Metropolitana de Miami · Junio 2026 &nbsp;&nbsp;|&nbsp;&nbsp; 🔒 Confidencial
+</footer>
+
+<script>
+// ── DATA ────────────────────────────────────────────────────────────────────
+const ZONES=[
+  {id:"doral",name:"Doral",rank:1,lat:25.8195,lng:-80.3506,pop:83625,income:94164,hisp:85.5,br:18,rent_min:30,rent_max:60,comp:2,blow:55,color:"#27AE60",inv:[135000,249000],score:{cult:24,poder:16,viab:19,traf:11,comp:14,esc:5,total:89},prio:"★★★★★"},
+  {id:"brickell",name:"Brickell",rank:2,lat:25.7617,lng:-80.1918,pop:39904,income:113367,hisp:60,br:8,rent_min:60,rent_max:120,comp:5,blow:72,color:"#2980B9",inv:[180000,320000],score:{cult:15,poder:20,viab:12,traf:15,comp:10,esc:5,total:77},prio:"★★★★"},
+  {id:"coral-gables",name:"Coral Gables",rank:3,lat:25.7215,lng:-80.2684,pop:49243,income:130803,hisp:65,br:5,rent_min:50,rent_max:95,comp:6,blow:68,color:"#8E44AD",inv:[150000,270000],score:{cult:16,poder:19,viab:13,traf:12,comp:8,esc:4,total:72},prio:"★★★★"},
+  {id:"aventura",name:"Aventura",rank:4,lat:25.9565,lng:-80.1392,pop:37000,income:82000,hisp:45,br:9,rent_min:60,rent_max:100,comp:5,blow:65,color:"#E67E22",inv:[165000,290000],score:{cult:12,poder:17,viab:11,traf:11,comp:10,esc:4,total:65},prio:"★★★"},
+  {id:"wynwood",name:"Wynwood",rank:5,lat:25.8008,lng:-80.1998,pop:6169,income:43036,hisp:70,br:3,rent_min:50,rent_max:80,comp:3,blow:58,color:"#E74C3C",inv:[135000,225000],score:{cult:13,poder:10,viab:12,traf:13,comp:12,esc:3,total:63},prio:"★★★"},
+  {id:"kendall",name:"Kendall",rank:6,lat:25.6751,lng:-80.3565,pop:125000,income:72000,hisp:76,br:3,rent_min:25,rent_max:45,comp:2,blow:48,color:"#1ABC9C",inv:[95000,160000],score:{cult:14,poder:13,viab:18,traf:7,comp:13,esc:3,total:68},prio:"★★★"},
+  {id:"hialeah",name:"Hialeah",rank:7,lat:25.8576,lng:-80.2781,pop:230000,income:48000,hisp:95.1,br:1,rent_min:20,rent_max:35,comp:3,blow:42,color:"#95A5A6",inv:[75000,130000],score:{cult:10,poder:7,viab:17,traf:9,comp:13,esc:2,total:58},prio:"★★"},
+  {id:"miami-beach",name:"Miami Beach",rank:8,lat:25.7907,lng:-80.1300,pop:82000,income:68000,hisp:55,br:7,rent_min:80,rent_max:200,comp:7,blow:75,color:"#BDC3C7",inv:[220000,420000],score:{cult:10,poder:14,viab:6,traf:14,comp:7,esc:2,total:53},prio:"★★"},
+  {id:"little-havana",name:"Little Havana",rank:9,lat:25.7667,lng:-80.2167,pop:60000,income:38000,hisp:96,br:0.5,rent_min:25,rent_max:45,comp:2,blow:38,color:"#F39C12",inv:[85000,145000],score:{cult:9,poder:5,viab:16,traf:8,comp:13,esc:1,total:52},prio:"★"}
+];
+
+// ── CHART.JS defaults ────────────────────────────────────────────────────────
+Chart.defaults.font.family="'Segoe UI',Arial,sans-serif";
+Chart.defaults.color="#555";
+
+// ── CHART BUILDERS ───────────────────────────────────────────────────────────
+function mk(id, cfg) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  try { new Chart(el, cfg); } catch(e) { console.warn(id, e); }
+}
+
+function buildCharts() {
+  const names = ZONES.map(z=>z.name);
+  const colors = ZONES.map(z=>z.color);
+
+  // Ranking
+  mk('cRanking', {type:'bar', data:{labels:names, datasets:[{label:'Score',
+    data:ZONES.map(z=>z.score.total), backgroundColor:colors, borderRadius:5, borderSkipped:false}]},
+    options:{indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:{min:0,max:100,grid:{color:'#EEE'}},y:{grid:{display:false}}}}});
+
+  // Radar
+  mk('cRadar', {type:'radar', data:{
+    labels:['Afinidad\nCultural','Poder\nAdquisitivo','Viabilidad\nEconómica','Tráfico','Baja\nCompetencia','Escala'],
+    datasets:[
+      {label:'Doral',data:[24,16,19,11,14,5],borderColor:'#27AE60',backgroundColor:'rgba(39,174,96,.2)',borderWidth:2.5,pointBackgroundColor:'#27AE60'},
+      {label:'Brickell',data:[15,20,12,15,10,5],borderColor:'#2980B9',backgroundColor:'rgba(41,128,185,.12)',borderWidth:2,pointBackgroundColor:'#2980B9'},
+      {label:'Coral Gables',data:[16,19,13,12,8,4],borderColor:'#8E44AD',backgroundColor:'rgba(142,68,173,.1)',borderWidth:2,pointBackgroundColor:'#8E44AD'},
+    ]},
+    options:{responsive:true, maintainAspectRatio:false,
+      scales:{r:{min:0,max:25,ticks:{stepSize:5},grid:{color:'#EEE'}}},
+      plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10}}}}}});
+
+  // Positioning
+  mk('cPositioning', {type:'radar', data:{
+    labels:['Autenticidad\nCultural','Express','Portafolio\nCompleto','Precio\nAccesible','Estandar-\nización','Reconoc.\nMarca'],
+    datasets:[
+      {label:'Fast Escova',data:[10,9,10,8,9,4],borderColor:'#F5C400',backgroundColor:'rgba(245,196,0,.2)',borderWidth:2.5,pointBackgroundColor:'#F5C400'},
+      {label:'Blo / Drybar',data:[1,9,3,6,9,9],borderColor:'#2980B9',backgroundColor:'rgba(41,128,185,.1)',borderWidth:2,pointBackgroundColor:'#2980B9'},
+      {label:'Salones BR Indep.',data:[9,3,7,5,2,1],borderColor:'#8E44AD',backgroundColor:'rgba(142,68,173,.1)',borderWidth:2,pointBackgroundColor:'#8E44AD'},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{r:{min:0,max:10,ticks:{stepSize:2},grid:{color:'#EEE'}}},
+      plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10}}}}}});
+
+  // Benchmark
+  mk('cBenchmark', {type:'bar', data:{
+    labels:['Drybar\n(promedio)','Drybar\n(top 10)','Blo\n(promedio)','Fast Escova\n(proy. base)'],
+    datasets:[{label:'Revenue anual USD',
+      data:[904197,1800000,372000,595000],
+      backgroundColor:['#2980B9','#2980B9','#8E44AD','#F5C400'], borderRadius:5}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:{grid:{display:false}},y:{grid:{color:'#EEE'},ticks:{callback:v=>'$'+v.toLocaleString()}}}}});
+
+  // Ingreso
+  mk('cIngreso', {type:'bar', data:{labels:names, datasets:[{label:'Ingreso Mediano HH (USD/año)',
+    data:ZONES.map(z=>z.income), backgroundColor:colors, borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:{grid:{display:false}},y:{grid:{color:'#EEE'}}}}});
+
+  // Brazilian
+  mk('cBrazilian', {type:'bar', data:{labels:names, datasets:[
+    {label:'% Comunidad Brasileña (est.)',data:ZONES.map(z=>z.br),backgroundColor:'#F5C400',borderRadius:4},
+    {label:'% Hispano total',data:ZONES.map(z=>z.hisp),backgroundColor:'rgba(245,196,0,.2)',borderColor:'#F5C400',borderWidth:1,borderRadius:4},
+  ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10}}}},
+      scales:{x:{grid:{display:false}},y:{max:100,grid:{color:'#EEE'}}}}});
+
+  // Competidores por zona
+  mk('cCompZona', {type:'bar', data:{labels:names, datasets:[
+    {label:'N° competidores',data:ZONES.map(z=>z.comp),backgroundColor:colors,borderRadius:4,yAxisID:'y'},
+    {label:'Precio blowout ($)',data:ZONES.map(z=>z.blow),backgroundColor:'rgba(0,0,0,.12)',borderRadius:4,yAxisID:'y2',type:'line',borderColor:'#333',pointBackgroundColor:'#333',borderWidth:2},
+  ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10}}}},
+      scales:{
+        x:{grid:{display:false}},
+        y:{grid:{color:'#EEE'},title:{display:true,text:'N° competidores'}},
+        y2:{position:'right',grid:{display:false},title:{display:true,text:'Precio ($)'}},
+      }}});
+
+  // Scenarios (Doral)
+  mk('cScenarios', {type:'bar', data:{
+    labels:['Conservador','Base','Optimista'],
+    datasets:[{label:'Ingreso anual proyectado (USD)',
+      data:[318750,561000,1011000],
+      backgroundColor:['rgba(39,174,96,.7)','#F5C400','rgba(41,128,185,.7)'], borderRadius:5}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:{grid:{display:false}},y:{grid:{color:'#EEE'},ticks:{callback:v=>'$'+v.toLocaleString()}}}}});
+
+  // Donut P&L
+  mk('cDonut', {type:'doughnut', data:{
+    labels:['Nómina (36%)','Alquiler (9%)','Insumos (12%)','Otros (5%)','EBITDA (28-32%)'],
+    datasets:[{data:[36,9,12,5,30],
+      backgroundColor:['#E74C3C','#E67E22','#F5C400','#95A5A6','#27AE60'],
+      borderWidth:2,borderColor:'#fff'}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'right',labels:{boxWidth:10,font:{size:10}}}}}});
+
+  // Growth
+  mk('cGrowth', {type:'line', data:{
+    labels:['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11','M12'],
+    datasets:[
+      {label:'Doral (conservador)',data:[6,10,14,18,20,22,23,24,25,25,26,26],borderColor:'rgba(39,174,96,.5)',backgroundColor:'rgba(39,174,96,.05)',tension:.4,fill:true,pointRadius:2},
+      {label:'Doral (base)',data:[8,14,20,27,30,32,33,35,36,36,37,38],borderColor:'#27AE60',backgroundColor:'rgba(39,174,96,.1)',tension:.4,fill:true,borderWidth:2.5,pointRadius:3},
+      {label:'Doral (optimista)',data:[12,20,30,40,45,48,50,52,54,56,58,60],borderColor:'rgba(39,174,96,.8)',backgroundColor:'rgba(39,174,96,.05)',tension:.4,fill:true,borderDash:[5,3],pointRadius:2},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10}}}},
+      scales:{
+        x:{grid:{color:'#EEE'}},
+        y:{title:{display:true,text:'Clientes/día'},grid:{color:'#EEE'}}
+      }}});
+}
+
+// ── ZONE TABLE ───────────────────────────────────────────────────────────────
+function buildZoneTable() {
+  const tb = document.getElementById('zTbody');
+  if(!tb) return;
+  const sColor = v => v>=85?'#27AE60':v>=70?'#E67E22':v>=55?'#F39C12':'#E74C3C';
+  ZONES.forEach(z => {
+    const tr = document.createElement('tr');
+    if(z.rank===1) tr.className='hi';
+    tr.innerHTML = `<td><b>${z.name}</b>${z.rank===1?' 🥇':''}</td><td>${z.rank}</td>
+      <td>${z.pop.toLocaleString()}</td><td>$${z.income.toLocaleString()}</td>
+      <td>${z.hisp}%</td><td>~${z.br}%</td>
+      <td>$${z.rent_min}–$${z.rent_max}</td><td>${z.comp}</td>
+      <td style="color:${sColor(z.score.total)};font-weight:700">${z.score.total}/100</td>
+      <td>${z.prio}</td>`;
+    tb.appendChild(tr);
+  });
+}
+
+// ── ZONE MINI CARDS ──────────────────────────────────────────────────────────
+function buildZoneMini() {
+  const g = document.getElementById('zoneMiniGrid');
+  if(!g) return;
+  ZONES.slice(0,6).forEach(z => {
+    const sc = z.score;
+    const div = document.createElement('div');
+    div.className='zmini';
+    div.innerHTML = `
+      <div class="zmini-h" style="background:${z.color}18;border-top:3px solid ${z.color}">
+        <div class="zmini-n">${z.name}</div>
+        <div style="font-size:1.1rem;font-weight:900;color:${z.color}">${sc.total}</div>
+      </div>
+      <div class="zmini-body" style="padding-top:8px;">
+        ${[['Cultura',sc.cult,25,'#F5C400'],['Poder',sc.poder,20,'#2980B9'],['Viabilidad',sc.viab,20,'#27AE60'],['Competencia',sc.comp,15,'#E67E22']].map(([n,v,m,c])=>`
+          <div class="mbar"><div class="mbar-n">${n}</div>
+          <div class="mbar-t"><div class="mbar-f" style="width:${(v/m)*100}%;background:${c}"></div></div>
+          <div class="mbar-v">${v}/${m}</div></div>`).join('')}
+      </div>`;
+    g.appendChild(div);
+  });
+}
+
+// ── RISK LIST ────────────────────────────────────────────────────────────────
+function buildRisks() {
+  const el = document.getElementById('riskList');
+  if(!el) return;
+  const lang = document.getElementById('loES').classList.contains('active') ? 'es' : 'pt';
+  const RISKS = [
+    {prob:'Alta',imp:'Medio',bg:'#FEF9E7',pc:'#922B21',bc:'#FADBD8',
+     es:['Desconocimiento de marca — captación lenta al inicio','Inversión en marketing offline + digital desde pre-apertura; alianzas con referentes comunitarios.'],
+     pt:['Desconhecimento da marca — captação lenta no início','Investimento em marketing offline + digital desde a pré-abertura; parcerias com referências comunitárias.']},
+    {prob:'Media',imp:'Alto',bg:'#FDEBD0',pc:'#8B4000',bc:'#FDEBD0',
+     es:['Alquiler elevado que compromete márgenes','Negociar cláusula de salida y techo de alquiler; empezar con local más pequeño (150 m²).'],
+     pt:['Aluguel elevado que compromete margens','Negociar cláusula de saída e teto de aluguel; começar com imóvel menor (150 m²).']},
+    {prob:'Media',imp:'Alto',bg:'#FDEBD0',pc:'#8B4000',bc:'#FDEBD0',
+     es:['Falta de personal bilingüe calificado','Contratar proactivamente a través de la red de contactos en comunidad brasileña de Miami.'],
+     pt:['Falta de pessoal bilíngue qualificado','Contratar proativamente pela rede de contatos na comunidade brasileira de Miami.']},
+    {prob:'Media',imp:'Medio',bg:'#FEF9E7',pc:'#8B6F00',bc:'#FEF9E7',
+     es:['Competidor establece responde agresivamente','Diferenciación por autenticidad cultural y portafolio completo; fidelización desde el mes 1.'],
+     pt:['Concorrente estabelecido reage agressivamente','Diferenciação por autenticidade cultural e portfólio completo; fidelização desde o mês 1.']},
+    {prob:'Baja',imp:'Medio',bg:'#EAFAF1',pc:'#1E8449',bc:'#D5F5E3',
+     es:['Cambios regulatorios laborales en Florida','Monitoreo continuo; estructura salarial flexible (base + comisión).'],
+     pt:['Mudanças regulatórias trabalhistas na Flórida','Monitoramento contínuo; estrutura salarial flexível (base + comissão).']},
+    {prob:'Baja',imp:'Medio',bg:'#EAFAF1',pc:'#1E8449',bc:'#D5F5E3',
+     es:['Fluctuación económica / recesión','Servicios de belleza son relativamente inelásticos; membresías estabilizan ingresos.'],
+     pt:['Flutuação econômica / recessão','Serviços de beleza são relativamente inelásticos; assinaturas estabilizam a receita.']},
+  ];
+  const probBg = {'Alta':'#FADBD8','Media':'#FDEBD0','Baja':'#D5F5E3'};
+  const probTxt = {'Alta':'#922B21','Media':'#8B4000','Baja':'#1E8449'};
+  el.innerHTML = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">` +
+    RISKS.map(r => {
+      const txt = lang==='pt' ? r.pt : r.es;
+      return `<div class="risk" style="background:${r.bg}">
+        <div class="rb" style="background:${probBg[r.prob]||'#EEE'};color:${probTxt[r.prob]||'#333'}">${r.prob}</div>
+        <div><div style="font-weight:700;font-size:.8rem;margin-bottom:2px;">${txt[0]}</div>
+        <div style="font-size:.76rem;color:var(--dg);line-height:1.4;">${txt[1]}</div></div>
+      </div>`;
+    }).join('') + `</div>`;
+}
+
+// ── STEPS ────────────────────────────────────────────────────────────────────
+function buildSteps() {
+  const el = document.getElementById('stepsGrid');
+  if(!el) return;
+  const lang = document.getElementById('loES').classList.contains('active') ? 'es' : 'pt';
+  const S = [
+    {n:1,c:'#27AE60',es:['Visita presencial a Miami','Recorrida por Doral, Brickell y Coral Gables. Evaluar locales disponibles.','1 mes'],pt:['Visita presencial a Miami','Percurso por Doral, Brickell e Coral Gables. Avaliar imóveis.','1 mês']},
+    {n:2,c:'#2980B9',es:['Contratar socio local bilingüe','Gerente operativo con conocimiento del mercado de Miami.','1–2 meses'],pt:['Contratar sócio local bilíngue','Gerente operacional com conhecimento do mercado de Miami.','1–2 meses']},
+    {n:3,c:'#8E44AD',es:['Asesoría legal y fiscal','Abogado + contador especializados en empresas extranjeras en FL.','1–2 meses'],pt:['Assessoria jurídica e fiscal','Advogado + contador para empresas estrangeiras na Flórida.','1–2 meses']},
+    {n:4,c:'#E67E22',es:['Plan de negocios detallado','Proyecciones 3 años + punto de equilibrio + cronograma.','2 meses'],pt:['Plano de negócios detalhado','Projeções 3 anos + ponto de equilíbrio + cronograma.','2 meses']},
+    {n:5,c:'#F5C400',es:['Scouting de local en Doral','Objetivo: 150–200 m², estacionamiento, visibilidad en calle principal.','2–3 meses'],pt:['Scouting de imóvel em Doral','Meta: 150–200 m², estacionamento, boa visibilidade em rua principal.','2–3 meses']},
+    {n:6,c:'#1ABC9C',es:['Habilitación ante DBPR','Formulario COSMO 6, licencia de establecimiento y licencias municipales.','3–4 meses'],pt:['Habilitação junto ao DBPR','Formulário COSMO 6, licença de estabelecimento e alvarás municipais.','3–4 meses']},
+    {n:7,c:'#E74C3C',es:['Reclutamiento del equipo','4–5 cosmetólogas + recepcionista. Verificar licencias individuales FL.','3–4 meses'],pt:['Recrutamento da equipe','4–5 cabeleireiras + recepcionista. Verificar licenças individuais FL.','3–4 meses']},
+    {n:8,c:'#9B59B6',es:['Montaje y pre-apertura','Adecuación + campaña en redes sociales (IG, TikTok, WhatsApp grupos brasileños).','4–6 meses'],pt:['Montagem e pré-abertura','Adequação + campanha nas redes sociais (IG, TikTok, grupos WhatsApp).','4–6 meses']},
+    {n:9,c:'#27AE60',es:['Soft launch','Apertura por invitación: influencers y comunidad brasileña local.','6–7 meses'],pt:['Soft launch','Abertura por convite: influencers e comunidade brasileira local.','6–7 meses']},
+    {n:10,c:'#2980B9',es:['Apertura oficial + KPIs 90d','Apertura oficial. Evaluar KPIs y decidir sobre Fase 2 (Brickell).','7–10 meses'],pt:['Abertura oficial + KPIs 90d','Abertura oficial. Avaliar KPIs e decidir sobre Fase 2 (Brickell).','7–10 meses']},
+  ];
+  el.innerHTML = S.map(s => {
+    const d = lang==='pt' ? s.pt : s.es;
+    return `<div class="step" style="border-left-color:${s.c}">
+      <div class="step-n" style="color:${s.c}">${String(s.n).padStart(2,'0')}</div>
+      <div class="step-t">${d[0]}</div><div class="step-b">${d[1]}</div>
+      <div class="step-m">⏱ ${d[2]}</div></div>`;
+  }).join('');
+}
+
+// ── MAP ──────────────────────────────────────────────────────────────────────
+function buildMap() {
+  const map = L.map('map',{zoomControl:true}).setView([25.79,-80.26],11);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap',maxZoom:18}).addTo(map);
+  ZONES.forEach(z => {
+    const r = 220 + z.score.total*22;
+    L.circle([z.lat,z.lng],{color:z.color,fillColor:z.color,fillOpacity:.35,weight:2,radius:r}).addTo(map)
+      .bindPopup(`<b>#${z.rank} ${z.name}</b><br>Score: <b>${z.score.total}/100</b><br>Ingreso HH: $${z.income.toLocaleString()}<br>Alquiler: $${z.rent_min}–$${z.rent_max}/sqft<br>Competidores: ${z.comp}`,{maxWidth:220});
+    L.divIcon&&L.marker([z.lat,z.lng],{icon:L.divIcon({html:`<div style="background:${z.color};color:${z.color==='#F5C400'?'#000':'#fff'};border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.78rem;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,.3)">#${z.rank}</div>`,className:'',iconSize:[28,28],iconAnchor:[14,14]})}).addTo(map)
+      .bindPopup(`<b>#${z.rank} ${z.name}</b> — ${z.score.total}/100`,{maxWidth:180});
+  });
+  // Key POIs
+  const POIS=[
+    {lat:25.9572,lng:-80.1420,e:'🛍️',n:'Aventura Mall',d:'+28M visitantes/año'},
+    {lat:25.7666,lng:-80.1911,e:'🛍️',n:'Brickell City Centre',d:'Hub retail-oficinas premium'},
+    {lat:25.7200,lng:-80.2700,e:'🛍️',n:'Village of Merrick Park',d:'Mall luxury Coral Gables'},
+    {lat:25.6849,lng:-80.3170,e:'🛍️',n:'Dadeland Mall',d:'1.4M sqft · Kendall'},
+    {lat:25.7880,lng:-80.4220,e:'🛍️',n:'Dolphin Mall',d:'Outlet Doral · +14M visitas/año'},
+    {lat:25.8003,lng:-80.1994,e:'🎨',n:'Wynwood Walls',d:'+1M visitantes/año'},
+    {lat:25.7760,lng:-80.1850,e:'🏙️',n:'Bayside Marketplace',d:'+15M visitantes/año'},
+    {lat:25.7219,lng:-80.2680,e:'🏙️',n:'Miracle Mile',d:'100K sqft retail Coral Gables'},
+    {lat:25.8195,lng:-80.3480,e:'🇧🇷',n:'Hub Brasileño Doral',d:'Mayor concentración BR de EE.UU.'},
+    {lat:25.8260,lng:-80.3530,e:'🇧🇷',n:'Corredor Brasileño Doral',d:'~100 nuevos negocios/mes'},
+    {lat:25.7959,lng:-80.2870,e:'✈️',n:"Miami Int'l Airport",d:'52M pasajeros/año'},
+    {lat:25.7781,lng:-80.1878,e:'🏀',n:'Kaseya Center (NBA Heat)',d:'Eventos 200+ días/año'},
+    {lat:25.9136,lng:-80.1500,e:'🎓',n:'FIU',d:'58K estudiantes'},
+    {lat:25.7907,lng:-80.1402,e:'🛍️',n:'Lincoln Road Mall',d:'Peatonal South Beach · +20M turistas'},
+  ];
+  POIS.forEach(p => {
+    const icon = L.divIcon({html:`<div style="background:#333;color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.72rem;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35)">${p.e}</div>`,className:'',iconSize:[22,22],iconAnchor:[11,11]});
+    L.marker([p.lat,p.lng],{icon}).addTo(map).bindPopup(`<b>${p.e} ${p.n}</b><br><small>${p.d}</small>`,{maxWidth:200});
+  });
+}
+
+// ── LANGUAGE ─────────────────────────────────────────────────────────────────
+let currentLang = 'es';
+const TR = {
+  es:{
+    conf:'🔒 Confidencial', cv_tag:'Resumen Ejecutivo — Análisis de Mercado Miami',
+    cv_meta:'Junio 2026 · Confidencial · Zona recomendada: Doral · Escenario: Base',
+    ck1:'Brasileños en área metropolitana', ck2:'Score Doral — zona #1',
+    ck3:'Ingreso anual proyectado (base)', ck4:'Inversión mínima estimada',
+    ck5:'Mercado salones EE.UU. 2024', ck6:'Población hispana Miami-Dade',
+    zona_rec:'<strong>🥇 Zona recomendada: Doral (Score 89/100)</strong><br>Mayor concentración de comunidad brasileña de EE.UU. · Alquiler controlado ($30–$60/sqft) · Sin competencia directa de blowout express · Ingreso mediano $94K · Efecto boca en boca acelerado.',
+    exec_p1:'Miami reúne las condiciones ideales para Fast Escova: es el hub brasileño número 1 de EE.UU. (300.000–450.000 personas de origen brasileño), tiene una población hispana del 69,1% con alto índice de gasto en belleza, y un clima subtropical de alta humedad que genera demanda estructural de blowouts 2–4 veces por mes. Ningún competidor actual combina autenticidad brasileña + servicio express + portafolio completo de belleza.',
+  },
+  pt:{
+    conf:'🔒 Confidencial', cv_tag:'Resumo Executivo — Análise de Mercado Miami',
+    cv_meta:'Junho 2026 · Confidencial · Zona recomendada: Doral · Cenário: Base',
+    ck1:'Brasileiros na área metropolitana', ck2:'Score Doral — zona #1',
+    ck3:'Receita anual projetada (base)', ck4:'Investimento mínimo estimado',
+    ck5:'Mercado salões EUA 2024', ck6:'População hispana Miami-Dade',
+    zona_rec:'<strong>🥇 Zona recomendada: Doral (Score 89/100)</strong><br>Maior concentração de comunidade brasileira dos EUA · Aluguel controlado ($30–$60/sqft) · Sem concorrência direta de blowout express · Renda mediana $94K · Efeito boca a boca acelerado.',
+    exec_p1:'Miami reúne as condições ideais para a Fast Escova: é o hub brasileiro número 1 dos EUA (300.000–450.000 pessoas de origem brasileira), tem uma população hispana de 69,1% com alto índice de gasto em beleza, e um clima subtropical de alta umidade que gera demanda estrutural de escovas 2–4 vezes por mês. Nenhum concorrente atual combina autenticidade brasileira + serviço express + portfólio completo de beleza.',
+  }
+};
+function T(k){ return TR[currentLang][k] || TR.es[k] || k; }
+
+function applyLang() {
+  const l = currentLang;
+  const set = (id,v) => { const e=document.getElementById(id); if(e) e.innerHTML=v; };
+  set('lbl-conf', T('conf'));
+  set('cv-tag', T('cv_tag'));
+  set('ck1', T('ck1')); set('ck2', T('ck2')); set('ck3', T('ck3'));
+  set('ck4', T('ck4')); set('ck5', T('ck5')); set('ck6', T('ck6'));
+  set('zona-rec-box', T('zona_rec'));
+  set('exec-p1', T('exec_p1'));
+  // Rebuild dynamic sections
+  document.getElementById('riskList').innerHTML='';
+  buildRisks();
+  document.getElementById('stepsGrid').innerHTML='';
+  buildSteps();
+}
+
+function toggleLang() {
+  currentLang = currentLang==='es' ? 'pt' : 'es';
+  document.getElementById('loES').classList.toggle('active', currentLang==='es');
+  document.getElementById('loPT').classList.toggle('active', currentLang==='pt');
+  applyLang();
+}
+
+// ── INIT ─────────────────────────────────────────────────────────────────────
+window.addEventListener('load', function() {
+  buildZoneTable();
+  buildZoneMini();
+  buildRisks();
+  buildSteps();
+  buildMap();
+  // Charts — double rAF ensures paint happened
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      buildCharts();
+    });
+  });
+});
+</script>
+</body></html>
