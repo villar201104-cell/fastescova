@@ -152,6 +152,24 @@ footer strong{color:var(--y);}
 
 /* hide for print-like styling */
 @media print{nav{position:relative!important;}*{box-shadow:none!important;}}
+/* ── DORAL DETAIL ── */
+.dsz{background:var(--w);border-radius:9px;padding:14px;border-top:3px solid var(--y);box-shadow:0 1px 5px rgba(0,0,0,.07);text-align:center;}
+.dsz-score{font-size:1.55rem;font-weight:900;line-height:1;}
+.dsz-name{font-size:.8rem;font-weight:700;margin:4px 0 2px;}
+.dsz-sub{font-size:.67rem;color:var(--dg);line-height:1.3;}
+.dsz-tags{margin-top:6px;display:flex;gap:4px;justify-content:center;flex-wrap:wrap;}
+.dsz-tag{background:var(--lg);border-radius:5px;padding:2px 7px;font-size:.65rem;font-weight:600;}
+#map-doral{height:390px;border-radius:10px;z-index:1;}
+#map-brickell{height:390px;border-radius:10px;z-index:1;}
+#map-cg{height:390px;border-radius:10px;z-index:1;}
+.map-btns{display:flex;gap:6px;margin-bottom:7px;flex-wrap:wrap;align-items:center;}
+.map-btn{background:var(--b);color:var(--w);border:none;padding:5px 13px;border-radius:6px;font-size:.75rem;font-weight:700;cursor:pointer;transition:all .15s;}
+.map-btn:hover,.map-btn.mbactive{background:var(--y);color:var(--b);}
+.loc-card{background:var(--w);border-radius:8px;border-left:4px solid;padding:11px 13px;margin-bottom:7px;box-shadow:0 1px 3px rgba(0,0,0,.07);}
+.loc-score{float:right;font-size:1.1rem;font-weight:900;line-height:1;}
+.loc-name{font-weight:700;font-size:.84rem;margin-bottom:2px;}
+.loc-stars{font-size:.77rem;color:var(--y);letter-spacing:1px;}
+.loc-meta{font-size:.74rem;color:var(--dg);line-height:1.45;margin-top:3px;}
 </style>
 </head>
 <body>
@@ -166,6 +184,9 @@ footer strong{color:var(--y);}
     <a href="#demo">👥 Demografía</a>
     <a href="#competencia">⚔️ Competencia</a>
     <a href="#zonas">🗺️ Zonas</a>
+    <a href="#doral">📍 Doral</a>
+    <a href="#brickell">🏙️ Brickell</a>
+    <a href="#coral-gables">🌺 Coral Gables</a>
     <a href="#financiero">💰 Financiero</a>
     <a href="#foda">🔷 FODA</a>
     <a href="#estrategia">🚀 Estrategia</a>
@@ -354,7 +375,13 @@ footer strong{color:var(--y);}
     <div class="sec-sub" id="s6s">9 zonas analizadas con 6 criterios ponderados. Doral es la recomendación estratégica.</div></div>
   </div>
   <div class="g2" style="margin-bottom:16px;">
-    <div class="card"><div id="map"></div></div>
+    <div class="card">
+      <div class="map-btns">
+        <span style="font-size:.75rem;font-weight:700;color:var(--dg);">Vista:</span>
+        <button class="map-btn mbactive" id="btnMetro" onclick="mainMap.setView([25.79,-80.26],11);document.getElementById('btnMetro').classList.add('mbactive');">🗺️ Miami Metro</button>
+      </div>
+      <div id="map"></div>
+    </div>
     <div>
       <div class="ibox-g ibox" id="zona-rec-box">
         <strong>🥇 Zona recomendada: Doral (Score 89/100)</strong><br>
@@ -380,6 +407,151 @@ footer strong{color:var(--y);}
     </div>
   </div>
 </div>
+
+<!-- ═══ 6b. DORAL EN DETALLE ═══ -->
+<div class="sec" id="doral">
+  <div class="sec-hdr"><div class="sec-icon">📍</div>
+    <div>
+      <div class="sec-title" id="s6bt">6b. Doral — Análisis Profundo de Micro-Ubicaciones</div>
+      <div class="sec-sub" id="s6bs">Sub-zonas, corredores viales, 8 candidatos con direcciones y desglose completo, 10 competidores analizados, 18 POIs en mapa</div>
+    </div>
+  </div>
+  <div class="g5" style="margin-bottom:16px;">
+    <div class="kpi" style="border-top-color:#27AE60"><div class="kv" style="color:#27AE60">~81K</div><div class="kl" id="dkpi1">Personas de origen brasileño en Doral</div></div>
+    <div class="kpi"><div class="kv">+200</div><div class="kl" id="dkpi2">Negocios brasileños activos en NW 87 Ave</div></div>
+    <div class="kpi" style="border-top-color:#E74C3C"><div class="kv" style="color:#E74C3C">0</div><div class="kl" id="dkpi3">Cadenas blowout express en toda Doral</div></div>
+    <div class="kpi"><div class="kv">85,5%</div><div class="kl" id="dkpi4">Población hispana en Doral</div></div>
+    <div class="kpi"><div class="kv">$94K</div><div class="kl" id="dkpi5">Ingreso mediano del hogar en Doral</div></div>
+  </div>
+  <div class="ibox-g ibox" style="margin-bottom:16px;" id="doral-intro">
+    <strong>¿Por qué Doral específicamente?</strong> Doral concentra ~81.000 personas de origen brasileño en tan solo 53 km² — la mayor densidad de comunidad brasileña de toda América del Norte. La zona de <strong>NW 87 Ave</strong> es la <em>"Avenida Brasileña"</em>: churrascarias, padarias, supermercados Bravo y Presidente, iglesias evangelistas (Assembleia de Deus, Igreja Universal), consulado, colegio brasileño y +200 comercios BR activos. La demanda de blowout express está estructuralmente arraigada en la cultura BR y <strong>completamente desatendida por cadenas</strong>: BLO a 22 km (Aventura Mall), Drybar a 18 km (Brickell City Centre). Fast Escova sería la primera y única cadena express con identidad brasileña en el mercado BR más concentrado de América del Norte.
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ct" id="ct-doral-corr">Corredores Principales de Doral — Tráfico Vehicular y Potencial Comercial</div>
+    <div id="doralCorridorGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;"></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <div class="ct" id="ct-doral-sub" style="margin-bottom:10px;">Sub-Zonas de Doral — Score de Potencial Fast Escova (sobre 100)</div>
+    <div id="doralSubGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;"></div>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ct" id="ct-doral-map">Mapa Doral — Sub-zonas, POIs y Competidores</div>
+    <div id="map-doral" style="margin-top:8px;"></div>
+    <p class="src" id="doral-map-lgd" style="margin-top:8px;border:none;padding:0;padding-top:5px;">🟢 Sub-zonas (score) · ✂️ Competidores en rojo · 🛍️ Malls · 🇧🇷 Hubs brasileños · ⛪ Iglesias BR</p>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ct" id="ct-doral-locs">Candidatos de Local — Ranking Rápido</div>
+    <div id="doralLocGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px;"></div>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ct" id="ct-doral-tbl">Análisis Detallado por Candidato de Local — Dirección, Tráfico, Anchors, Costo y Pros/Contras</div>
+    <div style="overflow-x:auto;"><table class="tbl" id="doralLocTable" style="min-width:880px;font-size:.76rem;"></table></div>
+  </div>
+  <div class="card">
+    <div class="ct" id="ct-doral-comp">Competidores en Doral y Alrededores — Análisis Completo (10 entradas)</div>
+    <div style="overflow-x:auto;"><table class="tbl" id="doralCompTbl" style="min-width:800px;font-size:.76rem;"></table></div>
+    <div class="ibox-g ibox" style="margin-top:12px;" id="doral-gap-box">
+      <strong>✅ Brecha estratégica confirmada (first-mover absoluto):</strong> Doral tiene 3–4 salones brasileños artesanales (sin cita previa, espera 2–3 h, sin concepto express ni estandarización) y <em>ninguna cadena de blowout express</em>. BLO: Aventura Mall (22 km). Drybar: Brickell City Centre (18 km). Great Clips y Regis: solo corte genérico, sin identidad brasileña. <strong>Fast Escova sería la primera y única cadena de belleza express con identidad brasileña en Doral — capturando el mercado desatendido más grande de EE.UU. antes que cualquier competidor.</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 6c. BRICKELL EN DETALLE ═══ -->
+<div class="sec" id="brickell">
+  <div class="sec-hdr"><div class="sec-icon">🏙️</div>
+    <div>
+      <div class="sec-title" id="s6ct">6c. Brickell — Análisis Profundo de Micro-Ubicaciones</div>
+      <div class="sec-sub" id="s6cs">Sub-zonas, corredores, 8 candidatos con direcciones, 10 competidores, mapa interactivo</div>
+    </div>
+  </div>
+  <div class="g5" style="margin-bottom:16px;">
+    <div class="kpi" style="border-top-color:#2980B9"><div class="kv" style="color:#2980B9">~40K</div><div class="kl" id="bkpi1">Residentes en Brickell / SW Miami</div></div>
+    <div class="kpi"><div class="kv">$113K</div><div class="kl" id="bkpi2">Ingreso mediano del hogar</div></div>
+    <div class="kpi" style="border-top-color:#E74C3C"><div class="kv" style="color:#E74C3C">1</div><div class="kl" id="bkpi3">Cadena blowout express (Drybar)</div></div>
+    <div class="kpi"><div class="kv">60%</div><div class="kl" id="bkpi4">Población hispana en Brickell</div></div>
+    <div class="kpi"><div class="kv">77/100</div><div class="kl" id="bkpi5">Score Fast Escova — Zona #2</div></div>
+  </div>
+  <div class="ibox-g ibox" style="margin-bottom:16px;" id="brickell-intro">
+    <strong>¿Por qué Brickell como Fase 2?</strong> Brickell es el <em>Manhattan de Miami</em>: el distrito financiero más dinámico de América Latina, con +80 torres residenciales de lujo, sedes de bancos multinacionales y una clientela joven profesional de alto poder adquisitivo. El ingreso mediano supera los <strong>$113.000/año</strong>. La comunidad brasileña representa ~8% de la población (profesionales de finanzas, tecnología, comercio exterior). La única cadena blowout express presente es <strong>Drybar</strong> (Brickell City Centre) — sin identidad brasileña y a precio elevado ($60–90). <strong>Oportunidad:</strong> posicionarse como la alternativa express con autenticidad BR a precio accesible, capturando a la brasileña ejecutiva que hoy usa Drybar por falta de opción BR.
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ct" id="ct-brickell-corr">Corredores Principales de Brickell — Tráfico Vehicular y Potencial Comercial</div>
+    <div id="brickellCorridorGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;"></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <div class="ct" id="ct-brickell-sub" style="margin-bottom:10px;">Sub-Zonas de Brickell — Score de Potencial Fast Escova (sobre 100)</div>
+    <div id="brickellSubGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;"></div>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ct" id="ct-brickell-map">Mapa Brickell — Sub-zonas, POIs y Competidores</div>
+    <div id="map-brickell" style="margin-top:8px;"></div>
+    <p class="src" id="brickell-map-lgd" style="margin-top:8px;border:none;padding:0;padding-top:5px;">🟢 Sub-zonas (score) · ✂️ Competidores en rojo · 🛍️ Malls · 🏙️ Hubs corporativos · 🏠 Condos luxury</p>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ct" id="ct-brickell-locs">Candidatos de Local — Ranking Rápido</div>
+    <div id="brickellLocGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px;"></div>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ct" id="ct-brickell-tbl">Análisis Detallado por Candidato de Local — Dirección, Tráfico, Anchors, Costo y Pros/Contras</div>
+    <div style="overflow-x:auto;"><table class="tbl" id="brickellLocTable" style="min-width:880px;font-size:.76rem;"></table></div>
+  </div>
+  <div class="card">
+    <div class="ct" id="ct-brickell-comp">Competidores en Brickell y Alrededores — Análisis Completo (10 entradas)</div>
+    <div style="overflow-x:auto;"><table class="tbl" id="brickellCompTbl" style="min-width:800px;font-size:.76rem;"></table></div>
+    <div class="ibox-g ibox" style="margin-top:12px;" id="brickell-gap-box">
+      <strong>✅ Brecha estratégica Brickell:</strong> Solo Drybar (cadena, sin identidad BR, $60–90) cubre el segmento express. Ningún salón tiene concepto BR + express + precio accesible para la ejecutiva brasileña. <strong>Fast Escova en Brickell capturaría a la profesional brasileña que hoy va a Drybar por falta de alternativa con identidad cultural.</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 6d. CORAL GABLES EN DETALLE ═══ -->
+<div class="sec" id="coral-gables">
+  <div class="sec-hdr"><div class="sec-icon">🌺</div>
+    <div>
+      <div class="sec-title" id="s6dt">6d. Coral Gables — Análisis Profundo de Micro-Ubicaciones</div>
+      <div class="sec-sub" id="s6ds">Sub-zonas, corredores, 8 candidatos con direcciones, 10 competidores, mapa interactivo</div>
+    </div>
+  </div>
+  <div class="g5" style="margin-bottom:16px;">
+    <div class="kpi" style="border-top-color:#8E44AD"><div class="kv" style="color:#8E44AD">~49K</div><div class="kl" id="cgkpi1">Residentes en Coral Gables</div></div>
+    <div class="kpi"><div class="kv">$131K</div><div class="kl" id="cgkpi2">Ingreso mediano del hogar</div></div>
+    <div class="kpi" style="border-top-color:#E74C3C"><div class="kv" style="color:#E74C3C">2</div><div class="kl" id="cgkpi3">Cadenas blowout express (BLO + Drybar CG)</div></div>
+    <div class="kpi"><div class="kv">65%</div><div class="kl" id="cgkpi4">Población hispana en Coral Gables</div></div>
+    <div class="kpi"><div class="kv">72/100</div><div class="kl" id="cgkpi5">Score Fast Escova — Zona #3</div></div>
+  </div>
+  <div class="ibox-g ibox" style="margin-bottom:16px;" id="coral-gables-intro">
+    <strong>¿Por qué Coral Gables como Fase 3?</strong> Coral Gables es la zona de mayor ingreso y más cohesionada de Miami — arquitectura mediterránea, Miracle Mile como eje comercial premium, Universidad de Miami, Biltmore Hotel. El ingreso mediano supera los <strong>$131.000/año</strong>. La presencia brasileña es del ~5% pero con alto poder adquisitivo (ejecutivos, familias de clase alta BR). El mercado está más competido: BLO tiene local en Village of Merrick Park y hay un Drybar cercano. <strong>Oportunidad diferenciada:</strong> posicionarse en el corazón de Miracle Mile aprovechando la identidad premium del barrio con un concepto de salón BR de autor — formato boutique de 80–120 m² vs. el modelo express estándar.
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ct" id="ct-cg-corr">Corredores Principales de Coral Gables — Tráfico Vehicular y Potencial Comercial</div>
+    <div id="cgCorridorGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;"></div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <div class="ct" id="ct-cg-sub" style="margin-bottom:10px;">Sub-Zonas de Coral Gables — Score de Potencial Fast Escova (sobre 100)</div>
+    <div id="cgSubGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;"></div>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ct" id="ct-cg-map">Mapa Coral Gables — Sub-zonas, POIs y Competidores</div>
+    <div id="map-cg" style="margin-top:8px;"></div>
+    <p class="src" id="cg-map-lgd" style="margin-top:8px;border:none;padding:0;padding-top:5px;">🟢 Sub-zonas (score) · ✂️ Competidores en rojo · 🛍️ Malls · 🏛️ Hitos históricos · 🎓 Universidad</p>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ct" id="ct-cg-locs">Candidatos de Local — Ranking Rápido</div>
+    <div id="cgLocGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px;"></div>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ct" id="ct-cg-tbl">Análisis Detallado por Candidato de Local — Dirección, Tráfico, Anchors, Costo y Pros/Contras</div>
+    <div style="overflow-x:auto;"><table class="tbl" id="cgLocTable" style="min-width:880px;font-size:.76rem;"></table></div>
+  </div>
+  <div class="card">
+    <div class="ct" id="ct-cg-comp">Competidores en Coral Gables y Alrededores — Análisis Completo (10 entradas)</div>
+    <div style="overflow-x:auto;"><table class="tbl" id="cgCompTbl" style="min-width:800px;font-size:.76rem;"></table></div>
+    <div class="ibox-g ibox" style="margin-top:12px;" id="cg-gap-box">
+      <strong>⚠️ Mercado más competido — diferenciación clave:</strong> BLO (Merrick Park) y Drybar nearby generan mayor presión. La estrategia recomendada es formato boutique premium en Miracle Mile — diferenciarse por identidad BR + portfólio completo (uñas, cejas, maquillaje) vs. blowout-only de BLO/Drybar. <strong>El alto ingreso ($131K) justifica ticket promedio más alto: $90–160 vs. $70–120 en Doral.</strong>
+    </div>
+  </div>
+</div>
+
 
 <!-- ═══ 7. FINANCIERO ═══ -->
 <div class="sec" id="financiero">
@@ -788,8 +960,10 @@ function buildSteps() {
 }
 
 // ── MAP ──────────────────────────────────────────────────────────────────────
+let mainMap = null;
 function buildMap() {
-  const map = L.map('map',{zoomControl:true}).setView([25.79,-80.26],11);
+  mainMap = L.map('map',{zoomControl:true}).setView([25.79,-80.26],11);
+  const map = mainMap;
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap',maxZoom:18}).addTo(map);
   ZONES.forEach(z => {
     const r = 220 + z.score.total*22;
@@ -800,28 +974,602 @@ function buildMap() {
   });
   // Key POIs
   const POIS=[
-    {lat:25.9572,lng:-80.1420,e:'🛍️',n:'Aventura Mall',d:'+28M visitantes/año'},
-    {lat:25.7666,lng:-80.1911,e:'🛍️',n:'Brickell City Centre',d:'Hub retail-oficinas premium'},
+    {lat:25.9572,lng:-80.1420,e:'🛍️',n:'Aventura Mall',d:'+28M visitantes/año · BLO más cercano aquí (22 km de Doral)'},
+    {lat:25.7666,lng:-80.1911,e:'🛍️',n:'Brickell City Centre',d:'Hub retail-oficinas premium · Drybar más cercano aquí (18 km de Doral)'},
     {lat:25.7200,lng:-80.2700,e:'🛍️',n:'Village of Merrick Park',d:'Mall luxury Coral Gables'},
     {lat:25.6849,lng:-80.3170,e:'🛍️',n:'Dadeland Mall',d:'1.4M sqft · Kendall'},
-    {lat:25.7880,lng:-80.4220,e:'🛍️',n:'Dolphin Mall',d:'Outlet Doral · +14M visitas/año'},
+    {lat:25.7880,lng:-80.4220,e:'🛍️',n:'Dolphin Mall',d:'Outlet Doral · +14M visitas/año · 10 min de NW 87 Ave'},
     {lat:25.8003,lng:-80.1994,e:'🎨',n:'Wynwood Walls',d:'+1M visitantes/año'},
     {lat:25.7760,lng:-80.1850,e:'🏙️',n:'Bayside Marketplace',d:'+15M visitantes/año'},
     {lat:25.7219,lng:-80.2680,e:'🏙️',n:'Miracle Mile',d:'100K sqft retail Coral Gables'},
-    {lat:25.8195,lng:-80.3480,e:'🇧🇷',n:'Hub Brasileño Doral',d:'Mayor concentración BR de EE.UU.'},
-    {lat:25.8260,lng:-80.3530,e:'🇧🇷',n:'Corredor Brasileño Doral',d:'~100 nuevos negocios/mes'},
-    {lat:25.7959,lng:-80.2870,e:'✈️',n:"Miami Int'l Airport",d:'52M pasajeros/año'},
+    {lat:25.8200,lng:-80.3490,e:'🇧🇷',n:'Corredor NW 87 Ave — Hub Brasileño',d:'Avenida Brasileña de Doral · +200 negocios BR · UBICACIÓN #1 recomendada'},
+    {lat:25.8260,lng:-80.3530,e:'🇧🇷',n:'Corredor Comercial Brasileño Norte',d:'Restaurantes, supermercados, iglesias, consulado brasileño'},
+    {lat:25.8152,lng:-80.3614,e:'🛍️',n:'CityPlace Doral',d:'240K sqft · 100+ locales · cine AMC · UBICACIÓN #2 recomendada'},
+    {lat:25.8175,lng:-80.3585,e:'🏙️',n:'Downtown Doral (Main St)',d:'Distrito walkable · +3.000 residencias nuevas · profesionales · UBICACIÓN #3'},
+    {lat:25.8000,lng:-80.3480,e:'🛒',n:'Doral Commons',d:'Target + Publix anchor · tráfico diario de residentes · UBICACIÓN #4'},
+    {lat:25.7830,lng:-80.3670,e:'🛍️',n:'International Mall',d:'1.4M sqft · en borde de Doral · alta afluencia familiar'},
+    {lat:25.7959,lng:-80.2870,e:'✈️',n:"Miami Int'l Airport",d:'52M pasajeros/año · 10 min de Doral · pasajeros brasileños a diario'},
     {lat:25.7781,lng:-80.1878,e:'🏀',n:'Kaseya Center (NBA Heat)',d:'Eventos 200+ días/año'},
     {lat:25.9136,lng:-80.1500,e:'🎓',n:'FIU',d:'58K estudiantes'},
     {lat:25.7907,lng:-80.1402,e:'🛍️',n:'Lincoln Road Mall',d:'Peatonal South Beach · +20M turistas'},
+    {lat:25.8215,lng:-80.3495,e:'✂️',n:'[COMP] Salón BR artesanal NW 87 N',d:'Brasileño indep. · $80–200 · sin cita, espera 2-3h, no express'},
+    {lat:25.8198,lng:-80.3502,e:'✂️',n:'[COMP] Salón hispano Doral (NW 41)',d:'Hispano-americano · $55–85 · sin identidad brasileña'},
+    {lat:25.8210,lng:-80.3620,e:'✂️',n:'[COMP] Salón BR artesanal (NW 54 St)',d:'Solo keratina/coloración · $90–200 · no blowout express'},
   ];
   POIS.forEach(p => {
-    const icon = L.divIcon({html:`<div style="background:#333;color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.72rem;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35)">${p.e}</div>`,className:'',iconSize:[22,22],iconAnchor:[11,11]});
-    L.marker([p.lat,p.lng],{icon}).addTo(map).bindPopup(`<b>${p.e} ${p.n}</b><br><small>${p.d}</small>`,{maxWidth:200});
+    const isComp = p.e==='✂️';
+    const bg = isComp ? '#C0392B' : '#333';
+    const icon = L.divIcon({html:`<div style="background:${bg};color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.72rem;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35)">${p.e}</div>`,className:'',iconSize:[22,22],iconAnchor:[11,11]});
+    L.marker([p.lat,p.lng],{icon}).addTo(map).bindPopup(`<b>${p.e} ${p.n}</b><br><small>${p.d}</small>`,{maxWidth:220});
   });
 }
 
-// ── LANGUAGE ─────────────────────────────────────────────────────────────────
+// ── DORAL DETAIL DATA & FUNCTIONS ────────────────────────────────────────────
+const DORAL_CORRIDORS = [
+  {
+    name:'NW 87 Avenue',
+    nickname:'"La Avenida Brasileña"',
+    aadt:'~45.000 veh/día',
+    length:'5,2 km (N-S)',
+    color:'#27AE60',
+    desc:'Columna vertebral del enclave brasileño de Doral. Concentra la mayor densidad de negocios BR: churrascarias, padarias, supermercados (Bravo, Presidente), iglesias, consulado y +200 comercios. Primer destino de búsqueda para la comunidad. Boca en boca instantáneo entre residentes.',
+    anchors:'Bravo Supermarket · Padaria Brasil · Churrascaria do Gaucho · Supermercado Presidente · Iglesias BR · Servicios migratorios BR'
+  },
+  {
+    name:'NW 36 Street / Doral Blvd',
+    nickname:'Corredor comercial E-O principal',
+    aadt:'~38.000 veh/día',
+    length:'Eje E-O central',
+    color:'#2980B9',
+    desc:'Principal arteria E-O de Doral. Conecta CityPlace Doral, Doral Commons y desemboca en SR-826 (Palmetto Expwy). Tráfico mixto residencial-comercial-familiar. Concentra los centros comerciales y strip malls más visitados de la zona.',
+    anchors:'CityPlace Doral · Doral Commons · Doral Square Shopping Center · Chase Bank · Dunkin · Target · Publix'
+  },
+  {
+    name:'NW 41 Street / SR-836',
+    nickname:'Eje aeropuerto-Brickell',
+    aadt:'~52.000 veh/día',
+    length:'Autopista E-O',
+    color:'#8E44AD',
+    desc:'Mayor volumen de tráfico de Doral. Conexión directa con MIA, Brickell y Downtown Miami. Zona de oficinas corporativas, hoteles business y viajeros frecuentes. Menor afinidad cultural BR pero muy alta visibilidad y clientela ejecutiva con alto poder adquisitivo.',
+    anchors:'Marriott Doral · Hilton Miami Airport Blue Lagoon · DoubleTree · MIA Airport (10 min) · American Airlines Arena (20 min)'
+  }
+];
+
+const DORAL_SUBZONES = [
+  {name:'NW 87 Ave & NW 36 St',subtitle:'Epicentro brasileño',score:97,rent:'$38–52',aadt:'45K veh/d',traffic:'Muy Alto',note:'Cruce principal del hub BR. Máxima densidad de negocios y servicios brasileños. Boca en boca instantáneo. 3 salones independientes sin concepto express = brecha directa explotable.',color:'#27AE60',comp:3,badge:true},
+  {name:'NW 87 Ave N (46–58 St)',subtitle:'Residencial-comercial BR',score:93,rent:'$32–48',aadt:'40K veh/d',traffic:'Alto',note:'Zona residencial brasileña muy densa. Familias con tráfico de errands diarios. Iglesias brasileñas y colegio. Alta frecuencia de visita semanal. Menor competencia directa que el hub central.',color:'#1ABC9C',comp:2,badge:true},
+  {name:'NW 87 Ave S (28–36 St)',subtitle:'Hub gastronómico BR',score:91,rent:'$35–50',aadt:'42K veh/d',traffic:'Alto',note:'Padaria Brasil, Churrascaria do Gaucho, Bravo Supermarket. Flujo familiar en horario de compras. Cercanía a escuelas brasileñas. Clientela femenina recurrente con alto ticket.',color:'#27AE60',comp:2,badge:false},
+  {name:'CityPlace Doral',subtitle:'Retail & entertainment 7 días',score:90,rent:'$45–72',aadt:'Mall interno',traffic:'Alto (7 días)',note:'240.000 sqft. AMC Cinema 18 pantallas. Target. 100+ locales. 0 blowout bars en todo el mall. Familias y jóvenes adultos. Pico sábado-domingo.',color:'#2980B9',comp:1,badge:false},
+  {name:'Downtown Doral (Main St)',subtitle:'Distrito walkable premium',score:86,rent:'$38–65',aadt:'25K veh/d',traffic:'Alto peatonal',note:'Nuevo desarrollo urbano. +3.000 unidades residenciales premium. Profesionales 25-40. Walkable. Boutiques y restaurantes de ticket alto. Clientela emergente de alto poder adquisitivo.',color:'#8E44AD',comp:1,badge:false},
+  {name:'Doral Commons (NW 36 St W)',subtitle:'Errands y compras diarias',score:82,rent:'$28–46',aadt:'35K veh/d',traffic:'Medio-Alto',note:'Target + Publix como anchors. Tráfico de rutina diaria de residentes locales. Menor alquiler. Visitas frecuentes de amas de casa brasileñas que realizan compras.',color:'#E67E22',comp:2,badge:false},
+  {name:'Blue Lagoon / NW 41 St',subtitle:'Zona corporativa-hotelera',score:74,rent:'$25–40',aadt:'52K veh/d',traffic:'Medio (corp.)',note:'Hoteles Marriott, Hilton, DoubleTree; aeropuerto MIA; oficinas corporativas. Clientela ejecutiva y viajeras de negocios. Menor afinidad cultural BR. Ticket promedio alto pero volumen menor.',color:'#95A5A6',comp:1,badge:false},
+  {name:'NW 107 Ave / Intl Mall',subtitle:'Borde Sweetwater',score:70,rent:'$22–38',aadt:'32K veh/d',traffic:'Medio',note:'International Mall (1,4M sqft) a 300 m. Comunidad mixta BR-cubana. Crecimiento residencial activo. Menor concentración BR que NW 87 Ave. Opción de bajo costo de entrada al mercado.',color:'#BDC3C7',comp:1,badge:false}
+];
+
+const DORAL_LOCATIONS = [
+  {name:'Strip mall NW 87 Ave & NW 36 St',addr:'Ref.: ~8900 NW 36 St, Doral FL 33166',size:'130–220 m²',rent:'$38–52K/año',monthly:'$4.100–$9.500/mes',traffic:5,aadt:'~45.000 veh/día',anchors:'Bravo Supermarket · Padaria Brasil · Churrascaria · servicios migratorios BR · iglesia cercana',pros:'Epicentro del hub brasileño. Visibilidad máxima. Estacionamiento amplio. Boca en boca instantáneo. Clientes ya en zona.',cons:'Alta demanda de espacios. Negociación más competitiva. Posible lista de espera para locales disponibles.',score:96,rec:true,color:'#27AE60'},
+  {name:'CityPlace Doral — local inline',addr:'8300 NW 36 St, Doral FL 33166',size:'140–280 m²',rent:'$48–72K/año',monthly:'$5.600–$16.800/mes',traffic:5,aadt:'~Alto (mall)',anchors:'AMC Cinema 18 salas · Target · The Habit Burger · Yardhouse · boutiques premium · entertainment',pros:'Flujo familiar 7 días. Estacionamiento cubierto gratuito. Señalética amplia. 0 competidores blowout en todo CityPlace.',cons:'Alquiler más alto del área. Negociación con administración de mall. Típicamente NNN lease con CAM charges.',score:92,rec:true,color:'#27AE60'},
+  {name:'Doral Commons — end cap',addr:'Ref.: ~8600 NW 36 St, Doral FL 33166',size:'140–210 m²',rent:'$30–46K/año',monthly:'$3.500–$8.050/mes',traffic:4,aadt:'~35.000 veh/día',anchors:'Target · Publix · Chase Bank · Dunkin · salón de uñas · farmacia CVS',pros:'Anchors generan tráfico diario. Menor alquiler que CityPlace. Fácil acceso autopista (Palmetto). Familias locales en rutina diaria.',cons:'Menor concentración de comunidad BR. Perfil de cliente más genérico y heterogéneo.',score:87,rec:false,color:'#2980B9'},
+  {name:'NW 87 Ave & NW 46 St',addr:'Ref.: ~4600 NW 87 Ave, Doral FL 33178',size:'120–190 m²',rent:'$32–48K/año',monthly:'$3.200–$7.600/mes',traffic:4,aadt:'~40.000 veh/día',anchors:'Residencias brasileñas densas · supermercado local · farmacia · iglesia Assembleia de Deus',pros:'Comunidad residencial BR muy densa. Alta frecuencia de visita semanal. Menor competencia directa. Fidelización más rápida.',cons:'Menor tráfico peatonal comercial. Requiere mayor inversión inicial en redes sociales y visibilidad local.',score:85,rec:false,color:'#1ABC9C'},
+  {name:'Downtown Doral Main Street',addr:'Ref.: ~3400 NW 87 Ave, Doral FL 33172',size:'110–200 m²',rent:'$38–65K/año',monthly:'$3.500–$10.800/mes',traffic:4,aadt:'~25.000 veh/día',anchors:'+3.000 residencias walk-in · restaurantes premium · boutiques · coworking · gimnasio',pros:'Clientela premium 25-40 con alto ticket. Walkable. Comunidad nueva con alto poder adquisitivo. Ambiente de distrito moderno.',cons:'Menor densidad de comunidad BR que NW 87 Ave. Perfil más heterogéneo culturalmente.',score:84,rec:false,color:'#8E44AD'},
+  {name:'NW 87 Ave & NW 58 St',addr:'Ref.: ~5800 NW 87 Ave, Doral FL 33166',size:'120–180 m²',rent:'$28–42K/año',monthly:'$2.800–$6.300/mes',traffic:3,aadt:'~38.000 veh/día',anchors:'Residencias · escuelas privadas · supermercados · farmacia CVS · algunos negocios BR',pros:'Zona norte de Doral en crecimiento activo. Menor alquiler. Comunidad BR establecida al norte. Espacio disponible más fácilmente.',cons:'Menor tráfico comercial que hub central. Requiere mayor marketing para generar awareness inicial.',score:78,rec:false,color:'#E67E22'},
+  {name:'Blue Lagoon / NW 41 St',addr:'Ref.: ~7200 NW 41 St, Miami FL 33166',size:'100–180 m²',rent:'$25–40K/año',monthly:'$2.100–$6.000/mes',traffic:3,aadt:'~52.000 veh/día',anchors:'Marriott Miami Airport · Hilton Miami Airport Blue Lagoon · DoubleTree · MIA Airport 10 min · oficinas corp.',pros:'Alta visibilidad vehicular. Clientela ejecutiva y viajeras con alto ticket. Menor inversión de entrada.',cons:'Baja afinidad cultural BR. Demanda más genérica. Lejos del hub de comunidad BR. Más difícil construir marca BR.',score:73,rec:false,color:'#95A5A6'},
+  {name:'NW 107 Ave & NW 36 St',addr:'Ref.: ~3700 NW 107 Ave, Miami FL 33172',size:'120–200 m²',rent:'$22–38K/año',monthly:'$2.200–$6.300/mes',traffic:3,aadt:'~32.000 veh/día',anchors:'International Mall 300 m (Bloomingdale\'s, JC Penney) · supermercados · restaurantes mixtos',pros:'Acceso a International Mall. Menor alquiler (más bajo del listado). Crecimiento residencial activo en Sweetwater-Doral.',cons:'Comunidad mixta BR-cubana con menor afinidad de marca BR. Requiere estrategia de marketing multicultural.',score:70,rec:false,color:'#BDC3C7'}
+];
+
+const DORAL_COMPETITORS = [
+  {name:'Salon Bella de Doral',addr:'NW 87 Ave y NW 30 St, Doral',type:'Brasileño artesanal',price:'$85–200',rating:'3,8',reviews:'~45',wait:'2–3 horas sin cita previa',services:'Keratina, coloración, blowout artesanal',weaknesses:'Sin cita, espera 2-3 h, sin estandarización, local informal, sin concepto express, sin uñas ni maquillaje, portafolio incompleto',threat:'Media'},
+  {name:'Escova & Cia Doral',addr:'NW 87 Ave y NW 42 St, Doral',type:'Brasileño artesanal',price:'$90–180',rating:'4,1',reviews:'~30',wait:'Cita requerida · 1–2 días espera',services:'Blowout artesanal, keratina, coloración premium',weaknesses:'Solo 2 sillas, sin capacidad de escala, lista de espera de días, sin servicios complementarios (uñas, maquillaje, cejas)',threat:'Media'},
+  {name:'Glamour Studio Doral',addr:'NW 87 Ave ~NW 54 St, Doral',type:'Brasileño-hispano mixto',price:'$70–140',rating:'3,9',reviews:'~60',wait:'30–90 min informal',services:'Blowout, coloración, uñas básicas',weaknesses:'Identidad mixta sin foco claro, sin estándar express, horarios irregulares, portafolio incompleto, experiencia inconsistente',threat:'Media'},
+  {name:'Beauty Touch Doral',addr:'NW 36 St, Doral Commons area',type:'Hispano-americano',price:'$50–90',rating:'4,0',reviews:'~80',wait:'15–30 min',services:'Corte, coloración, tratamientos básicos',weaknesses:'Sin identidad brasileña, sin blowout express, sin cejas ni maquillaje premium, clientela genérica no diferenciada',threat:'Media-Baja'},
+  {name:'Brazilian Nails & Hair',addr:'NW 87 Ave ~NW 28 St, Doral',type:'Brasileño combo nails-hair',price:'$60–120',rating:'4,2',reviews:'~95',wait:'20–45 min',services:'Uñas (foco principal), cabello básico como servicio secundario',weaknesses:'Foco en uñas: hair es de segunda línea. Sin blowout express estandarizado. Capacidad de cabello muy limitada.',threat:'Baja'},
+  {name:'Salon Glam Express (Blue Lagoon)',addr:'NW 41 St, Doral / Blue Lagoon',type:'Hispano-americano',price:'$45–85',rating:'3,7',reviews:'~55',wait:'Sin espera habitual',services:'Corte, blowout básico, manicura',weaknesses:'Sin autenticidad brasileña, portafolio limitado, zona corporativa (no residencial BR), clientela ejecutiva genérica sin fidelización cultural',threat:'Media-Baja'},
+  {name:'Great Clips Doral',addr:'Doral Commons Shopping Center',type:'Cadena de corte masivo',price:'$18–30',rating:'3,8',reviews:'~200',wait:'Walk-in, 10–20 min',services:'Corte de cabello solamente',weaknesses:'Segmento radicalmente diferente: solo corte masivo. Sin blowout ni servicios BR. Sin superposición de mercado con Fast Escova.',threat:'Ninguna'},
+  {name:'Regis Salon (CityPlace Doral)',addr:'CityPlace Doral, 8300 NW 36 St',type:'Cadena nacional genérica',price:'$35–75',rating:'3,9',reviews:'~40',wait:'Cita recomendada, 15–30 min',services:'Corte, coloración, styling básico sin foco BR',weaknesses:'Sin identidad brasileña ni focalizada. Sin blowout express, sin uñas-maquillaje-cejas. Marca genérica sin diferencial cultural.',threat:'Media-Baja'},
+  {name:'BLO Blow Dry Bar',addr:'Aventura Mall · 19501 Biscayne Blvd (22 km de Doral)',type:'Cadena express nacional',price:'$45–80',rating:'4,4',reviews:'~180',wait:'Cita requerida, 15–30 min',services:'Blowout exclusivamente (6 estilos), algo de maquillaje express',weaknesses:'22 km de Doral = SIN PRESENCIA en el mercado objetivo. Sin identidad brasileña. Solo cabello (sin uñas, cejas, bronceado). Brecha de mercado crítica confirmada.',threat:'Nula en Doral',gap:true},
+  {name:'Drybar',addr:'Brickell City Centre · 701 S Miami Ave (18 km de Doral)',type:'Cadena premium express',price:'$60–90',rating:'4,5',reviews:'~320',wait:'Cita requerida, 30 min',services:'Blowout exclusivamente (7 estilos)',weaknesses:'18 km de Doral = SIN PRESENCIA en el mercado objetivo. Precio alto. Solo cabello. Sin identidad ni comunidad brasileña. Brecha de mercado confirmada.',threat:'Nula en Doral',gap:true}
+];
+
+const DORAL_MAP_POIS = [
+  {lat:25.8200,lng:-80.3490,e:'🇧🇷',n:'Hub NW 87 Ave & NW 36 St',d:'Epicentro brasileño de Doral. CANDIDATO #1 recomendado. Mayor densidad de negocios BR.',comp:false},
+  {lat:25.8260,lng:-80.3540,e:'🇧🇷',n:'Corredor BR Norte (NW 46-58 St)',d:'Zona residencial brasileña densa. Familias, tráfico de errands. CANDIDATO #4.',comp:false},
+  {lat:25.8150,lng:-80.3500,e:'🍝',n:'Hub Gastronómico BR (NW 87 Sur)',d:'Padaria Brasil · Churrascaria do Gaucho · Bravo Supermarket · Supermercado Presidente',comp:false},
+  {lat:25.8152,lng:-80.3614,e:'🛍️',n:'CityPlace Doral',d:'240K sqft · AMC Cinema · Target · 100+ locales. CANDIDATO #2 recomendado. 0 blowout bars.',comp:false},
+  {lat:25.8175,lng:-80.3585,e:'🏙️',n:'Downtown Doral Main Street',d:'Distrito walkable · +3.000 residencias premium · boutiques. CANDIDATO #5.',comp:false},
+  {lat:25.8000,lng:-80.3480,e:'🛒',n:'Doral Commons',d:'Target + Publix · tráfico de errands diario · CANDIDATO #3.',comp:false},
+  {lat:25.7830,lng:-80.3670,e:'🛍️',n:'International Mall',d:'1,4M sqft · Bloomingdale\'s · JC Penney · borde de Doral (NW 107 Ave).',comp:false},
+  {lat:25.7880,lng:-80.4220,e:'🛍️',n:'Dolphin Mall (Outlet)',d:'+14M visitas/año · 240 tiendas outlet · 10 min de NW 87 Ave.',comp:false},
+  {lat:25.7959,lng:-80.2870,e:'✈️',n:"Miami Int'l Airport (MIA)",d:'52M pasajeros/año · 10 min de Doral · hub diario de brasileños en tránsito.',comp:false},
+  {lat:25.8170,lng:-80.3590,e:'🏛️',n:'Doral City Hall',d:'Centro administrativo de la Ciudad de Doral (municipio independiente desde 2003).',comp:false},
+  {lat:25.8212,lng:-80.3498,e:'🍞',n:'Padaria Brasil / Hub Gastronómico',d:'Padaria Brasil · Churrascaria do Gaucho · Bravo Supermarket · concentración máxima de clientela BR.',comp:false},
+  {lat:25.8242,lng:-80.3512,e:'⛪',n:'Iglesias Brasileñas en Doral',d:'Assembleia de Deus BR · Igreja Universal · Sara Nossa Terra · punto de reunión comunitario y boca en boca.',comp:false},
+  {lat:25.8195,lng:-80.3570,e:'🏫',n:'Escuelas Comunitarias BR',d:'Doral Academy · Doral Preparatory · madres brasileñas buscando servicios de belleza cercanos.',comp:false},
+  {lat:25.8232,lng:-80.3522,e:'📋',n:'Servicios Consulares / Migratorios BR',d:'Consulado brasileño · servicios de documentación · concentración de recién llegados de Brasil.',comp:false},
+  {lat:25.7920,lng:-80.3380,e:'🏨',n:'Blue Lagoon Hotel District',d:'Marriott · Hilton · DoubleTree · aeropuerto MIA cercano · ejecutivos y viajeras de negocios. CANDIDATO #7.',comp:false},
+  {lat:25.8218,lng:-80.3493,e:'✂️',n:'[COMP] Salon Bella de Doral',d:'BR artesanal · $85–200 · 3,8★ · sin cita, espera 2-3 h · no express',comp:true},
+  {lat:25.8225,lng:-80.3507,e:'✂️',n:'[COMP] Escova & Cia',d:'BR artesanal · $90–180 · 4,1★ · solo 2 sillas · lista de espera 1-2 días',comp:true},
+  {lat:25.8202,lng:-80.3503,e:'✂️',n:'[COMP] Glamour Studio Doral',d:'BR-hispano · $70–140 · 3,9★ · identidad mixta · sin estándar express',comp:true},
+  {lat:25.7922,lng:-80.3382,e:'✂️',n:'[COMP] Salon Glam (Blue Lagoon)',d:'Hispano · $45–85 · 3,7★ · sin identidad BR · zona corporativa',comp:true}
+];
+
+function buildDoralSection(){buildDoralCorridors();buildDoralSubGrid();buildDoralLocations();buildDoralLocTable();buildDoralCompTable();buildDoralMap();}
+
+function buildDoralCorridors(){
+  var g=document.getElementById('doralCorridorGrid');if(!g)return;
+  g.innerHTML=DORAL_CORRIDORS.map(function(c){
+    return '<div style="background:#fff;border-radius:9px;border-top:3px solid '+c.color+';padding:14px;box-shadow:0 1px 5px rgba(0,0,0,.07)">'+
+      '<div style="font-weight:900;font-size:.92rem;color:'+c.color+';margin-bottom:2px">'+c.name+'</div>'+
+      '<div style="font-size:.71rem;color:#888;font-style:italic;margin-bottom:8px">'+c.nickname+'</div>'+
+      '<div style="display:flex;gap:8px;margin-bottom:10px">'+
+        '<div style="background:#F0F8FF;border-radius:7px;padding:6px 10px;flex:1;text-align:center">'+
+          '<div style="font-weight:900;font-size:.95rem;color:'+c.color+'">'+c.aadt+'</div>'+
+          '<div style="font-size:.65rem;color:#888;margin-top:2px">tráfico diario</div>'+
+        '</div>'+
+        '<div style="background:#F0F8FF;border-radius:7px;padding:6px 10px;flex:1;text-align:center">'+
+          '<div style="font-weight:900;font-size:.88rem">'+c.length+'</div>'+
+          '<div style="font-size:.65rem;color:#888;margin-top:2px">extensión</div>'+
+        '</div>'+
+      '</div>'+
+      '<div style="font-size:.78rem;line-height:1.5;color:#444;margin-bottom:8px">'+c.desc+'</div>'+
+      '<div style="font-size:.72rem;color:#555;background:#F4F6F7;border-radius:6px;padding:7px 9px;line-height:1.4"><strong>Anchors clave:</strong> '+c.anchors+'</div>'+
+    '</div>';
+  }).join('');
+}
+
+function buildDoralSubGrid(){
+  var g=document.getElementById('doralSubGrid');if(!g)return;
+  g.innerHTML=DORAL_SUBZONES.map(function(z){
+    var badge=z.badge?'<span style="background:#FFF9D6;border:1px solid #F5C400;border-radius:5px;padding:1px 6px;font-size:.62rem;font-weight:700">★ Top</span>':'';
+    return '<div class="dsz" style="border-top-color:'+z.color+';text-align:left;padding:12px">'+
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3px">'+
+        '<div class="dsz-score" style="color:'+z.color+'">'+z.score+'</div>'+badge+
+      '</div>'+
+      '<div class="dsz-name" style="font-size:.81rem;margin-bottom:1px">'+z.name+'</div>'+
+      '<div style="font-size:.67rem;color:'+z.color+';font-weight:700;margin-bottom:5px">'+z.subtitle+'</div>'+
+      '<div class="dsz-sub" style="font-size:.68rem;line-height:1.4">'+z.note+'</div>'+
+      '<div class="dsz-tags" style="justify-content:flex-start;margin-top:6px">'+
+        '<span class="dsz-tag">🏷 '+z.rent+'/sqft</span>'+
+        '<span class="dsz-tag">🚗 '+z.aadt+'</span>'+
+        '<span class="dsz-tag">✂️ '+z.comp+' comp.</span>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+function buildDoralLocations(){
+  var g=document.getElementById('doralLocGrid');if(!g)return;
+  g.innerHTML=DORAL_LOCATIONS.map(function(loc){
+    var st='★'.repeat(loc.traffic)+'☆'.repeat(5-loc.traffic);var tlbl=T('lbl_traffic');
+    return '<div class="loc-card" style="border-left-color:'+loc.color+'">'+
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:6px">'+
+        '<div class="loc-name" style="font-size:.83rem">'+loc.name+(loc.rec?' <span class="bdg bdg-g">★ Rec.</span>':'')+'</div>'+
+        '<div class="loc-score" style="color:'+loc.color+'">'+loc.score+'</div>'+
+      '</div>'+
+      '<div style="font-size:.68rem;color:#999;margin:2px 0 3px">'+loc.addr+'</div>'+
+      '<div class="loc-stars" style="margin-bottom:3px">'+st+' '+tlbl+'</div>'+
+      '<div class="loc-meta">'+
+        '💵 <b>'+loc.monthly+'</b> &nbsp;·&nbsp; 📐 '+loc.size+'<br>'+
+        '<span style="color:#1E8449;font-size:.72rem">✅ '+loc.pros+'</span>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+function buildDoralLocTable(){
+  var t=document.getElementById('doralLocTable');if(!t)return;
+  var th=T('th_loc');t.innerHTML='<thead><tr>'+th.map(function(h){return'<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'+
+    DORAL_LOCATIONS.map(function(loc){
+      var sc=loc.score>=90?'#27AE60':loc.score>=80?'#E67E22':'#7F8C8D';
+      var st='★'.repeat(loc.traffic)+'☆'.repeat(5-loc.traffic);
+      return '<tr'+(loc.rec?' class="hi"':'')+'>'+
+        '<td><b>'+loc.name+(loc.rec?' 🏆':'')+'</b></td>'+
+        '<td style="color:#777;font-size:.71rem;white-space:nowrap">'+loc.addr+'</td>'+
+        '<td style="white-space:nowrap">'+loc.size+'</td>'+
+        '<td style="white-space:nowrap">'+loc.rent+'</td>'+
+        '<td style="white-space:nowrap"><b>'+loc.monthly+'</b></td>'+
+        '<td style="white-space:nowrap;font-size:.78rem">'+st+'<br><span style="font-size:.66rem;color:#888">'+loc.aadt+'</span></td>'+
+        '<td style="font-size:.72rem">'+loc.anchors+'</td>'+
+        '<td style="color:#1E8449;font-size:.72rem">✅ '+loc.pros+'</td>'+
+        '<td style="color:#8B4000;font-size:.72rem">⚠️ '+loc.cons+'</td>'+
+        '<td style="font-weight:900;color:'+sc+';font-size:1rem;white-space:nowrap">'+loc.score+'</td>'+
+      '</tr>';
+    }).join('')+'</tbody>';
+}
+
+function buildDoralCompTable(){
+  var t=document.getElementById('doralCompTbl');if(!t)return;
+  var TS={'Media':'background:#FDEBD0;color:#8B4000','Media-Baja':'background:#FEF9E7;color:#8B6F00','Baja':'background:#EAFAF1;color:#1E8449','Ninguna':'background:#D5F5E3;color:#1E8449','Nula en Doral':'background:#D5F5E3;color:#1E8449'};
+  var tc=T('th_comp');t.innerHTML='<thead><tr>'+tc.map(function(h){return'<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'+
+    DORAL_COMPETITORS.map(function(c){
+      var sty=TS[c.threat]||'background:#EEE;color:#333';
+      return '<tr'+(c.gap?' class="hi"':'')+'>'+
+        '<td><b>'+c.name+'</b>'+(c.gap?' <span style="background:#D5F5E3;color:#1E8449;border-radius:4px;padding:1px 5px;font-size:.65rem;font-weight:700">BRECHA</span>':'')+'</td>'+
+        '<td style="font-size:.71rem;color:#777">'+c.addr+'</td>'+
+        '<td style="font-size:.74rem">'+c.type+'</td>'+
+        '<td style="white-space:nowrap">'+c.price+'</td>'+
+        '<td style="white-space:nowrap">★ '+c.rating+'</td>'+
+        '<td style="font-size:.74rem">'+c.wait+'</td>'+
+        '<td style="font-size:.72rem;color:#555">'+c.services+'</td>'+
+        '<td style="font-size:.72rem;color:'+(c.gap?'#1E8449':'#555')+'">'+(c.gap?'<b>':'')+c.weaknesses+(c.gap?'</b>':'')+'</td>'+
+        '<td style="white-space:nowrap"><span class="bdg" style="'+sty+';padding:3px 8px;border-radius:5px;font-size:.71rem;font-weight:700">'+c.threat+'</span></td>'+
+      '</tr>';
+    }).join('')+'</tbody>';
+}
+
+function buildDoralMap(){
+  var el=document.getElementById('map-doral');if(!el||el._leaflet_id)return;
+  var m=L.map('map-doral',{zoomControl:true}).setView([25.810,-80.352],13);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap © CARTO',maxZoom:19}).addTo(m);
+  var SC=[[25.8200,-80.3490],[25.8255,-80.3520],[25.8150,-80.3495],[25.8152,-80.3614],[25.8175,-80.3585],[25.8000,-80.3480],[25.7920,-80.3380],[25.7840,-80.3680]];
+  DORAL_SUBZONES.forEach(function(z,i){
+    L.circle(SC[i],{color:z.color,fillColor:z.color,fillOpacity:.18,weight:z.badge?3:2,radius:300,dashArray:z.badge?null:'5,5'}).addTo(m)
+      .bindPopup('<b>'+z.name+'</b> — <b>'+z.score+'/100</b><br><em>'+z.subtitle+'</em><br>Alquiler: '+z.rent+'/sqft/año<br>Competidores: '+z.comp+'<br><small>'+z.note+'</small>',{maxWidth:270});
+  });
+  DORAL_LOCATIONS.forEach(function(loc,i){
+    if(i>=SC.length)return;
+    var col=i<2?'#27AE60':i<5?'#E67E22':'#7F8C8D';
+    var sz=i<2?34:26;
+    L.marker(SC[i],{icon:L.divIcon({html:'<div style="background:'+col+';color:#fff;border-radius:50%;width:'+sz+'px;height:'+sz+'px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:'+(i<2?'.85rem':'.72rem')+';border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.5)'+(i<2?';box-shadow:0 0 10px '+col+',0 2px 8px rgba(0,0,0,.5)':'')+'>'+(i+1)+'</div>',className:'',iconSize:[sz,sz],iconAnchor:[sz/2,sz/2]})}).addTo(m)
+      .bindPopup('<b>#'+(i+1)+' '+loc.name+'</b><br>Score: <b>'+loc.score+'</b><br>'+loc.monthly+'<br><small>'+loc.addr+'</small>');
+  });
+  DORAL_MAP_POIS.forEach(function(p){
+    if(p.top)return;
+    var bg=p.comp?'#8B0000':'#1A1A2E';
+    var border=p.comp?'#E74C3C':'#3a4560';
+    L.marker([p.lat,p.lng],{icon:L.divIcon({html:'<div style="background:'+bg+';color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:.72rem;border:2px solid '+border+';box-shadow:0 1px 5px rgba(0,0,0,.4)'+(p.comp?';box-shadow:0 0 8px #E74C3C60':'')+'">'+p.e+'</div>',className:'',iconSize:[24,24],iconAnchor:[12,12]})}).addTo(m)
+      .bindPopup('<b>'+p.e+' '+p.n+'</b><br><small>'+p.d+'</small>',{maxWidth:240});
+  });
+  L.polyline([[25.7800,-80.3590],[25.8600,-80.3590]],{color:'#E74C3C',weight:3,opacity:.7,dashArray:'8,4'}).addTo(m).bindPopup('<b>NW 87 Ave / "Avenida Brasileira"</b> — ~38.000 veh/día');
+  L.polyline([[25.8100,-80.3100],[25.8100,-80.4100]],{color:'#F39C12',weight:3,opacity:.7,dashArray:'8,4'}).addTo(m).bindPopup('<b>NW 41 St / Doral Blvd</b> — ~32.000 veh/día');
+}
+
+// ── BRICKELL DATA & FUNCTIONS ──────────────────────────────────────────────
+const BRICKELL_CORRIDORS=[
+  {name:'Brickell Avenue',nickname:'"El Corredor Financiero"',aadt:'~35.000 veh/día',length:'3,8 km (N-S)',color:'#2980B9',desc:'Columna vertebral del distrito financiero. Flanqueada por +80 torres residenciales de lujo, bancos multinacionales y hoteles 5 estrellas. Altísimo tráfico peatonal de profesionales y ejecutivos.',anchors:'Icon Brickell · Brickell City Centre · Four Seasons · Hyatt · JPMorgan · Citibank'},
+  {name:'SW 8th Street / Calle Ocho',nickname:'"El Conector Cultural"',aadt:'~28.000 veh/día',length:'5,1 km (E-O)',color:'#E74C3C',desc:'Eje cultural que conecta Brickell con Little Havana y el aeropuerto. Alta densidad de restaurantes, bares y negocios. Tráfico mixto: ejecutivos + comunidad hispana.',anchors:'Mary Brickell Village · Restaurantes Little Havana · consulados · bars & nightlife'},
+  {name:'S Miami Ave / SW 7th Ave',nickname:'"El Eje Lifestyle"',aadt:'~22.000 veh/día',length:'2,5 km (N-S)',color:'#1ABC9C',desc:'Corredor residencial-comercial premium con Mary Brickell Village como ancla. Perfil: jóvenes profesionales, expatriados, alto poder adquisitivo. Densidad peatonal creciente.',anchors:'Mary Brickell Village · Whole Foods · SLS Brickell · WeWork · Equinox Gym'}
+];
+const BRICKELL_SUBZONES=[
+  {name:'Mary Brickell Village',subtitle:'Lifestyle hub premium',score:93,rent:'$95–140',aadt:'28K veh/d',traffic:'Alto',note:'Outdoor mall premium en el corazón de Brickell. Whole Foods, restaurantes fine dining, Equinox, Starbucks Reserve. Densidad peatonal altísima los viernes y fines de semana.',color:'#2980B9',comp:2,badge:true},
+  {name:'Brickell City Centre vicinity',subtitle:'Retail premium conectado',score:90,rent:'$90–130',aadt:'35K veh/d',traffic:'Muy Alto',note:'Adyacente al BCC (1,2M sqft, 5 pisos). Drybar está aquí — confirma demanda. Metromover en puerta. Clientela ejecutiva internacional.',color:'#1E8449',comp:3,badge:true},
+  {name:'Brickell Ave N (SW 8–15 Rd)',subtitle:'Corredor financiero',score:85,rent:'$80–115',aadt:'35K veh/d',traffic:'Muy Alto',note:'Calle principal del distrito bancario. Paso obligado de miles de empleados de oficinas. Escasa competencia directa de blowout en este segmento.',color:'#27AE60',comp:1,badge:false},
+  {name:'SW 8th St / Brickell Village',subtitle:'Entrada cultural',score:80,rent:'$65–95',aadt:'28K veh/d',traffic:'Alto',note:'Mix de negocios culturales y restaurantes. Entrada al barrio desde Calle Ocho / Little Havana. Público diverso con alto componente hispano-americano.',color:'#F39C12',comp:2,badge:false},
+  {name:'SE 1st Ave (Metromover zone)',subtitle:'Transporte multimodal',score:76,rent:'$70–105',aadt:'25K veh/d',traffic:'Alto',note:'Alto tráfico peatonal por Metromover. Profesionales en tránsito. Menor competencia directa. Perfil cliente ejecutivo joven.',color:'#E67E22',comp:1,badge:false},
+  {name:'SW 7th Ave (Brickell Gate)',subtitle:'Entrada residencial',score:72,rent:'$55–80',aadt:'22K veh/d',traffic:'Medio-Alto',note:'Acceso principal al barrio desde Coral Way. Residencial en crecimiento. Menor concentración comercial pero alto potencial de fidelización de vecinos.',color:'#BDC3C7',comp:1,badge:false},
+  {name:'Little Havana border (SW 27 Ave)',subtitle:'Borde étnico',score:65,rent:'$35–55',aadt:'20K veh/d',traffic:'Medio',note:'Zona de transición entre Brickell premium y Little Havana. Menor poder adquisitivo. Interesante a largo plazo pero fuera del target inicial.',color:'#95A5A6',comp:2,badge:false},
+  {name:'Brickell Key / bay area',subtitle:'Isla residencial premium',score:60,rent:'$85–120',aadt:'8K veh/d',traffic:'Bajo',note:'Isla privada con +5.000 residencias de lujo. Tráfico vehicular muy limitado. Alta renta pero muy baja afluencia peatonal. Sería modelo delivery/membership.',color:'#717D7E',comp:0,badge:false}
+];
+const BRICKELL_LOCATIONS=[
+  {name:'Mary Brickell Village — inline unit',addr:'Ref.: ~900 SW 15th Rd, Miami FL 33130',size:'100–180 m²',rent:'$95–140K/año',monthly:'$7.900–$21.000/mes',traffic:5,aadt:'~28.000 veh/día',anchors:'Whole Foods · Equinox · Starbucks Reserve · Barceloneta · IL Gabbiano',pros:'Outdoor mall premium, altísimo tráfico de fin de semana, clientela ejecutiva BR, adyacente a Whole Foods (cliente salud+belleza).',cons:'Alquiler más alto del área. Alta competencia implícita por mismo perfil cliente.',score:94,rec:true,color:'#2980B9',lat:25.7617,lng:-80.1940},
+  {name:'SW 8th St strip — Brickell Village',addr:'Ref.: ~665 SW 8th St, Miami FL 33130',size:'90–160 m²',rent:'$75–110K/año',monthly:'$6.250–$14.700/mes',traffic:5,aadt:'~28.000 veh/día',anchors:'Brickell City Centre (2 cuadras) · restaurantes · bares · coworkings',pros:'Calle de alta afluencia cultural. Cercanía al BCC. Buenos precios vs. locales dentro del mall. Fácil visibilidad desde la calle.',cons:'Estacionamiento limitado. Competencia con nightlife (ruido). Perfil muy mixto.',score:90,rec:true,color:'#1E8449',lat:25.7655,lng:-80.1930},
+  {name:'Brickell City Centre — Reach (L1)',addr:'701 S Miami Ave Level 1, Miami FL 33130',size:'85–140 m²',rent:'$90–130K/año',monthly:'$7.500–$15.200/mes',traffic:5,aadt:'~35.000 veh/día',anchors:'Drybar (mismo mall) · Apple Store · Equinox · Todo restaurantes premium · +60 tiendas',pros:'Mayor tráfico peatonal de Brickell. Metromover conectado. Visibilidad máxima. Confirma demanda (Drybar opera aquí).',cons:'Drybar como competidor directo en mismo edificio. Alquiler de mall premium. Menor diferenciación de ubicación.',score:87,rec:false,color:'#27AE60',lat:25.7647,lng:-80.1934},
+  {name:'SE 1st Ave retail strip',addr:'Ref.: ~50 SE 1st Ave, Miami FL 33131',size:'80–130 m²',rent:'$70–105K/año',monthly:'$5.800–$11.400/mes',traffic:4,aadt:'~25.000 veh/día',anchors:'Metromover Brickell · oficinas · condo towers · restaurantes express',pros:'Paso diario de miles de profesionales. Metromover genera tráfico continuo. Menor alquiler que mall.',cons:'Menos tráfico de fines de semana. Zona más de tránsito que de destino.',score:82,rec:false,color:'#F39C12',lat:25.7714,lng:-80.1918},
+  {name:'Brickell Ave & SW 11th St',addr:'Ref.: ~1100 Brickell Ave, Miami FL 33131',size:'85–150 m²',rent:'$80–115K/año',monthly:'$6.700–$14.400/mes',traffic:4,aadt:'~35.000 veh/día',anchors:'Bancos internacionales · hoteles 5★ · Icon Brickell · condo towers',pros:'Avenida principal del distrito. Altísima visibilidad vehicular. Clientela ejecutiva de alto ticket.',cons:'Tráfico más vehicular que peatonal. Requiere señalética fuerte. Acceso y parking desafiante.',score:79,rec:false,color:'#E67E22',lat:25.7590,lng:-80.1920},
+  {name:'SW 7th Ave & SW 13th St',addr:'Ref.: ~700 SW 13th St, Miami FL 33130',size:'80–120 m²',rent:'$55–80K/año',monthly:'$4.600–$8.000/mes',traffic:3,aadt:'~22.000 veh/día',anchors:'Edificios residenciales Brickell Gate · coworkings · cafeterías',pros:'Menor alquiler. Vecindario residencial en crecimiento. Clientela fidelizable rápido.',cons:'Menor visibilidad y tráfico. Zona secundaria de Brickell.',score:74,rec:false,color:'#BDC3C7',lat:25.7550,lng:-80.2010},
+  {name:'SW 27th Ave & Coral Way',addr:'Ref.: ~2750 Coral Way, Miami FL 33145',size:'70–110 m²',rent:'$35–55K/año',monthly:'$2.900–$4.600/mes',traffic:3,aadt:'~20.000 veh/día',anchors:'Residencias cubano-americanas · negocios locales · farmacia · supermercado',pros:'Menor costo de entrada. Zona de transición con potential a largo plazo.',cons:'Fuera del core Brickell. Menor poder adquisitivo. Identidad de zona indefinida.',score:68,rec:false,color:'#95A5A6',lat:25.7530,lng:-80.2320},
+  {name:'Brickell Key Dr (Island)',addr:'Ref.: ~609 Brickell Key Dr, Miami FL 33131',size:'60–100 m²',rent:'$85–120K/año',monthly:'$7.100–$10.000/mes',traffic:2,aadt:'~8.000 veh/día',anchors:'Condominios luxury · Marriott · club náutico',pros:'Clientela de altísimo poder adquisitivo. 0 competencia directa en la isla.',cons:'Acceso solo por puente. Muy bajo tráfico de paso. Modelo membership/appointment only.',score:63,rec:false,color:'#717D7E',lat:25.7638,lng:-80.1855}
+];
+const BRICKELL_COMPETITORS=[
+  {name:'Drybar Brickell City Centre',addr:'701 S Miami Ave, Miami FL 33130',type:'Cadena express nacional',price:'$60–90',rating:'4,5',reviews:'~320',wait:'Cita requerida · 30 min',services:'Blowout exclusivamente (7 estilos), algo de maquillaje express',weaknesses:'Sin identidad brasileña. Solo cabello (sin uñas, cejas, bronzeado). Precio alto. Sin turno express o walk-in.',threat:'Alta'},
+  {name:'Hair House Studio Brickell',addr:'~1177 Brickell Ave, Miami FL 33131',type:'Salón premium independiente',price:'$95–250',rating:'4,3',reviews:'~85',wait:'Cita requerida · 1h',services:'Keratina brasileña, coloración, blowout artesanal, extensiones',weaknesses:'Sin concepto express. Precio prohibitivo. Capacidad limitada. Sin uñas ni maquillaje.',threat:'Media'},
+  {name:'Glamour Studio Miami',addr:'~801 Brickell Bay Dr, Miami FL 33131',type:'Latino premium',price:'$75–180',rating:'4,1',reviews:'~95',wait:'Cita recomendada · 30–60 min',services:'Blowout artesanal, coloración, alaciado',weaknesses:'Sin concepto express ni estandarización. Sin uñas ni cejas. Experiencia variable.',threat:'Media'},
+  {name:'Sobe Salon Brickell',addr:'~88 SW 7th St, Miami FL 33130',type:'Multiservicios',price:'$60–150',rating:'3,9',reviews:'~60',wait:'45 min sin cita',services:'Coloración, keratina, extensiones, blowout básico',weaknesses:'No especializado en blowout express. Servicio lento. Sin identidad BR ni concepto diferenciado.',threat:'Media-Baja'},
+  {name:'Great Clips Brickell',addr:'~850 S Miami Ave, Miami FL 33130',type:'Cadena genérica',price:'$20–35',rating:'3,6',reviews:'~145',wait:'15 min sin cita',services:'Corte básico únicamente',weaknesses:'Sin identidad cultural. Sin blowout ni belleza femenina integral. Posicionamiento low-cost incompatible.',threat:'Ninguna'},
+  {name:'Supercuts SW 8th St',addr:'~640 SW 8th St, Miami FL 33130',type:'Cadena genérica',price:'$22–38',rating:'3,3',reviews:'~90',wait:'10 min sin cita',services:'Corte y brushing básico',weaknesses:'Nivel low-cost. Sin identidad BR ni servicios premium. Compete en otro segmento.',threat:'Ninguna'},
+  {name:'Salon Avant-Garde Brickell',addr:'~1395 Brickell Ave, Miami FL 33131',type:'Lujo independiente',price:'$150–350',rating:'4,5',reviews:'~40',wait:'Cita 2–3 días antes',services:'Color artesanal, keratina, extensiones premium',weaknesses:'Precio prohibitivo para express. Sin turno mismo día. No accesible para visita frecuente.',threat:'Baja'},
+  {name:'Top Salon Miami',addr:'~100 SE 1st Ave, Miami FL 33131',type:'Multiservicios',price:'$50–120',rating:'3,8',reviews:'~55',wait:'30 min sin cita',services:'Corte, color, blowout básico',weaknesses:'Sin especialización BR. Servicio inconsistente. Sin portafolio express.',threat:'Media-Baja'},
+  {name:'BLO Blow Dry Bar — Worldcenter',addr:'~851 NE 1st Ave, Miami FL 33132 (4 km N)',type:'Cadena express nacional',price:'$45–80',rating:'4,3',reviews:'~95',wait:'Cita · 15 min',services:'Blowout exclusivamente, algo maquillaje',weaknesses:'4 km del core Brickell. Sin identidad BR. Sin servicios integrales (solo cabello).',threat:'Media',gap:true},
+  {name:'Fringe Hair & Beauty',addr:'~222 SW 8th St, Miami FL 33130',type:'Estudio artesanal',price:'$80–200',rating:'4,0',reviews:'~45',wait:'Cita recomendada · 45 min',services:'Balayage, keratina, blowout artesanal',weaknesses:'Sin sistema express. Sin uñas ni maquillaje. Sin identidad BR.',threat:'Media-Baja'}
+];
+const BRICKELL_MAP_POIS=[
+  {lat:25.7617,lng:-80.1940,e:'⭐',n:'Mary Brickell Village — LOC #1',d:'Outdoor mall premium · LOC #1 recomendada · Whole Foods ancla',comp:false,top:true},
+  {lat:25.7655,lng:-80.1930,e:'⭐',n:'SW 8th St strip — LOC #2',d:'Calle cultural · BCC 2 cuadras · LOC #2 recomendada',comp:false,top:true},
+  {lat:25.7647,lng:-80.1934,e:'🏬',n:'Brickell City Centre — LOC #3',d:'1,2M sqft mall premium · Metromover conectado',comp:false,top:false},
+  {lat:25.7714,lng:-80.1918,e:'📍',n:'SE 1st Ave — LOC #4',d:'Paso de Metromover · profesionales diario',comp:false,top:false},
+  {lat:25.7590,lng:-80.1920,e:'📍',n:'Brickell Ave & SW 11th — LOC #5',d:'Avenida principal financiera',comp:false,top:false},
+  {lat:25.7667,lng:-80.1912,e:'🛍️',n:'Brickell City Centre',d:'Apple, Equinox, +60 tiendas, cine · 35K veh/día',comp:false},
+  {lat:25.7617,lng:-80.1944,e:'🛒',n:'Whole Foods Brickell',d:'Ancla Mary Brickell Village · perfil salud+belleza',comp:false},
+  {lat:25.7653,lng:-80.1892,e:'🏙️',n:'Icon Brickell',d:'3 torres residenciales luxury · +1.600 unidades',comp:false},
+  {lat:25.7635,lng:-80.1900,e:'🏙️',n:'Four Seasons Brickell',d:'Hotel 5★ · ejecutivos internacionales',comp:false},
+  {lat:25.7702,lng:-80.1912,e:'🚇',n:'Metromover Brickell',d:'Transporte gratuito · miles de pasajeros/día',comp:false},
+  {lat:25.7643,lng:-80.1877,e:'🏊',n:'Brickell Key Island',d:'+5.000 residencias luxury · acceso por puente',comp:false},
+  {lat:25.7725,lng:-80.1885,e:'🏀',n:'Kaseya Center (NBA Heat)',d:'200+ eventos/año · 20.000 asistentes/evento',comp:false},
+  {lat:25.7780,lng:-80.1850,e:'🏙️',n:'Bayside Marketplace',d:'15M visitantes/año · turistas + locales',comp:false},
+  {lat:25.7900,lng:-80.1940,e:'🏙️',n:'Wynwood Walls',d:'1M+ visitantes/año · arte y gastronomía',comp:false},
+  {lat:25.7530,lng:-80.2030,e:'🏙️',n:'Coconut Grove border',d:'Barrio bohemio · CocoWalk · yuppies y artistas',comp:false},
+  {lat:25.7647,lng:-80.1934,e:'✂️',n:'[COMP] Drybar Brickell City Centre',d:'Cadena express · 4,5★ · $60–90 · sin identidad BR',comp:true},
+  {lat:25.7617,lng:-80.1938,e:'✂️',n:'[COMP] Hair House Studio',d:'Salón premium · 4,3★ · $95–250 · solo cita',comp:true},
+  {lat:25.7670,lng:-80.1942,e:'✂️',n:'[COMP] Glamour Studio Miami',d:'Latino premium · 4,1★ · 30-60 min espera',comp:true},
+  {lat:25.7622,lng:-80.1928,e:'✂️',n:'[COMP] Sobe Salon Brickell',d:'Multiservicios · 3,9★ · 45 min sin cita',comp:true}
+];
+
+const CORAL_GABLES_CORRIDORS=[
+  {name:'Miracle Mile',nickname:'"La Calle Comercial"',aadt:'~18.000 veh/día',length:'0,8 km (E-O)',color:'#8E44AD',desc:'Eje comercial y gastronómico premium de Coral Gables. 100K sqft de retail, restaurantes fine dining y boutiques. Densidad peatonal alta de jueves a domingo. Arquitectura mediterránea distintiva.',anchors:'Miracle Mile boutiques · Restaurantes fine dining · Teatros · Cafeterías · galerías de arte'},
+  {name:'Ponce de León Blvd',nickname:'"La Espina Dorsal"',aadt:'~22.000 veh/día',length:'3,2 km (N-S)',color:'#6C3483',desc:'Arteria principal de Coral Gables que conecta Miami con la zona sur. Alto tráfico mixto: residentes locales, commuters a University of Miami y profesionales.',anchors:'Coral Gables City Hall · Banco de América · oficinas profesionales · boutiques · spas'},
+  {name:'Bird Road / SW 40th St',nickname:'"El Corredor Práctico"',aadt:'~28.000 veh/día',length:'4,5 km (E-O)',color:'#A569BD',desc:'Mayor tráfico vehicular del área. Corredor comercial de servicios cotidianos. Residentes de Coral Gables y South Miami usan esta vía a diario. Anchors: Target, Publix, cadenas de restaurantes.',anchors:'Target · Publix · Ross · Home Depot · cadenas de restaurantes · Winn-Dixie'}
+];
+const CORAL_GABLES_SUBZONES=[
+  {name:'Miracle Mile Core',subtitle:'Corazón comercial upscale',score:92,rent:'$75–115',aadt:'18K veh/d',traffic:'Alto',note:'El eje comercial más premium de Coral Gables. Boutiques, restaurantes fine dining, galerías. Clientela de muy alto poder adquisitivo. Identidad de barrio muy fuerte — "destino" no solo paso.',color:'#8E44AD',comp:3,badge:true},
+  {name:'Village of Merrick Park',subtitle:'Mall luxury al aire libre',score:88,rent:'$85–130',aadt:'22K veh/d',traffic:'Alto',note:'Open-air mall con +80 tiendas premium (Nordstrom, Neiman Marcus, Anthropologie). BLO tiene local aquí — confirma demanda. Clientela AB+ consolidada.',color:'#6C3483',comp:4,badge:true},
+  {name:'Giralda Ave (peatonal gastro)',subtitle:'Distrito gastronómico premium',score:83,rent:'$65–95',aadt:'15K veh/d',traffic:'Medio-Alto',note:'Calle peatonal de restaurantes y bares de moda. Jueves-domingo llena de profesionales y familias de alto poder adquisitivo. Ambiente boutique ideal para Fast Escova.',color:'#A569BD',comp:2,badge:false},
+  {name:'Salzedo St (historic center)',subtitle:'Centro histórico con carácter',score:79,rent:'$55–80',aadt:'12K veh/d',traffic:'Medio',note:'Entorno arquitectónico mediterráneo único. Menor tráfico vehicular pero alta identidad de barrio. Buen fit para formato boutique premium.',color:'#C39BD3',comp:1,badge:false},
+  {name:'Ponce de León & Aragon Ave',subtitle:'Nodo de tráfico mixto',score:74,rent:'$60–90',aadt:'22K veh/d',traffic:'Medio-Alto',note:'Intersección principal del área. Tráfico vehicular alto pero peatonal moderado. Perfil mixto: residentes + commuters.',color:'#D2B4DE',comp:2,badge:false},
+  {name:'Bird Road retail corridor',subtitle:'Corredor práctico',score:70,rent:'$45–70',aadt:'28K veh/d',traffic:'Alto',note:'Alto tráfico vehicular pero perfil más orientado a compras prácticas. Menos premium que Miracle Mile. Alquiler más accesible.',color:'#CCD1D1',comp:2,badge:false},
+  {name:'Coral Way (SW 24th St E)',subtitle:'Transición residencial',score:65,rent:'$40–60',aadt:'18K veh/d',traffic:'Medio',note:'Zona de transición entre Coral Gables y Brickell. Residencial consolidada. Menor afluencia comercial.',color:'#AAB7B8',comp:1,badge:false},
+  {name:'Douglas Rd / LeJeune',subtitle:'Borde con Miami',score:60,rent:'$35–55',aadt:'20K veh/d',traffic:'Medio',note:'Límite noroeste de Coral Gables. Zona mixta de transición. Perfil heterogéneo. Potencial a largo plazo como expansión.',color:'#808B96',comp:1,badge:false}
+];
+const CORAL_GABLES_LOCATIONS=[
+  {name:'Miracle Mile — local prime',addr:'Ref.: ~320 Miracle Mile, Coral Gables FL 33134',size:'80–130 m²',rent:'$75–115K/año',monthly:'$6.250–$12.500/mes',traffic:5,aadt:'~18.000 veh/día',anchors:'Boutiques premium · restaurantes fine dining · teatros · bancos · clínicas estéticas',pros:'Mejor dirección de Coral Gables. Alta afluencia de jueves a domingo. Clientela AB+ caminando. Imagen premium alineada con marca.',cons:'Alquiler elevado. Estacionamiento limitado entre semana. Menor tráfico lunes-miércoles.',score:93,rec:true,color:'#8E44AD',lat:25.7478,lng:-80.2544},
+  {name:'Village of Merrick Park — inline',addr:'Ref.: ~358 San Lorenzo Ave, Coral Gables FL 33146',size:'85–140 m²',rent:'$85–130K/año',monthly:'$7.100–$15.200/mes',traffic:5,aadt:'~22.000 veh/día',anchors:'Nordstrom · Neiman Marcus · Anthropologie · BLO · Apple Store · restaurantes premium',pros:'Tráfico de mall premium garantizado. BLO confirma demanda de blowout en este mall. Estacionamiento gratuito abundante.',cons:'BLO como competidor directo en mismo mall. Alquiler de mall premium. Menos diferenciación geográfica.',score:90,rec:true,color:'#6C3483',lat:25.7090,lng:-80.2720},
+  {name:'Giralda Ave — corner unit',addr:'Ref.: ~252 Giralda Ave, Coral Gables FL 33134',size:'70–110 m²',rent:'$65–95K/año',monthly:'$5.400–$8.750/mes',traffic:4,aadt:'~15.000 veh/día',anchors:'Restaurantes Jaguar · Bulla Gastrobar · La Palma · bares y cafés premium',pros:'Ambiente gastronómico premium. Clientela que gasta bien. Formato boutique muy alineado. Menor alquiler que Miracle Mile.',cons:'Calle peatonal limita visibilidad vehicular. Tráfico muy estacional (fines de semana).',score:83,rec:false,color:'#A569BD',lat:25.7490,lng:-80.2550},
+  {name:'Salzedo & Aragon — historic corner',addr:'Ref.: ~252 Salzedo St, Coral Gables FL 33134',size:'65–100 m²',rent:'$55–80K/año',monthly:'$4.600–$6.700/mes',traffic:3,aadt:'~12.000 veh/día',anchors:'Boutiques históricas · galerías · spas · oficinas de lujo',pros:'Ambiente histórico único. Menor competencia. Alquiler controlado. Diferenciación por entorno.',cons:'Tráfico moderado. Requiere marketing fuerte para atraer cliente. Menor visibilidad de paso.',score:79,rec:false,color:'#C39BD3',lat:25.7488,lng:-80.2582},
+  {name:'Ponce de León & Miracle Mile',addr:'Ref.: ~2399 Ponce de León Blvd, Coral Gables FL 33134',size:'70–120 m²',rent:'$60–90K/año',monthly:'$5.000–$9.000/mes',traffic:4,aadt:'~22.000 veh/día',anchors:'Bancos · oficinas · Coral Gables City Hall · farmacia CVS',pros:'Intersección de alto tráfico vehicular. Fácil acceso desde toda la zona.',cons:'Perfil más de servicios cotidianos que de destino premium.',score:75,rec:false,color:'#D2B4DE',lat:25.7486,lng:-80.2596},
+  {name:'Bird Road strip mall (Publix anchor)',addr:'Ref.: ~2900 Bird Ave, Miami FL 33133',size:'80–130 m²',rent:'$45–70K/año',monthly:'$3.750–$7.600/mes',traffic:4,aadt:'~28.000 veh/día',anchors:'Publix · Target · Ross · farmacia · restaurantes de cadena',pros:'Alto tráfico vehicular. Alquiler más accesible. Clientela de rutina diaria.',cons:'Perfil más práctico que premium. Menor afinidad con servicios de belleza express boutique.',score:70,rec:false,color:'#CCD1D1',lat:25.7320,lng:-80.2640},
+  {name:'SW 42nd Ave & Coral Way',addr:'Ref.: ~3320 Coral Way, Miami FL 33145',size:'60–90 m²',rent:'$40–60K/año',monthly:'$3.300–$5.000/mes',traffic:3,aadt:'~18.000 veh/día',anchors:'Residencias · negocios locales · supermercados · servicios barriales',pros:'Menor costo de entrada. Zona en crecimiento residencial.',cons:'Fuera del core premium de CG. Perfil heterogéneo. Menor poder adquisitivo que Miracle Mile.',score:65,rec:false,color:'#AAB7B8',lat:25.7500,lng:-80.2850},
+  {name:'Douglas Rd / US-1 (LeJeune)',addr:'Ref.: ~3390 S Dixie Hwy, Miami FL 33133',size:'55–85 m²',rent:'$35–55K/año',monthly:'$2.900–$3.900/mes',traffic:3,aadt:'~20.000 veh/día',anchors:'Negocios mixtos · supermercados · taller y servicios',pros:'Menor costo. Zona de transición con crecimiento futuro.',cons:'No es zona premium. Perfil de cliente alejado del target Fast Escova.',score:60,rec:false,color:'#808B96',lat:25.7200,lng:-80.2650}
+];
+const CORAL_GABLES_COMPETITORS=[
+  {name:'BLO Blow Dry Bar — Merrick Park',addr:'358 San Lorenzo Ave, Coral Gables FL 33146',type:'Cadena express nacional',price:'$45–80',rating:'4,3',reviews:'~140',wait:'Cita · 15–20 min',services:'Blowout exclusivamente (6 estilos)',weaknesses:'Sin identidad brasileña. Solo cabello. Sin uñas, cejas ni maquillaje. Precio y concepto muy rígido.',threat:'Alta'},
+  {name:'Drybar Coral Gables / Coconut Grove',addr:'Cercano a CocoWalk, Miami FL 33133',type:'Cadena premium express',price:'$60–90',rating:'4,4',reviews:'~190',wait:'Cita · 30 min',services:'Blowout exclusivamente (7 estilos)',weaknesses:'Solo cabello. Sin identidad BR. Precio alto. Sin opción express walk-in.',threat:'Alta'},
+  {name:'Frédéric Fekkai — Merrick Park',addr:'Village of Merrick Park, CG FL 33146',type:'Lujo nacional',price:'$150–400',rating:'4,6',reviews:'~55',wait:'Cita 3–5 días',services:'Color premium, keratina, blowout luxury, extensiones',weaknesses:'Precio prohibitivo. Sin express. Sin identidad BR. Sin turno mismo día. Otro segmento.',threat:'Baja'},
+  {name:'Van Michael Salon',addr:'~146 Giralda Ave, Coral Gables FL 33134',type:'Cadena premium del sur',price:'$90–220',rating:'4,2',reviews:'~95',wait:'Cita recomendada · 1h',services:'Coloración, blowout artesanal, alaciado',weaknesses:'Sin concepto express. Precio alto. Sin maquillaje ni uñas. Experiencia de salón tradicional.',threat:'Media'},
+  {name:'Gina Brazilian Hair Salon',addr:'~407 Biltmore Way, Coral Gables FL 33134',type:'Brasileño artesanal',price:'$80–180',rating:'4,1',reviews:'~65',wait:'Cita · 1,5–2h',services:'Keratina BR, blowout artesanal, coloración',weaknesses:'Sin estandarización express. Sin uñas ni cejas. Capacidad muy limitada. Experiencia artesanal vs. sistema.',threat:'Media'},
+  {name:'Aura Hair Studio',addr:'~270 Miracle Mile, Coral Gables FL 33134',type:'Independiente premium',price:'$85–200',rating:'4,0',reviews:'~50',wait:'Cita · 30–60 min',services:'Coloración, blowout, extensiones',weaknesses:'Sin identidad BR. Sin concepto express. Servicio lento. Sin portafolio integral.',threat:'Media-Baja'},
+  {name:'Great Clips Coral Gables',addr:'~2121 Ponce de León Blvd, CG FL 33134',type:'Cadena genérica',price:'$20–35',rating:'3,4',reviews:'~105',wait:'10–15 min',services:'Corte básico únicamente',weaknesses:'Sin blowout, sin belleza femenina integral, sin cultura BR. Compete en otro segmento.',threat:'Ninguna'},
+  {name:'Supercuts Coral Gables',addr:'~3455 Main Hwy, Miami FL 33133',type:'Cadena genérica',price:'$22–40',rating:'3,2',reviews:'~80',wait:'10 min',services:'Corte básico',weaknesses:'Low-cost sin identidad ni servicios premium. Otro segmento.',threat:'Ninguna'},
+  {name:'Regis Salon — Merrick Park',addr:'~358 San Lorenzo Ave, CG FL 33146',type:'Cadena mall',price:'$40–90',rating:'3,7',reviews:'~75',wait:'20 min sin cita',services:'Corte, color, blowout básico',weaknesses:'Genérico. Sin identidad BR ni express premium. Misma ubicación que BLO.',threat:'Baja'},
+  {name:'Salon República',addr:'~2328 Miracle Mile, Coral Gables FL 33134',type:'Hispano-americano',price:'$60–140',rating:'3,9',reviews:'~45',wait:'Cita · 45 min',services:'Color, alaciado, blowout',weaknesses:'Sin identidad BR específica. Público más cubano-americano. Sin concepto express.',threat:'Media-Baja'}
+];
+const CORAL_GABLES_MAP_POIS=[
+  {lat:25.7478,lng:-80.2544,e:'⭐',n:'Miracle Mile — LOC #1',d:'Mejor dirección CG · local prime recomendado',comp:false,top:true},
+  {lat:25.7090,lng:-80.2720,e:'⭐',n:'Village of Merrick Park — LOC #2',d:'Mall luxury · BLO confirma demanda',comp:false,top:true},
+  {lat:25.7490,lng:-80.2550,e:'📍',n:'Giralda Ave — LOC #3',d:'Calle peatonal gastronómica',comp:false,top:false},
+  {lat:25.7488,lng:-80.2582,e:'📍',n:'Salzedo & Aragon — LOC #4',d:'Centro histórico boutique',comp:false,top:false},
+  {lat:25.7478,lng:-80.2536,e:'🛍️',n:'Miracle Mile (full)',d:'100K sqft retail · destino premium Coral Gables',comp:false},
+  {lat:25.7090,lng:-80.2720,e:'🛍️',n:'Village of Merrick Park',d:'Nordstrom · Neiman Marcus · Anthropologie · +80 tiendas',comp:false},
+  {lat:25.7490,lng:-80.2555,e:'🍽️',n:'Giralda Ave (calle gastronómica)',d:'Jaguar · Bulla Gastrobar · La Palma · bares premium',comp:false},
+  {lat:25.7510,lng:-80.2548,e:'🏛️',n:'Coral Gables City Hall',d:'City Hall histórico · centro cívico',comp:false},
+  {lat:25.7483,lng:-80.2518,e:'🎭',n:'Actors Playhouse Theatre',d:'Teatro premium · eventos cultura',comp:false},
+  {lat:25.7208,lng:-80.2788,e:'🎓',n:'University of Miami',d:'17.000 estudiantes · campus Coral Gables',comp:false},
+  {lat:25.7281,lng:-80.2667,e:'🏊',n:'Venetian Pool',d:'Piscina histórica pública · ícono Coral Gables',comp:false},
+  {lat:25.7501,lng:-80.2557,e:'🏨',n:'Biltmore Hotel',d:'Hotel 5★ histórico · PGA Golf · eventos premium',comp:false},
+  {lat:25.7188,lng:-80.2387,e:'🏥',n:'Baptist Health South Florida',d:'Hospital premium · médicos y pacientes alta renta',comp:false},
+  {lat:25.7300,lng:-80.2380,e:'🛒',n:'Whole Foods Coral Gables',d:'Ancla premium de alimentación saludable',comp:false},
+  {lat:25.7330,lng:-80.2390,e:'🚇',n:'Metrorail Coconut Grove',d:'Conecta con Brickell y Dadeland en 15 min',comp:false},
+  {lat:25.7090,lng:-80.2720,e:'✂️',n:'[COMP] BLO Blow Dry Bar',d:'Cadena express · 4,3★ · $45–80 · sin identidad BR',comp:true},
+  {lat:25.7478,lng:-80.2544,e:'✂️',n:'[COMP] Aura Hair Studio',d:'Independiente premium · 4,0★ · sin express',comp:true},
+  {lat:25.7090,lng:-80.2725,e:'✂️',n:'[COMP] Frédéric Fekkai',d:'Lujo nacional · 4,6★ · $150–400 · otro segmento',comp:true},
+  {lat:25.7495,lng:-80.2547,e:'✂️',n:'[COMP] Van Michael Salon',d:'Premium del sur · 4,2★ · sin express',comp:true}
+];
+
+function buildBrickellSection(){buildBrickellCorridors();buildBrickellSubGrid();buildBrickellLocations();buildBrickellLocTable();buildBrickellCompTable();buildBrickellMap();}
+function buildBrickellCorridors(){
+  var g=document.getElementById('brickellCorridorGrid');if(!g)return;
+  g.innerHTML=BRICKELL_CORRIDORS.map(function(c){
+    return '<div style="background:#1a1f2e;border-radius:8px;padding:12px;border-left:4px solid '+c.color+'">'+
+      '<div style="font-size:.9rem;font-weight:700;color:'+c.color+'">'+c.name+'</div>'+
+      '<div style="font-size:.72rem;color:#9ba4b4;font-style:italic;margin-bottom:6px;">'+c.nickname+'</div>'+
+      '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px;">'+
+        '<span style="background:#232a3b;border-radius:4px;padding:2px 7px;font-size:.71rem;color:#c8d0e0;">🚗 '+c.aadt+'</span>'+
+        '<span style="background:#232a3b;border-radius:4px;padding:2px 7px;font-size:.71rem;color:#c8d0e0;">📏 '+c.length+'</span>'+
+      '</div>'+
+      '<div style="font-size:.74rem;color:#9ba4b4;line-height:1.45;margin-bottom:5px;">'+c.desc+'</div>'+
+      '<div style="font-size:.71rem;color:#7a8499;">🏪 '+c.anchors+'</div>'+
+    '</div>';
+  }).join('');
+}
+function buildBrickellSubGrid(){
+  var g=document.getElementById('brickellSubGrid');if(!g)return;
+  g.innerHTML=BRICKELL_SUBZONES.map(function(z){
+    return '<div style="background:#1a1f2e;border-radius:8px;padding:10px;border-top:3px solid '+z.color+';">'+
+      (z.badge?'<span style="background:#155a2a;color:#27AE60;border-radius:4px;padding:1px 6px;font-size:.65rem;font-weight:700;margin-bottom:4px;display:inline-block;">★ Top</span><br>':'')+
+      '<div style="font-size:.82rem;font-weight:700;color:#e0e5f0;margin-bottom:2px;">'+z.name+'</div>'+
+      '<div style="font-size:.7rem;color:#9ba4b4;font-style:italic;margin-bottom:6px;">'+z.subtitle+'</div>'+
+      '<div style="font-size:1.4rem;font-weight:900;color:'+z.color+';">'+z.score+'<span style="font-size:.65rem;color:#7a8499;">/100</span></div>'+
+      '<div style="font-size:.7rem;color:#7a8499;margin-top:4px;">'+z.rent+' sqft · '+z.aadt+'</div>'+
+      '<div style="font-size:.69rem;color:#c8d0e0;margin-top:4px;line-height:1.4;">'+z.note+'</div>'+
+    '</div>';
+  }).join('');
+}
+function buildBrickellLocations(){
+  var g=document.getElementById('brickellLocGrid');if(!g)return;
+  var tlbl=T('lbl_traffic');
+  g.innerHTML=BRICKELL_LOCATIONS.map(function(loc,i){
+    var st='★'.repeat(loc.traffic)+'☆'.repeat(5-loc.traffic);
+    return '<div class="loc-card" style="border-left-color:'+loc.color+'">'+
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:6px">'+
+        '<div class="loc-name" style="font-size:.83rem"><span style="background:'+loc.color+';color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;margin-right:4px;">'+(i+1)+'</span>'+loc.name+(loc.rec?' <span class="bdg bdg-g">★ '+T('lbl_rec')+'</span>':'')+'</div>'+
+        '<div class="loc-score" style="color:'+loc.color+'">'+loc.score+'</div>'+
+      '</div>'+
+      '<div style="font-size:.68rem;color:#999;margin:2px 0 3px">'+loc.addr+'</div>'+
+      '<div class="loc-stars" style="margin-bottom:3px">'+st+' '+tlbl+'</div>'+
+      '<div class="loc-meta">💵 <b>'+loc.monthly+'</b> &nbsp;·&nbsp; 📐 '+loc.size+'<br><span style="color:#1E8449;font-size:.72rem">✅ '+loc.pros+'</span></div>'+
+    '</div>';
+  }).join('');
+}
+function buildBrickellLocTable(){
+  var t=document.getElementById('brickellLocTable');if(!t)return;
+  var th=T('th_loc');
+  t.innerHTML='<thead><tr>'+th.map(function(h){return'<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'+
+    BRICKELL_LOCATIONS.map(function(loc,i){
+      var sc=loc.score>=90?'#27AE60':loc.score>=80?'#E67E22':'#7F8C8D';
+      var st='★'.repeat(loc.traffic)+'☆'.repeat(5-loc.traffic);
+      return '<tr'+(loc.rec?' class="hi"':'')+'>'+
+        '<td><b><span style="background:'+loc.color+';color:#fff;border-radius:50%;width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:900;margin-right:4px;">'+(i+1)+'</span>'+loc.name+(loc.rec?' 🏆':'')+'</b></td>'+
+        '<td style="color:#777;font-size:.71rem;white-space:nowrap">'+loc.addr+'</td>'+
+        '<td style="white-space:nowrap">'+loc.size+'</td>'+
+        '<td style="white-space:nowrap">'+loc.rent+'</td>'+
+        '<td style="white-space:nowrap"><b>'+loc.monthly+'</b></td>'+
+        '<td style="white-space:nowrap">'+st+'</td>'+
+        '<td style="font-size:.71rem;color:#555">'+loc.anchors+'</td>'+
+        '<td style="color:#1E8449;font-size:.71rem">'+loc.pros+'</td>'+
+        '<td style="color:#8B0000;font-size:.71rem">'+loc.cons+'</td>'+
+        '<td style="color:'+sc+';font-weight:900;font-size:.95rem;text-align:center">'+loc.score+'</td>'+
+      '</tr>';
+    }).join('')+'</tbody>';
+}
+function buildBrickellCompTable(){
+  var t=document.getElementById('brickellCompTbl');if(!t)return;
+  var TS={'Alta':'background:#FADBD8;color:#7B241C','Media':'background:#FDEBD0;color:#8B4000','Media-Baja':'background:#FEF9E7;color:#8B6F00','Baja':'background:#EAFAF1;color:#1E8449','Ninguna':'background:#D5F5E3;color:#1E8449'};
+  var tc=T('th_comp');
+  t.innerHTML='<thead><tr>'+tc.map(function(h){return'<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'+
+    BRICKELL_COMPETITORS.map(function(c){
+      var sty=TS[c.threat]||'background:#EEE;color:#333';
+      return '<tr'+(c.gap?' class="hi"':'')+'>'+
+        '<td><b>'+c.name+'</b>'+(c.gap?' <span style="background:#D5F5E3;color:#1E8449;border-radius:4px;padding:1px 5px;font-size:.65rem;font-weight:700">BRECHA</span>':'')+'</td>'+
+        '<td style="font-size:.71rem;color:#777">'+c.addr+'</td>'+
+        '<td style="font-size:.74rem">'+c.type+'</td>'+
+        '<td style="white-space:nowrap">'+c.price+'</td>'+
+        '<td style="white-space:nowrap">★ '+c.rating+'</td>'+
+        '<td style="font-size:.74rem">'+c.wait+'</td>'+
+        '<td style="font-size:.72rem;color:#555">'+c.services+'</td>'+
+        '<td style="font-size:.71rem;color:#8B0000">'+c.weaknesses+'</td>'+
+        '<td><span style="border-radius:4px;padding:2px 7px;font-size:.71rem;font-weight:700;'+sty+'">'+c.threat+'</span></td>'+
+      '</tr>';
+    }).join('')+'</tbody>';
+}
+function buildBrickellMap(){
+  var el=document.getElementById('map-brickell');if(!el||el._leaflet_id)return;
+  var m=L.map('map-brickell',{zoomControl:true}).setView([25.762,-80.192],14);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap © CARTO',maxZoom:19}).addTo(m);
+  var BSC=[[25.7617,-80.1940],[25.7090,-80.2720],[25.7635,-80.1928],[25.7714,-80.1918],[25.7590,-80.1920],[25.7550,-80.2010],[25.7530,-80.2320],[25.7638,-80.1855]];
+  BRICKELL_SUBZONES.forEach(function(z,i){
+    L.circle(BSC[i],{color:z.color,fillColor:z.color,fillOpacity:.15,weight:z.badge?3:2,radius:250,dashArray:z.badge?null:'5,5'}).addTo(m)
+      .bindPopup('<b>'+z.name+'</b> — <b>'+z.score+'/100</b><br><em>'+z.subtitle+'</em><br>Alquiler: '+z.rent+'/sqft<br>Competidores: '+z.comp+'<br><small>'+z.note+'</small>',{maxWidth:270});
+  });
+  BRICKELL_LOCATIONS.forEach(function(loc,i){
+    var col=i<2?'#27AE60':i<5?'#E67E22':'#7F8C8D';
+    var sz=i<2?34:26;
+    L.marker([loc.lat,loc.lng],{icon:L.divIcon({html:'<div style="background:'+col+';color:#fff;border-radius:50%;width:'+sz+'px;height:'+sz+'px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:'+(i<2?'.85rem':'.72rem')+';border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.5)'+(i<2?';box-shadow:0 0 10px '+col+',0 2px 8px rgba(0,0,0,.5)':'')+'>'+(i+1)+'</div>',className:'',iconSize:[sz,sz],iconAnchor:[sz/2,sz/2]})}).addTo(m)
+      .bindPopup('<b>#'+(i+1)+' '+loc.name+'</b><br>Score: <b>'+loc.score+'</b><br>'+loc.monthly+'<br><small>'+loc.addr+'</small>');
+  });
+  BRICKELL_MAP_POIS.forEach(function(p){
+    if(p.top)return;
+    var bg=p.comp?'#8B0000':'#1A1A2E';
+    var border=p.comp?'#E74C3C':'#3a4560';
+    L.marker([p.lat,p.lng],{icon:L.divIcon({html:'<div style="background:'+bg+';color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:.72rem;border:2px solid '+border+';box-shadow:0 1px 5px rgba(0,0,0,.4)'+(p.comp?';box-shadow:0 0 8px #E74C3C60':'')+'">'+p.e+'</div>',className:'',iconSize:[24,24],iconAnchor:[12,12]})}).addTo(m)
+      .bindPopup('<b>'+p.e+' '+p.n+'</b><br><small>'+p.d+'</small>',{maxWidth:240});
+  });
+  L.polyline([[25.7450,-80.1920],[25.7850,-80.1920]],{color:'#2980B9',weight:3,opacity:.7,dashArray:'8,4'}).addTo(m).bindPopup('<b>Brickell Ave</b> — ~35.000 veh/día');
+  L.polyline([[25.7655,-80.1700],[25.7655,-80.2200]],{color:'#E74C3C',weight:3,opacity:.7,dashArray:'8,4'}).addTo(m).bindPopup('<b>SW 8th St / Calle Ocho</b> — ~28.000 veh/día');
+}
+
+function buildCoralGablesSection(){buildCGCorridors();buildCGSubGrid();buildCGLocations();buildCGLocTable();buildCGCompTable();buildCGMap();}
+function buildCGCorridors(){
+  var g=document.getElementById('cgCorridorGrid');if(!g)return;
+  g.innerHTML=CORAL_GABLES_CORRIDORS.map(function(c){
+    return '<div style="background:#1a1f2e;border-radius:8px;padding:12px;border-left:4px solid '+c.color+'">'+
+      '<div style="font-size:.9rem;font-weight:700;color:'+c.color+'">'+c.name+'</div>'+
+      '<div style="font-size:.72rem;color:#9ba4b4;font-style:italic;margin-bottom:6px;">'+c.nickname+'</div>'+
+      '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px;">'+
+        '<span style="background:#232a3b;border-radius:4px;padding:2px 7px;font-size:.71rem;color:#c8d0e0;">🚗 '+c.aadt+'</span>'+
+        '<span style="background:#232a3b;border-radius:4px;padding:2px 7px;font-size:.71rem;color:#c8d0e0;">📏 '+c.length+'</span>'+
+      '</div>'+
+      '<div style="font-size:.74rem;color:#9ba4b4;line-height:1.45;margin-bottom:5px;">'+c.desc+'</div>'+
+      '<div style="font-size:.71rem;color:#7a8499;">🏪 '+c.anchors+'</div>'+
+    '</div>';
+  }).join('');
+}
+function buildCGSubGrid(){
+  var g=document.getElementById('cgSubGrid');if(!g)return;
+  g.innerHTML=CORAL_GABLES_SUBZONES.map(function(z){
+    return '<div style="background:#1a1f2e;border-radius:8px;padding:10px;border-top:3px solid '+z.color+';">'+
+      (z.badge?'<span style="background:#1a0a2a;color:#8E44AD;border-radius:4px;padding:1px 6px;font-size:.65rem;font-weight:700;margin-bottom:4px;display:inline-block;">★ Top</span><br>':'')+
+      '<div style="font-size:.82rem;font-weight:700;color:#e0e5f0;margin-bottom:2px;">'+z.name+'</div>'+
+      '<div style="font-size:.7rem;color:#9ba4b4;font-style:italic;margin-bottom:6px;">'+z.subtitle+'</div>'+
+      '<div style="font-size:1.4rem;font-weight:900;color:'+z.color+';">'+z.score+'<span style="font-size:.65rem;color:#7a8499;">/100</span></div>'+
+      '<div style="font-size:.7rem;color:#7a8499;margin-top:4px;">'+z.rent+' sqft · '+z.aadt+'</div>'+
+      '<div style="font-size:.69rem;color:#c8d0e0;margin-top:4px;line-height:1.4;">'+z.note+'</div>'+
+    '</div>';
+  }).join('');
+}
+function buildCGLocations(){
+  var g=document.getElementById('cgLocGrid');if(!g)return;
+  var tlbl=T('lbl_traffic');
+  g.innerHTML=CORAL_GABLES_LOCATIONS.map(function(loc,i){
+    var st='★'.repeat(loc.traffic)+'☆'.repeat(5-loc.traffic);
+    return '<div class="loc-card" style="border-left-color:'+loc.color+'">'+
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:6px">'+
+        '<div class="loc-name" style="font-size:.83rem"><span style="background:'+loc.color+';color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;margin-right:4px;">'+(i+1)+'</span>'+loc.name+(loc.rec?' <span class="bdg bdg-g">★ '+T('lbl_rec')+'</span>':'')+'</div>'+
+        '<div class="loc-score" style="color:'+loc.color+'">'+loc.score+'</div>'+
+      '</div>'+
+      '<div style="font-size:.68rem;color:#999;margin:2px 0 3px">'+loc.addr+'</div>'+
+      '<div class="loc-stars" style="margin-bottom:3px">'+st+' '+tlbl+'</div>'+
+      '<div class="loc-meta">💵 <b>'+loc.monthly+'</b> &nbsp;·&nbsp; 📐 '+loc.size+'<br><span style="color:#1E8449;font-size:.72rem">✅ '+loc.pros+'</span></div>'+
+    '</div>';
+  }).join('');
+}
+function buildCGLocTable(){
+  var t=document.getElementById('cgLocTable');if(!t)return;
+  var th=T('th_loc');
+  t.innerHTML='<thead><tr>'+th.map(function(h){return'<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'+
+    CORAL_GABLES_LOCATIONS.map(function(loc,i){
+      var sc=loc.score>=90?'#27AE60':loc.score>=80?'#E67E22':'#7F8C8D';
+      var st='★'.repeat(loc.traffic)+'☆'.repeat(5-loc.traffic);
+      return '<tr'+(loc.rec?' class="hi"':'')+'>'+
+        '<td><b><span style="background:'+loc.color+';color:#fff;border-radius:50%;width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:900;margin-right:4px;">'+(i+1)+'</span>'+loc.name+(loc.rec?' 🏆':'')+'</b></td>'+
+        '<td style="color:#777;font-size:.71rem;white-space:nowrap">'+loc.addr+'</td>'+
+        '<td style="white-space:nowrap">'+loc.size+'</td>'+
+        '<td style="white-space:nowrap">'+loc.rent+'</td>'+
+        '<td style="white-space:nowrap"><b>'+loc.monthly+'</b></td>'+
+        '<td style="white-space:nowrap">'+st+'</td>'+
+        '<td style="font-size:.71rem;color:#555">'+loc.anchors+'</td>'+
+        '<td style="color:#1E8449;font-size:.71rem">'+loc.pros+'</td>'+
+        '<td style="color:#8B0000;font-size:.71rem">'+loc.cons+'</td>'+
+        '<td style="color:'+sc+';font-weight:900;font-size:.95rem;text-align:center">'+loc.score+'</td>'+
+      '</tr>';
+    }).join('')+'</tbody>';
+}
+function buildCGCompTable(){
+  var t=document.getElementById('cgCompTbl');if(!t)return;
+  var TS={'Alta':'background:#FADBD8;color:#7B241C','Media':'background:#FDEBD0;color:#8B4000','Media-Baja':'background:#FEF9E7;color:#8B6F00','Baja':'background:#EAFAF1;color:#1E8449','Ninguna':'background:#D5F5E3;color:#1E8449'};
+  var tc=T('th_comp');
+  t.innerHTML='<thead><tr>'+tc.map(function(h){return'<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'+
+    CORAL_GABLES_COMPETITORS.map(function(c){
+      var sty=TS[c.threat]||'background:#EEE;color:#333';
+      return '<tr>'+
+        '<td><b>'+c.name+'</b></td>'+
+        '<td style="font-size:.71rem;color:#777">'+c.addr+'</td>'+
+        '<td style="font-size:.74rem">'+c.type+'</td>'+
+        '<td style="white-space:nowrap">'+c.price+'</td>'+
+        '<td style="white-space:nowrap">★ '+c.rating+'</td>'+
+        '<td style="font-size:.74rem">'+c.wait+'</td>'+
+        '<td style="font-size:.72rem;color:#555">'+c.services+'</td>'+
+        '<td style="font-size:.71rem;color:#8B0000">'+c.weaknesses+'</td>'+
+        '<td><span style="border-radius:4px;padding:2px 7px;font-size:.71rem;font-weight:700;'+sty+'">'+c.threat+'</span></td>'+
+      '</tr>';
+    }).join('')+'</tbody>';
+}
+function buildCGMap(){
+  var el=document.getElementById('map-cg');if(!el||el._leaflet_id)return;
+  var m=L.map('map-cg',{zoomControl:true}).setView([25.733,-80.265],13);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap © CARTO',maxZoom:19}).addTo(m);
+  var CGSC=[[25.7478,-80.2544],[25.7090,-80.2720],[25.7490,-80.2550],[25.7488,-80.2582],[25.7486,-80.2596],[25.7320,-80.2640],[25.7500,-80.2850],[25.7200,-80.2650]];
+  CORAL_GABLES_SUBZONES.forEach(function(z,i){
+    L.circle(CGSC[i],{color:z.color,fillColor:z.color,fillOpacity:.15,weight:z.badge?3:2,radius:250,dashArray:z.badge?null:'5,5'}).addTo(m)
+      .bindPopup('<b>'+z.name+'</b> — <b>'+z.score+'/100</b><br><em>'+z.subtitle+'</em><br>Alquiler: '+z.rent+'/sqft<br>Competidores: '+z.comp+'<br><small>'+z.note+'</small>',{maxWidth:270});
+  });
+  CORAL_GABLES_LOCATIONS.forEach(function(loc,i){
+    var col=i<2?'#27AE60':i<5?'#E67E22':'#7F8C8D';
+    var sz=i<2?34:26;
+    L.marker([loc.lat,loc.lng],{icon:L.divIcon({html:'<div style="background:'+col+';color:#fff;border-radius:50%;width:'+sz+'px;height:'+sz+'px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:'+(i<2?'.85rem':'.72rem')+';border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.5)'+(i<2?';box-shadow:0 0 10px '+col+',0 2px 8px rgba(0,0,0,.5)':'')+'>'+(i+1)+'</div>',className:'',iconSize:[sz,sz],iconAnchor:[sz/2,sz/2]})}).addTo(m)
+      .bindPopup('<b>#'+(i+1)+' '+loc.name+'</b><br>Score: <b>'+loc.score+'</b><br>'+loc.monthly+'<br><small>'+loc.addr+'</small>');
+  });
+  CORAL_GABLES_MAP_POIS.forEach(function(p){
+    if(p.top)return;
+    var bg=p.comp?'#8B0000':'#1A1A2E';
+    var border=p.comp?'#E74C3C':'#3a4560';
+    L.marker([p.lat,p.lng],{icon:L.divIcon({html:'<div style="background:'+bg+';color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:.72rem;border:2px solid '+border+';box-shadow:0 1px 5px rgba(0,0,0,.4)'+(p.comp?';box-shadow:0 0 8px #E74C3C60':'')+'">'+p.e+'</div>',className:'',iconSize:[24,24],iconAnchor:[12,12]})}).addTo(m)
+      .bindPopup('<b>'+p.e+' '+p.n+'</b><br><small>'+p.d+'</small>',{maxWidth:240});
+  });
+  L.polyline([[25.7480,-80.2536],[25.7480,-80.2600]],{color:'#8E44AD',weight:3,opacity:.7,dashArray:'8,4'}).addTo(m).bindPopup('<b>Miracle Mile</b> — ~18.000 veh/día');
+  L.polyline([[25.7200,-80.2580],[25.7600,-80.2580]],{color:'#6C3483',weight:3,opacity:.7,dashArray:'8,4'}).addTo(m).bindPopup('<b>Ponce de León Blvd</b> — ~22.000 veh/día');
+  L.polyline([[25.7320,-80.2200],[25.7320,-80.3100]],{color:'#A569BD',weight:3,opacity:.7,dashArray:'8,4'}).addTo(m).bindPopup('<b>Bird Road / SW 40th St</b> — ~28.000 veh/día');
+}
+// ── END BRICKELL & CORAL GABLES ───────────────────────────────────────────
+
+
+// ── LANGUAGE ─────────────────────────────────────────────────────────────────────────────
 let currentLang = 'es';
 const TR = {
   es:{
@@ -832,6 +1580,29 @@ const TR = {
     ck5:'Mercado salones EE.UU. 2024', ck6:'Población hispana Miami-Dade',
     zona_rec:'<strong>🥇 Zona recomendada: Doral (Score 89/100)</strong><br>Mayor concentración de comunidad brasileña de EE.UU. · Alquiler controlado ($30–$60/sqft) · Sin competencia directa de blowout express · Ingreso mediano $94K · Efecto boca en boca acelerado.',
     exec_p1:'Miami reúne las condiciones ideales para Fast Escova: es el hub brasileño número 1 de EE.UU. (300.000–450.000 personas de origen brasileño), tiene una población hispana del 69,1% con alto índice de gasto en belleza, y un clima subtropical de alta humedad que genera demanda estructural de blowouts 2–4 veces por mes. Ningún competidor actual combina autenticidad brasileña + servicio express + portafolio completo de belleza.',
+    s6bt:'6b. Doral — Análisis Profundo de Micro-Ubicaciones',
+    s6bs:'Sub-zonas, corredores viales, 8 candidatos con direcciones y desglose completo, 10 competidores analizados',
+    dkpi1:'Personas de origen brasileño en Doral',dkpi2:'Negocios brasileños activos en NW 87 Ave',dkpi3:'Cadenas blowout express en toda Doral',dkpi4:'Población hispana en Doral',dkpi5:'Ingreso mediano del hogar en Doral',
+    doral_intro:'<strong>¿Por qué Doral específicamente?</strong> Doral concentra ~81.000 personas de origen brasileño en tan solo 53 km² — la mayor densidad de comunidad brasileña de toda América del Norte. La zona de <strong>NW 87 Ave</strong> es la <em>"Avenida Brasileña"</em>: churrascarias, padarias, supermercados Bravo y Presidente, iglesias evangelistas, consulado, colegio brasileño y +200 comercios BR activos. La demanda de blowout express está estructuralmente arraigada en la cultura BR y <strong>completamente desatendida por cadenas</strong>: BLO a 22 km (Aventura Mall), Drybar a 18 km (Brickell City Centre).',
+    doral_gap:'<strong>✅ Brecha estratégica confirmada (first-mover absoluto):</strong> Doral tiene 3–4 salones brasileños artesanales (sin cita previa, espera 2–3 h, sin concepto express ni estandarización) y <em>ninguna cadena de blowout express</em>. BLO: Aventura Mall (22 km). Drybar: Brickell City Centre (18 km). Great Clips y Regis: solo corte genérico, sin identidad brasileña. <strong>Fast Escova sería la primera y única cadena de belleza express con identidad brasileña en Doral.</strong>',
+    ct_doral_map:'Mapa Doral — Sub-zonas, POIs y Competidores',doral_map_lgd:'🟢 Sub-zonas (score) · ✂️ Competidores en rojo · 🛍️ Malls · 🇧🇷 Hubs brasileños · ⛪ Iglesias BR',ct_doral_locs:'Candidatos de Local — Ranking Rápido',ct_doral_corr:'Corredores Principales de Doral — Tráfico Vehicular y Potencial Comercial',ct_doral_sub:'Sub-Zonas de Doral — Score de Potencial Fast Escova (sobre 100)',ct_doral_tbl:'Análisis Detallado por Candidato de Local — Dirección, Tráfico, Anchors, Costo y Pros/Contras',ct_doral_comp:'Competidores en Doral y Alrededores — Análisis Completo (10 entradas)',
+    // Brickell section
+    s6ct:'6c. Brickell — Análisis Profundo de Micro-Ubicaciones',
+    s6cs:'Sub-zonas, corredores, 8 candidatos con direcciones, 10 competidores, mapa interactivo',
+    bkpi1:'Residentes en Brickell / SW Miami',bkpi2:'Ingreso mediano del hogar',bkpi3:'Cadena blowout express (Drybar)',bkpi4:'Población hispana en Brickell',bkpi5:'Score Fast Escova — Zona #2',
+    brickell_intro:'<strong>¿Por qué Brickell como Fase 2?</strong> Brickell es el <em>Manhattan de Miami</em>: el distrito financiero más dinámico de América Latina, con +80 torres residenciales de lujo, sedes de bancos multinacionales y una clientela joven profesional de alto poder adquisitivo. El ingreso mediano supera los <strong>$113.000/año</strong>. La comunidad brasileña representa ~8% de la población. La única cadena blowout express presente es <strong>Drybar</strong> (Brickell City Centre) — sin identidad brasileña y a precio elevado ($60–90). <strong>Oportunidad:</strong> posicionarse como la alternativa express con autenticidad BR a precio accesible.',
+    brickell_gap:'<strong>✅ Brecha estratégica Brickell:</strong> Solo Drybar (cadena, sin identidad BR, $60–90) cubre el segmento express. Ningún salón tiene concepto BR + express + precio accesible para la ejecutiva brasileña. <strong>Fast Escova en Brickell capturaría a la profesional brasileña que hoy va a Drybar por falta de alternativa con identidad cultural.</strong>',
+    ct_brickell_map:'Mapa Brickell — Sub-zonas, POIs y Competidores',brickell_map_lgd:'🟢 Sub-zonas (score) · ✂️ Competidores en rojo · 🛍️ Malls · 🏙️ Hubs corporativos · 🏠 Condos luxury',ct_brickell_locs:'Candidatos de Local — Ranking Rápido',ct_brickell_corr:'Corredores Principales de Brickell — Tráfico Vehicular y Potencial Comercial',ct_brickell_sub:'Sub-Zonas de Brickell — Score de Potencial Fast Escova (sobre 100)',ct_brickell_tbl:'Análisis Detallado por Candidato de Local — Dirección, Tráfico, Anchors, Costo y Pros/Contras',ct_brickell_comp:'Competidores en Brickell y Alrededores — Análisis Completo (10 entradas)',
+    // Coral Gables section
+    s6dt:'6d. Coral Gables — Análisis Profundo de Micro-Ubicaciones',
+    s6ds:'Sub-zonas, corredores, 8 candidatos con direcciones, 10 competidores, mapa interactivo',
+    cgkpi1:'Residentes en Coral Gables',cgkpi2:'Ingreso mediano del hogar',cgkpi3:'Cadenas blowout express (BLO + Drybar CG)',cgkpi4:'Población hispana en Coral Gables',cgkpi5:'Score Fast Escova — Zona #3',
+    cg_intro:'<strong>¿Por qué Coral Gables como Fase 3?</strong> Coral Gables es la zona de mayor ingreso y más cohesionada de Miami — arquitectura mediterránea, Miracle Mile como eje comercial premium, Universidad de Miami, Biltmore Hotel. El ingreso mediano supera los <strong>$131.000/año</strong>. La presencia brasileña es del ~5% pero con alto poder adquisitivo. El mercado está más competido: BLO tiene local en Village of Merrick Park y hay un Drybar cercano. <strong>Oportunidad diferenciada:</strong> formato boutique premium en Miracle Mile con identidad BR de autor.',
+    cg_gap:'<strong>⚠️ Mercado más competido — diferenciación clave:</strong> BLO (Merrick Park) y Drybar nearby generan mayor presión. La estrategia recomendada es formato boutique premium en Miracle Mile — diferenciarse por identidad BR + portafolio completo (uñas, cejas, maquillaje) vs. blowout-only de BLO/Drybar. <strong>El alto ingreso ($131K) justifica ticket promedio más alto: $90–160 vs. $70–120 en Doral.</strong>',
+    ct_cg_map:'Mapa Coral Gables — Sub-zonas, POIs y Competidores',cg_map_lgd:'🟢 Sub-zonas (score) · ✂️ Competidores en rojo · 🛍️ Malls · 🏛️ Hitos históricos · 🎓 Universidad',ct_cg_locs:'Candidatos de Local — Ranking Rápido',ct_cg_corr:'Corredores Principales de Coral Gables — Tráfico Vehicular y Potencial Comercial',ct_cg_sub:'Sub-Zonas de Coral Gables — Score de Potencial Fast Escova (sobre 100)',ct_cg_tbl:'Análisis Detallado por Candidato de Local — Dirección, Tráfico, Anchors, Costo y Pros/Contras',ct_cg_comp:'Competidores en Coral Gables y Alrededores — Análisis Completo (10 entradas)',
+    th_loc:['Candidato de Local','Dirección ref.','m²','Alq./año','Alq./mes est.','Tráfico vial','Anchors vecinos','Pros','Contras','Score'],
+    th_comp:['Competidor','Dirección','Tipo','Precio','Rating','Espera','Servicios','Debilidades vs. Fast Escova','Amenaza'],
+    lbl_traffic:'tráfico',lbl_rec:'Rec.',
   },
   pt:{
     conf:'🔒 Confidencial', cv_tag:'Resumo Executivo — Análise de Mercado Miami',
@@ -841,12 +1612,34 @@ const TR = {
     ck5:'Mercado salões EUA 2024', ck6:'População hispana Miami-Dade',
     zona_rec:'<strong>🥇 Zona recomendada: Doral (Score 89/100)</strong><br>Maior concentração de comunidade brasileira dos EUA · Aluguel controlado ($30–$60/sqft) · Sem concorrência direta de blowout express · Renda mediana $94K · Efeito boca a boca acelerado.',
     exec_p1:'Miami reúne as condições ideais para a Fast Escova: é o hub brasileiro número 1 dos EUA (300.000–450.000 pessoas de origem brasileira), tem uma população hispana de 69,1% com alto índice de gasto em beleza, e um clima subtropical de alta umidade que gera demanda estrutural de escovas 2–4 vezes por mês. Nenhum concorrente atual combina autenticidade brasileira + serviço express + portfólio completo de beleza.',
+    s6bt:'6b. Doral — Análise Profunda de Micro-Localizações',
+    s6bs:'Sub-zonas, corredores viários, 8 candidatos com endereços e detalhamento completo, 10 concorrentes analisados',
+    dkpi1:'Pessoas de origem brasileira em Doral',dkpi2:'Negócios brasileiros ativos na NW 87 Ave',dkpi3:'Redes de blowout express em toda Doral',dkpi4:'População hispana em Doral',dkpi5:'Renda mediana domiciliar em Doral',
+    doral_intro:'<strong>Por que Doral especificamente?</strong> Doral concentra ~81.000 pessoas de origem brasileira em apenas 53 km² — a maior densidade de comunidade brasileira de toda a América do Norte. A região da <strong>NW 87 Ave</strong> é a <em>"Avenida Brasileira"</em>: churrascarias, padarias, supermercados Bravo e Presidente, igrejas evangélicas, consulado, colégio brasileiro e +200 comércios BR ativos. A demanda por escova express está estruturalmente enraizada na cultura BR e <strong>completamente desatendida por redes</strong>: BLO a 22 km (Aventura Mall), Drybar a 18 km (Brickell City Centre).',
+    doral_gap:'<strong>✅ Brecha estratégica confirmada (first-mover absoluto):</strong> Doral tem 3–4 salões brasileiros artesanais (sem hora marcada, espera 2–3 h, sem conceito express nem padronização) e <em>nenhuma rede de blowout express</em>. BLO: Aventura Mall (22 km). Drybar: Brickell City Centre (18 km). Great Clips e Regis: apenas corte genérico, sem identidade brasileira. <strong>A Fast Escova seria a primeira e única rede de beleza express com identidade brasileira em Doral.</strong>',
+    ct_doral_map:'Mapa Doral — Sub-zonas, POIs e Concorrentes',doral_map_lgd:'🟢 Sub-zonas (score) · ✂️ Concorrentes em vermelho · 🛍️ Shoppings · 🇧🇷 Hubs brasileiros · ⛪ Igrejas BR',ct_doral_locs:'Candidatos de Imóvel — Ranking Rápido',ct_doral_corr:'Corredores Principais de Doral — Tráfego Viário e Potencial Comercial',ct_doral_sub:'Sub-Zonas de Doral — Score de Potencial Fast Escova (sobre 100)',ct_doral_tbl:'Análise Detalhada por Candidato de Imóvel — Endereço, Tráfego, Anchors, Custo e Prós/Contras',ct_doral_comp:'Concorrentes em Doral e Arredores — Análise Completa (10 entradas)',
+    // Brickell section
+    s6ct:'6c. Brickell — Análise Profunda de Micro-Localizações',
+    s6cs:'Sub-zonas, corredores, 8 candidatos com endereços, 10 concorrentes, mapa interativo',
+    bkpi1:'Residentes em Brickell / SW Miami',bkpi2:'Renda mediana domiciliar',bkpi3:'Rede de blowout express (Drybar)',bkpi4:'População hispana em Brickell',bkpi5:'Score Fast Escova — Zona #2',
+    brickell_intro:'<strong>Por que Brickell como Fase 2?</strong> Brickell é a <em>Manhattan de Miami</em>: o distrito financeiro mais dinâmico da América Latina, com +80 torres residenciais de luxo, sedes de bancos multinacionais e uma clientela jovem profissional de alto poder aquisitivo. A renda mediana supera <strong>$113.000/ano</strong>. A comunidade brasileira representa ~8% da população. A única rede de blowout express presente é a <strong>Drybar</strong> (Brickell City Centre) — sem identidade brasileira e com preço elevado ($60–90). <strong>Oportunidade:</strong> posicionar-se como a alternativa express com autenticidade BR a preço acessível.',
+    brickell_gap:'<strong>✅ Brecha estratégica Brickell:</strong> Apenas o Drybar (rede, sem identidade BR, $60–90) cobre o segmento express. Nenhum salão tem conceito BR + express + preço acessível para a executiva brasileira. <strong>A Fast Escova em Brickell capturaria a profissional brasileira que hoje usa o Drybar por falta de alternativa com identidade cultural.</strong>',
+    ct_brickell_map:'Mapa Brickell — Sub-zonas, POIs e Concorrentes',brickell_map_lgd:'🟢 Sub-zonas (score) · ✂️ Concorrentes em vermelho · 🛍️ Shoppings · 🏙️ Hubs corporativos · 🏠 Condos luxury',ct_brickell_locs:'Candidatos de Imóvel — Ranking Rápido',ct_brickell_corr:'Corredores Principais de Brickell — Tráfego Viário e Potencial Comercial',ct_brickell_sub:'Sub-Zonas de Brickell — Score de Potencial Fast Escova (sobre 100)',ct_brickell_tbl:'Análise Detalhada por Candidato de Imóvel — Endereço, Tráfego, Anchors, Custo e Prós/Contras',ct_brickell_comp:'Concorrentes em Brickell e Arredores — Análise Completa (10 entradas)',
+    // Coral Gables section
+    s6dt:'6d. Coral Gables — Análise Profunda de Micro-Localizações',
+    s6ds:'Sub-zonas, corredores, 8 candidatos com endereços, 10 concorrentes, mapa interativo',
+    cgkpi1:'Residentes em Coral Gables',cgkpi2:'Renda mediana domiciliar',cgkpi3:'Redes de blowout express (BLO + Drybar CG)',cgkpi4:'População hispana em Coral Gables',cgkpi5:'Score Fast Escova — Zona #3',
+    cg_intro:'<strong>Por que Coral Gables como Fase 3?</strong> Coral Gables é a zona de maior renda e mais coesa de Miami — arquitetura mediterrânea, Miracle Mile como eixo comercial premium, Universidade de Miami, Hotel Biltmore. A renda mediana supera <strong>$131.000/ano</strong>. A presença brasileira é de ~5% mas com alto poder aquisitivo. O mercado está mais competido: BLO tem loja no Village of Merrick Park e há um Drybar próximo. <strong>Oportunidade diferenciada:</strong> formato boutique premium na Miracle Mile com identidade BR de autor.',
+    cg_gap:'<strong>⚠️ Mercado mais competido — diferenciação-chave:</strong> BLO (Merrick Park) e Drybar geram maior pressão. A estratégia recomendada é formato boutique premium na Miracle Mile — diferenciar-se por identidade BR + portfólio completo (unhas, sobrancelhas, maquiagem) vs. blowout-only do BLO/Drybar. <strong>A renda alta ($131K) justifica ticket médio mais elevado: $90–160 vs. $70–120 em Doral.</strong>',
+    ct_cg_map:'Mapa Coral Gables — Sub-zonas, POIs e Concorrentes',cg_map_lgd:'🟢 Sub-zonas (score) · ✂️ Concorrentes em vermelho · 🛍️ Shoppings · 🏛️ Marcos históricos · 🎓 Universidade',ct_cg_locs:'Candidatos de Imóvel — Ranking Rápido',ct_cg_corr:'Corredores Principais de Coral Gables — Tráfego Viário e Potencial Comercial',ct_cg_sub:'Sub-Zonas de Coral Gables — Score de Potencial Fast Escova (sobre 100)',ct_cg_tbl:'Análise Detalhada por Candidato de Imóvel — Endereço, Tráfego, Anchors, Custo e Prós/Contras',ct_cg_comp:'Concorrentes em Coral Gables e Arredores — Análise Completa (10 entradas)',
+    th_loc:['Candidato de Imóvel','Endereço ref.','m²','Alug./ano','Alug./mês est.','Tráfego viário','Anchors vizinhos','Prós','Contras','Score'],
+    th_comp:['Concorrente','Endereço','Tipo','Preço','Rating','Espera','Serviços','Fraquezas vs. Fast Escova','Ameaça'],
+    lbl_traffic:'tráfego',lbl_rec:'Rec.',
   }
 };
 function T(k){ return TR[currentLang][k] || TR.es[k] || k; }
 
 function applyLang() {
-  const l = currentLang;
   const set = (id,v) => { const e=document.getElementById(id); if(e) e.innerHTML=v; };
   set('lbl-conf', T('conf'));
   set('cv-tag', T('cv_tag'));
@@ -854,7 +1647,42 @@ function applyLang() {
   set('ck4', T('ck4')); set('ck5', T('ck5')); set('ck6', T('ck6'));
   set('zona-rec-box', T('zona_rec'));
   set('exec-p1', T('exec_p1'));
-  // Rebuild dynamic sections
+  // Doral section
+  set('s6bt',T('s6bt'));set('s6bs',T('s6bs'));
+  set('dkpi1',T('dkpi1'));set('dkpi2',T('dkpi2'));set('dkpi3',T('dkpi3'));set('dkpi4',T('dkpi4'));set('dkpi5',T('dkpi5'));
+  set('doral-intro',T('doral_intro'));set('doral-gap-box',T('doral_gap'));
+  set('ct-doral-map',T('ct_doral_map'));set('doral-map-lgd',T('doral_map_lgd'));
+  set('ct-doral-locs',T('ct_doral_locs'));set('ct-doral-corr',T('ct_doral_corr'));
+  set('ct-doral-sub',T('ct_doral_sub'));set('ct-doral-tbl',T('ct_doral_tbl'));set('ct-doral-comp',T('ct_doral_comp'));
+  var _cg=document.getElementById('doralCorridorGrid');if(_cg){_cg.innerHTML='';buildDoralCorridors();}
+  var _sg=document.getElementById('doralSubGrid');if(_sg){_sg.innerHTML='';buildDoralSubGrid();}
+  var _lg=document.getElementById('doralLocGrid');if(_lg){_lg.innerHTML='';buildDoralLocations();}
+  var _lt=document.getElementById('doralLocTable');if(_lt){_lt.innerHTML='';buildDoralLocTable();}
+  var _ct=document.getElementById('doralCompTbl');if(_ct){_ct.innerHTML='';buildDoralCompTable();}
+  // Brickell section
+  set('s6ct',T('s6ct'));set('s6cs',T('s6cs'));
+  set('bkpi1',T('bkpi1'));set('bkpi2',T('bkpi2'));set('bkpi3',T('bkpi3'));set('bkpi4',T('bkpi4'));set('bkpi5',T('bkpi5'));
+  set('brickell-intro',T('brickell_intro'));set('brickell-gap-box',T('brickell_gap'));
+  set('ct-brickell-map',T('ct_brickell_map'));set('brickell-map-lgd',T('brickell_map_lgd'));
+  set('ct-brickell-locs',T('ct_brickell_locs'));set('ct-brickell-corr',T('ct_brickell_corr'));
+  set('ct-brickell-sub',T('ct_brickell_sub'));set('ct-brickell-tbl',T('ct_brickell_tbl'));set('ct-brickell-comp',T('ct_brickell_comp'));
+  var _bc=document.getElementById('brickellCorridorGrid');if(_bc){_bc.innerHTML='';buildBrickellCorridors();}
+  var _bs=document.getElementById('brickellSubGrid');if(_bs){_bs.innerHTML='';buildBrickellSubGrid();}
+  var _bl=document.getElementById('brickellLocGrid');if(_bl){_bl.innerHTML='';buildBrickellLocations();}
+  var _blt=document.getElementById('brickellLocTable');if(_blt){_blt.innerHTML='';buildBrickellLocTable();}
+  var _bct=document.getElementById('brickellCompTbl');if(_bct){_bct.innerHTML='';buildBrickellCompTable();}
+  // Coral Gables section
+  set('s6dt',T('s6dt'));set('s6ds',T('s6ds'));
+  set('cgkpi1',T('cgkpi1'));set('cgkpi2',T('cgkpi2'));set('cgkpi3',T('cgkpi3'));set('cgkpi4',T('cgkpi4'));set('cgkpi5',T('cgkpi5'));
+  set('coral-gables-intro',T('cg_intro'));set('cg-gap-box',T('cg_gap'));
+  set('ct-cg-map',T('ct_cg_map'));set('cg-map-lgd',T('cg_map_lgd'));
+  set('ct-cg-locs',T('ct_cg_locs'));set('ct-cg-corr',T('ct_cg_corr'));
+  set('ct-cg-sub',T('ct_cg_sub'));set('ct-cg-tbl',T('ct_cg_tbl'));set('ct-cg-comp',T('ct_cg_comp'));
+  var _cgc=document.getElementById('cgCorridorGrid');if(_cgc){_cgc.innerHTML='';buildCGCorridors();}
+  var _cgs=document.getElementById('cgSubGrid');if(_cgs){_cgs.innerHTML='';buildCGSubGrid();}
+  var _cgl=document.getElementById('cgLocGrid');if(_cgl){_cgl.innerHTML='';buildCGLocations();}
+  var _cglt=document.getElementById('cgLocTable');if(_cglt){_cglt.innerHTML='';buildCGLocTable();}
+  var _cgct=document.getElementById('cgCompTbl');if(_cgct){_cgct.innerHTML='';buildCGCompTable();}
   document.getElementById('riskList').innerHTML='';
   buildRisks();
   document.getElementById('stepsGrid').innerHTML='';
@@ -868,17 +1696,20 @@ function toggleLang() {
   applyLang();
 }
 
-// ── INIT ─────────────────────────────────────────────────────────────────────
+// ── INIT ───────────────────────────────────────────────────────────────────────────────────
 window.addEventListener('load', function() {
-  buildZoneTable();
-  buildZoneMini();
-  buildRisks();
-  buildSteps();
-  buildMap();
-  // Charts — double rAF ensures paint happened
+  function safe(fn){ try{fn();}catch(e){console.warn('Build error:',e);} }
+  safe(buildZoneTable);
+  safe(buildZoneMini);
+  safe(buildRisks);
+  safe(buildSteps);
+  safe(buildMap);
+  safe(buildDoralSection);
+  safe(buildBrickellSection);
+  safe(buildCoralGablesSection);
   requestAnimationFrame(function() {
     requestAnimationFrame(function() {
-      buildCharts();
+      safe(buildCharts);
     });
   });
 });
