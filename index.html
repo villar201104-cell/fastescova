@@ -556,66 +556,127 @@ footer strong{color:var(--y);}
 <!-- ═══ 7. FINANCIERO ═══ -->
 <div class="sec" id="financiero">
   <div class="sec-hdr"><div class="sec-icon">💰</div>
-    <div><div class="sec-title" id="s7t">7. Proyecciones Financieras — Doral (Zona Recomendada)</div>
-    <div class="sec-sub" id="s7s">Estimaciones basadas en benchmarks de la industria. Escenario de referencia: Base. Local tipo 150–200 m², 5–6 estaciones.</div></div>
+    <div><div class="sec-title" id="s7t">7. Modelo Financiero — Fast Escova International</div>
+    <div class="sec-sub" id="s7s">5-Year Unit P&L · Fuente: FastEscova_PL_Model_Miami_rev1.xlsx · 30 tickets/día · AOV $90 · 310 días/año · Alquiler $5.000/mes</div></div>
   </div>
-  <div class="fin-hero">
-    <div class="g4">
-      <div class="kpi" style="background:transparent;border:none;text-align:left;padding:0;box-shadow:none;">
-        <div class="kv" id="fh-inv">$135K–$249K</div><div class="kl" id="fhl-inv">Inversión inicial estimada</div></div>
-      <div class="kpi" style="background:transparent;border:none;text-align:left;padding:0;box-shadow:none;">
-        <div class="kv" id="fh-rev">$450K–$672K</div><div class="kl" id="fhl-rev">Ingresos anuales (escenario base)</div></div>
-      <div class="kpi" style="background:transparent;border:none;text-align:left;padding:0;box-shadow:none;">
-        <div class="kv" id="fh-ebitda">~$181K</div><div class="kl" id="fhl-ebitda">EBITDA estimado (escenario base)</div></div>
-      <div class="kpi" style="background:transparent;border:none;text-align:left;padding:0;box-shadow:none;">
-        <div class="kv" id="fh-margin">~30%</div><div class="kl" id="fhl-margin">Margen EBITDA</div></div>
+
+  <!-- HERO KPIs -->
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px;">
+    <div class="kpi" style="border-top-color:#27AE60"><div class="kv" style="color:#27AE60" id="fh-inv">$210K</div><div class="kl" id="fhl-inv">Inversión inicial total (CAPEX)</div></div>
+    <div class="kpi"><div class="kv" id="fh-rev">$862K</div><div class="kl" id="fhl-rev">Revenue bruto año 1</div></div>
+    <div class="kpi" style="border-top-color:#E67E22"><div class="kv" style="color:#E67E22" id="fh-ebitda">$71K</div><div class="kl" id="fhl-ebitda">EBITDA año 1 (8,9%)</div></div>
+    <div class="kpi" style="border-top-color:#2980B9"><div class="kv" style="color:#2980B9" id="fh-margin">$207K</div><div class="kl" id="fhl-margin">EBITDA año 5 (17,7%)</div></div>
+    <div class="kpi" style="border-top-color:#8E44AD"><div class="kv" style="color:#8E44AD" id="fh-payback">Año 3</div><div class="kl" id="fhl-payback">Payback (CF acumulado +)</div></div>
+  </div>
+
+  <!-- ROW 1: CAPEX + Chart EBITDA -->
+  <div class="g2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="ct" id="ct-inv">CAPEX — Desglose Inversión Inicial</div>
+      <table class="tbl" style="margin-top:10px;">
+        <thead><tr><th id="th-ii">Ítem</th><th id="th-imin" style="text-align:right">Monto (USD)</th><th id="th-imax">Descripción</th></tr></thead>
+        <tbody>
+          <tr><td id="ii1">Adecuación del local</td><td style="text-align:right;font-weight:700">$70.000</td><td style="font-size:.72rem;color:#666">Paredes, pisos, eléctrico, plomería</td></tr>
+          <tr><td id="ii2">FF&amp;E (Mobiliario y Equipo)</td><td style="text-align:right;font-weight:700">$30.000</td><td style="font-size:.72rem;color:#666">Sillas, estaciones, secadores, nail tables</td></tr>
+          <tr><td id="ii3">Señalética y Branding</td><td style="text-align:right;font-weight:700">$15.000</td><td style="font-size:.72rem;color:#666">Interior + exterior, décor</td></tr>
+          <tr><td id="ii4">Tecnología (POS/Booking)</td><td style="text-align:right;font-weight:700">$12.000</td><td style="font-size:.72rem;color:#666">POS, software reservas, dispositivos</td></tr>
+          <tr><td id="ii5">Inventario inicial</td><td style="text-align:right;font-weight:700">$8.000</td><td style="font-size:.72rem;color:#666">Stock apertura: cabello, uñas, retail</td></tr>
+          <tr><td id="ii6">Franchise Fee (inicial)</td><td style="text-align:right;font-weight:700">$45.000</td><td style="font-size:.72rem;color:#666">Fee único al franquiciante</td></tr>
+          <tr><td id="ii7">Pre-apertura</td><td style="text-align:right;font-weight:700">$15.000</td><td style="font-size:.72rem;color:#666">Training, viajes, grand opening, soft launch</td></tr>
+          <tr><td id="ii9">Capital de trabajo (reserva)</td><td style="text-align:right;font-weight:700">$15.000</td><td style="font-size:.72rem;color:#666">Buffer 3–4 meses pre break-even</td></tr>
+          <tr class="hi"><td><strong id="ii-tot">TOTAL INVERSIÓN</strong></td><td style="text-align:right;font-weight:900;font-size:1rem;color:#27AE60"><strong>$210.000</strong></td><td style="font-size:.72rem;color:#27AE60;font-weight:700">Modelo base — 1 unidad</td></tr>
+        </tbody>
+      </table>
+      <!-- Return Metrics -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;">
+        <div style="background:#0d1117;border-radius:8px;padding:10px;text-align:center;border:1px solid #232a3b;">
+          <div style="font-size:1.3rem;font-weight:900;color:#27AE60">Año 3</div>
+          <div style="font-size:.72rem;color:#9ba4b4;margin-top:3px" id="ret1-lbl">Payback (CF acumulado +)</div>
+        </div>
+        <div style="background:#0d1117;border-radius:8px;padding:10px;text-align:center;border:1px solid #232a3b;">
+          <div style="font-size:1.3rem;font-weight:900;color:#2980B9">$318K</div>
+          <div style="font-size:.72rem;color:#9ba4b4;margin-top:3px" id="ret2-lbl">NPV @ 10% (5 años)</div>
+        </div>
+        <div style="background:#0d1117;border-radius:8px;padding:10px;text-align:center;border:1px solid #232a3b;">
+          <div style="font-size:1.3rem;font-weight:900;color:#8E44AD">$730K</div>
+          <div style="font-size:.72rem;color:#9ba4b4;margin-top:3px" id="ret3-lbl">EBITDA acumulado 5 años</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ct" id="ct-scen">Evolución EBITDA — 5 años (USD)</div>
+      <div class="ch" style="height:200px;margin-bottom:10px;"><canvas id="cScenarios"></canvas></div>
+      <div class="ct" id="ct-pnl" style="margin-top:10px;">Distribución de Costos — Año 1 (% Net Revenue)</div>
+      <div class="ch-sm"><canvas id="cDonut"></canvas></div>
     </div>
   </div>
-  <div class="g2">
-    <div class="card"><div class="ct" id="ct-inv">Inversión Inicial por Ítem — Doral (Primer Local)</div>
-      <table class="tbl">
-        <thead><tr><th id="th-ii">Ítem</th><th id="th-imin">Mínimo (USD)</th><th id="th-imax">Máximo (USD)</th></tr></thead>
+
+  <!-- ROW 2: 5-Year P&L Table -->
+  <div class="card" style="margin-bottom:16px;">
+    <div class="ct" id="ct-pl5">P&amp;L 5 Años — Resumen por Línea ($USD, Anual)</div>
+    <div style="overflow-x:auto;">
+      <table class="tbl" id="pl5table" style="min-width:760px;font-size:.77rem;margin-top:10px;">
+        <thead>
+          <tr>
+            <th id="pl-line">Línea P&amp;L</th>
+            <th style="text-align:right" id="pl-y1">Año 1</th>
+            <th style="text-align:right" id="pl-y2">Año 2</th>
+            <th style="text-align:right" id="pl-y3">Año 3</th>
+            <th style="text-align:right" id="pl-y4">Año 4</th>
+            <th style="text-align:right" id="pl-y5">Año 5</th>
+            <th id="pl-notes">Notas</th>
+          </tr>
+        </thead>
+        <tbody id="pl5body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ROW 3: Assumptions + Labor -->
+  <div class="g2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="ct" id="ct-assum">Supuestos Clave del Modelo (Año 1)</div>
+      <table class="tbl" style="margin-top:10px;font-size:.77rem;">
         <tbody>
-          <tr><td id="ii1">Adecuación del local</td><td>$40.000</td><td>$70.000</td></tr>
-          <tr><td id="ii2">Equipamiento (sillas, secadores, lavatórios)</td><td>$25.000</td><td>$45.000</td></tr>
-          <tr><td id="ii3">Tecnología (POS, booking, cámaras)</td><td>$4.000</td><td>$8.000</td></tr>
-          <tr><td id="ii4">Mobiliario y decoración (branding)</td><td>$10.000</td><td>$20.000</td></tr>
-          <tr><td id="ii5">Productos e inventario inicial</td><td>$5.000</td><td>$10.000</td></tr>
-          <tr><td id="ii6">Depósito de alquiler (3–6 meses)</td><td>$8.000</td><td>$18.000</td></tr>
-          <tr><td id="ii7">Gastos legales y licencias</td><td>$5.000</td><td>$8.000</td></tr>
-          <tr><td id="ii8">Marketing de apertura</td><td>$6.000</td><td>$12.000</td></tr>
-          <tr><td id="ii9">Capital de trabajo (3 meses)</td><td>$20.000</td><td>$35.000</td></tr>
-          <tr><td id="ii10">Contingencia (10%)</td><td>$12.000</td><td>$23.000</td></tr>
-          <tr class="hi"><td><strong id="ii-tot">TOTAL</strong></td><td><strong>$135.000</strong></td><td><strong>$249.000</strong></td></tr>
+          <tr><td style="color:#9ba4b4" id="as1-l">Días operativos / año</td><td style="font-weight:700;text-align:right">310</td></tr>
+          <tr><td style="color:#9ba4b4" id="as2-l">Tickets / día (Year 1)</td><td style="font-weight:700;text-align:right">30</td></tr>
+          <tr><td style="color:#9ba4b4" id="as3-l">AOV (ticket promedio)</td><td style="font-weight:700;text-align:right">$90</td></tr>
+          <tr><td style="color:#9ba4b4" id="as4-l">Crecimiento YoY</td><td style="font-weight:700;text-align:right">15% → 10% → 8% → 5%</td></tr>
+          <tr><td style="color:#9ba4b4" id="as5-l">Royalty fee</td><td style="font-weight:700;text-align:right">7% del revenue bruto</td></tr>
+          <tr><td style="color:#9ba4b4" id="as6-l">Personal directo (FTE)</td><td style="font-weight:700;text-align:right">10 estilistas · 2 soporte · 1 gerente</td></tr>
+          <tr><td style="color:#9ba4b4" id="as7-l">Alquiler base / mes</td><td style="font-weight:700;text-align:right">$5.000 + 3% escalación anual</td></tr>
+          <tr><td style="color:#9ba4b4" id="as8-l">Insumos / productos (COGS)</td><td style="font-weight:700;text-align:right">6,5% del revenue bruto</td></tr>
+          <tr><td style="color:#9ba4b4" id="as9-l">D&amp;A (depreciación)</td><td style="font-weight:700;text-align:right">$21.000/año (CAPEX ÷ 10 años)</td></tr>
+          <tr><td style="color:#9ba4b4" id="as10-l">Retail mix</td><td style="font-weight:700;text-align:right">3% → 5% del revenue bruto</td></tr>
         </tbody>
       </table>
     </div>
-    <div>
-      <div class="card" style="margin-bottom:16px;"><div class="ct" id="ct-scen">Comparativa de Escenarios — Doral</div><div class="ch"><canvas id="cScenarios"></canvas></div></div>
-      <div class="card"><div class="ct" id="ct-pnl">Distribución de Costos — Escenario Base</div><div class="ch-sm"><canvas id="cDonut"></canvas></div></div>
-    </div>
-  </div>
-  <div class="card" style="margin-top:16px;">
-    <div class="ct" id="ct-labor">Marco Laboral — Florida 2025–2026</div>
-    <div class="g2">
-      <table class="tbl">
-        <thead><tr><th id="th-lp">Período</th><th id="th-lsal">Salario Mínimo</th><th id="th-ltip">Con propinas</th></tr></thead>
+    <div class="card">
+      <div class="ct" id="ct-labor">Marco Laboral — Florida 2025–2026 &amp; Rangos Salariales</div>
+      <table class="tbl" style="margin-top:10px;font-size:.77rem;">
+        <thead><tr><th id="th-lp">Período</th><th id="th-lsal">Salario Mínimo FL</th><th id="th-ltip">Con propinas</th></tr></thead>
         <tbody>
-          <tr><td id="lp1">Hasta sep. 30, 2025</td><td><strong>$14,00/hora</strong></td><td>$10,98/hora</td></tr>
-          <tr><td id="lp2">Desde oct. 1, 2025</td><td><strong>$15,00/hora</strong></td><td>$11,98/hora</td></tr>
+          <tr><td id="lp1">Hasta sep. 30, 2025</td><td><strong>$14,00/hr</strong></td><td style="color:#888">$10,98/hr</td></tr>
+          <tr><td id="lp2">Desde oct. 1, 2025</td><td><strong>$15,00/hr</strong></td><td style="color:#888">$11,98/hr</td></tr>
         </tbody>
       </table>
-      <table class="tbl">
-        <thead><tr><th id="th-lpu">Puesto</th><th id="th-lra">Rango Anual</th></tr></thead>
+      <table class="tbl" style="margin-top:10px;font-size:.77rem;">
+        <thead><tr><th id="th-lpu">Puesto</th><th id="th-lra">Rango anual</th></tr></thead>
         <tbody>
-          <tr><td id="lpu1">Cosmetóloga Junior</td><td>$32.317 – $38.000</td></tr>
-          <tr><td id="lpu2">Cosmetóloga Senior</td><td>$48.000 – $58.000</td></tr>
-          <tr><td id="lpu3">Gerente de Salón</td><td>$45.000 – $70.000</td></tr>
+          <tr><td id="lpu1">Estilista / Técnica (base)</td><td>$22,50/hr · ~$42.000/año</td></tr>
+          <tr><td id="lpu2">Soporte / Recepción</td><td>$16,00/hr · ~$33.280/año</td></tr>
+          <tr><td id="lpu3">Gerente de Salón</td><td>$42.000 (Año 1) → $48.000 (Año 3+)</td></tr>
         </tbody>
       </table>
+      <div style="background:#1a1f2e;border-radius:8px;padding:10px;margin-top:10px;">
+        <div style="font-size:.72rem;color:#E67E22;font-weight:700;margin-bottom:4px;" id="kpi-warn-lbl">⚠️ Ratio laboral año 1</div>
+        <div style="font-size:1.4rem;font-weight:900;color:#E67E22">69,6%</div>
+        <div style="font-size:.71rem;color:#9ba4b4;margin-top:3px" id="kpi-warn-txt">del Net Revenue (target industria: ≤40%). El modelo refleja nómina completa desde apertura. Escalar tickets/día y AOV es la palanca clave para mejorar este ratio en los años 2–3.</div>
+      </div>
     </div>
   </div>
-  <div class="src" id="fin-src">Fuentes: Blo FDD 2024 · Drybar FDD 2025 · IBIS World Blow Dry Bars US 2024 · joinblvd.com Salon Industry Trends 2025 · Cushman & Wakefield Miami Retail Market 2025. Las proyecciones son estimaciones de referencia y no constituyen proyección financiera auditada.</div>
+
+  <div class="src" id="fin-src">Fuente: FastEscova_PL_Model_Miami_rev1.xlsx — Internal Financial Model, Junio 2026. Assumptions calibrated to Coral Gables, FL market (benchmark scenario). Las proyecciones son estimaciones de referencia y no constituyen proyección financiera auditada.</div>
 </div>
 
 <!-- ═══ 8. FODA ═══ -->
@@ -782,10 +843,10 @@ function buildCharts() {
 
   // Benchmark
   mk('cBenchmark', {type:'bar', data:{
-    labels:['Drybar\n(promedio)','Drybar\n(top 10)','Blo\n(promedio)','Fast Escova\n(proy. base)'],
-    datasets:[{label:'Revenue anual USD',
-      data:[904197,1800000,372000,595000],
-      backgroundColor:['#2980B9','#2980B9','#8E44AD','#F5C400'], borderRadius:5}]},
+    labels:['Drybar\n(promedio)','Drybar\n(top 10)','Blo\n(promedio)','Fast Escova\nAño 1','Fast Escova\nAño 5'],
+    datasets:[{label:'Revenue bruto anual USD',
+      data:[904197,1800000,372000,862110,1260719],
+      backgroundColor:['#2980B9','#2980B9','#8E44AD','rgba(245,196,0,.8)','#F5C400'], borderRadius:5}]},
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{display:false}},
       scales:{x:{grid:{display:false}},y:{grid:{color:'#EEE'},ticks:{callback:v=>'$'+v.toLocaleString()}}}}});
@@ -819,24 +880,33 @@ function buildCharts() {
         y2:{position:'right',grid:{display:false},title:{display:true,text:'Precio ($)'}},
       }}});
 
-  // Scenarios (Doral)
+  // EBITDA 5-Year evolution (from Excel model)
   mk('cScenarios', {type:'bar', data:{
-    labels:['Conservador','Base','Optimista'],
-    datasets:[{label:'Ingreso anual proyectado (USD)',
-      data:[318750,561000,1011000],
-      backgroundColor:['rgba(39,174,96,.7)','#F5C400','rgba(41,128,185,.7)'], borderRadius:5}]},
+    labels:['Año 1','Año 2','Año 3','Año 4','Año 5'],
+    datasets:[
+      {label:'EBITDA (USD)',data:[71261,114405,152769,183842,207230],
+        backgroundColor:['rgba(231,76,60,.8)','rgba(230,126,34,.8)','rgba(245,196,0,.9)','rgba(39,174,96,.8)','#27AE60'],
+        borderRadius:6},
+      {label:'CF Acumulado',type:'line',data:[-138739,-24334,128435,312277,519507],
+        borderColor:'#2980B9',backgroundColor:'rgba(41,128,185,.08)',tension:.4,fill:true,
+        yAxisID:'y2',pointBackgroundColor:'#2980B9',borderWidth:2.5,pointRadius:4}
+    ]},
     options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false}},
-      scales:{x:{grid:{display:false}},y:{grid:{color:'#EEE'},ticks:{callback:v=>'$'+v.toLocaleString()}}}}});
+      plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:9}}}},
+      scales:{
+        x:{grid:{display:false}},
+        y:{grid:{color:'rgba(255,255,255,.06)'},ticks:{callback:v=>'$'+v.toLocaleString()},title:{display:true,text:'EBITDA ($)'}},
+        y2:{position:'right',grid:{display:false},ticks:{callback:v=>'$'+v.toLocaleString()},title:{display:true,text:'CF Acum. ($)'}}
+      }}});
 
-  // Donut P&L
+  // Donut — Real cost breakdown Year 1 (% of Net Revenue $801,762)
   mk('cDonut', {type:'doughnut', data:{
-    labels:['Nómina (36%)','Alquiler (9%)','Insumos (12%)','Otros (5%)','EBITDA (28-32%)'],
-    datasets:[{data:[36,9,12,5,30],
+    labels:['Nómina 69,6%','Ocupación 9,8%','Insumos 7,0%','Otros OpEx 4,7%','EBITDA 8,9%'],
+    datasets:[{data:[69.6,9.8,7.0,4.7,8.9],
       backgroundColor:['#E74C3C','#E67E22','#F5C400','#95A5A6','#27AE60'],
-      borderWidth:2,borderColor:'#fff'}]},
+      borderWidth:2,borderColor:'#13181f'}]},
     options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{position:'right',labels:{boxWidth:10,font:{size:10}}}}}});
+      plugins:{legend:{position:'right',labels:{boxWidth:10,font:{size:9}}}}}});
 
   // Growth
   mk('cGrowth', {type:'line', data:{
@@ -1569,6 +1639,42 @@ function buildCGMap(){
 // ── END BRICKELL & CORAL GABLES ───────────────────────────────────────────
 
 
+
+// ── P&L 5-YEAR TABLE ─────────────────────────────────────────────────────────
+function buildPL5Table(){
+  var tb=document.getElementById('pl5body');if(!tb)return;
+  var fmt=function(v){return'$'+Math.round(v).toLocaleString('en-US');};
+  var pct=function(v){return(v*100).toFixed(1)+'%';};
+  var rows=[
+    {label:'Revenue Servicio Bruto',vals:[837000,962550,1058805,1143509,1200685],style:'',note:'Días × Tickets × AOV'},
+    {label:'Revenue Retail (upsell)',vals:[25110,28876,42352,45740,60034],style:'color:#888',note:'3%→5% del bruto'},
+    {label:'TOTAL REVENUE BRUTO',vals:[862110,991426,1101157,1189250,1260719],style:'font-weight:700',note:''},
+    {label:'— Royalty 7%',vals:[-60348,-69400,-77081,-83248,-88250],style:'color:#c0392b',note:'% del revenue bruto'},
+    {label:'NET REVENUE',vals:[801762,922027,1024076,1106002,1172469],style:'font-weight:700;border-top:2px solid #333',note:''},
+    {label:'COGS — Insumos/Productos',vals:[-56037,-64443,-66069,-71355,-75643],style:'color:#c0392b',note:'6,5%→6% del bruto'},
+    {label:'GROSS PROFIT',vals:[745725,857584,958007,1034647,1096826],style:'font-weight:700;color:#27AE60',note:'Margen: 93,0%→93,5%'},
+    {label:'▸ Labor Total',vals:[-558064,-624289,-676455,-718808,-747395],style:'color:#E74C3C',note:'69,6%→63,7% net rev'},
+    {label:'  · Estilistas (base)',vals:[-418500,-481275,-529403,-571755,-600342],style:'color:#999;font-size:.72rem',note:'10 FTE × 6h/día × $22,5'},
+    {label:'  · Soporte + Mgmt',vals:[-121360,-124360,-127872,-127872,-127872],style:'color:#999;font-size:.72rem',note:'2 soporte + 1 gerente'},
+    {label:'  · FICA/Benefits (15%)',vals:[-18204,-18654,-19181,-19181,-19181],style:'color:#999;font-size:.72rem',note:'Employer share'},
+    {label:'▸ Ocupación Total',vals:[-78600,-80910,-83282,-85718,-88220],style:'color:#E67E22',note:'Alquiler + CAM + utilities'},
+    {label:'▸ Otros Gastos Op.',vals:[-37800,-37980,-45500,-46280,-53980],style:'color:#E67E22',note:'Marketing, seguro, POS…'},
+    {label:'EBITDA',vals:[71261,114405,152769,183842,207230],style:'font-weight:900;font-size:1rem;color:#27AE60;border-top:2px solid #27AE60',note:'Margen: 8,9%→17,7%'},
+    {label:'  Margen EBITDA %',vals:[0.0889,0.1241,0.1492,0.1662,0.1767],style:'color:#27AE60;font-size:.75rem',note:'% Net Revenue',isPct:true},
+    {label:'D&A (depreciación)',vals:[-21000,-21000,-21000,-21000,-21000],style:'color:#888',note:'CAPEX $210K ÷ 10 años'},
+    {label:'EBIT',vals:[32446,64804,93577,116881,134423],style:'font-weight:700',note:'Antes de impuestos'},
+    {label:'  Margen EBIT %',vals:[0.0405,0.0703,0.0914,0.1057,0.1146],style:'color:#888;font-size:.75rem',note:'% Net Revenue',isPct:true},
+  ];
+  tb.innerHTML=rows.map(function(r){
+    var cells=r.vals.map(function(v){
+      var disp=r.isPct?pct(v):(v<0?'-$'+Math.abs(Math.round(v)).toLocaleString('en-US'):fmt(v));
+      var col=!r.isPct&&v<0?'color:#c0392b':(!r.isPct&&v>0&&r.label.indexOf('EBITDA')===0?'color:#27AE60':'');
+      return '<td style="text-align:right;white-space:nowrap;'+col+'">'+disp+'</td>';
+    }).join('');
+    return '<tr><td style="'+r.style+';white-space:nowrap">'+r.label+'</td>'+cells+'<td style="font-size:.69rem;color:#777">'+r.note+'</td></tr>';
+  }).join('');
+}
+
 // ── LANGUAGE ─────────────────────────────────────────────────────────────────────────────
 let currentLang = 'es';
 const TR = {
@@ -1603,6 +1709,25 @@ const TR = {
     th_loc:['Candidato de Local','Dirección ref.','m²','Alq./año','Alq./mes est.','Tráfico vial','Anchors vecinos','Pros','Contras','Score'],
     th_comp:['Competidor','Dirección','Tipo','Precio','Rating','Espera','Servicios','Debilidades vs. Fast Escova','Amenaza'],
     lbl_traffic:'tráfico',lbl_rec:'Rec.',
+    // Financial section
+    s7t:'7. Modelo Financiero — Fast Escova International',
+    s7s:'5-Year Unit P&L · Fuente: FastEscova_PL_Model_Miami_rev1.xlsx · 30 tickets/día · AOV $90 · 310 días/año · Alquiler $5.000/mes',
+    fh_inv:'$210K',fhl_inv:'Inversión inicial total (CAPEX)',
+    fh_rev:'$862K',fhl_rev:'Revenue bruto año 1',
+    fh_ebitda:'$71K',fhl_ebitda:'EBITDA año 1 (8,9%)',
+    fh_margin:'$207K',fhl_margin:'EBITDA año 5 (17,7%)',
+    fh_payback:'Año 3',fhl_payback:'Payback (CF acumulado +)',
+    ct_inv:'CAPEX — Desglose Inversión Inicial',
+    ct_scen:'Evolución EBITDA — 5 años (USD)',
+    ct_pnl:'Distribución de Costos — Año 1 (% Net Revenue)',
+    ct_pl5:'P&L 5 Años — Resumen por Línea ($USD, Anual)',
+    ct_assum:'Supuestos Clave del Modelo (Año 1)',
+    ct_labor:'Marco Laboral — Florida 2025–2026 & Rangos Salariales',
+    ret1_lbl:'Payback (CF acumulado +)',ret2_lbl:'NPV @ 10% (5 años)',ret3_lbl:'EBITDA acumulado 5 años',
+    pl_line:'Línea P&L',pl_y1:'Año 1',pl_y2:'Año 2',pl_y3:'Año 3',pl_y4:'Año 4',pl_y5:'Año 5',pl_notes:'Notas',
+    kpi_warn_lbl:'⚠️ Ratio laboral año 1',
+    kpi_warn_txt:'del Net Revenue (target industria: ≤40%). El modelo refleja nómina completa desde apertura. Escalar tickets/día y AOV es la palanca clave para mejorar este ratio en los años 2–3.',
+    fin_src:'Fuente: FastEscova_PL_Model_Miami_rev1.xlsx — Internal Financial Model, Junio 2026. Assumptions calibrated to Coral Gables, FL market (benchmark scenario). Las proyecciones son estimaciones de referencia y no constituyen proyección financiera auditada.',
   },
   pt:{
     conf:'🔒 Confidencial', cv_tag:'Resumo Executivo — Análise de Mercado Miami',
@@ -1635,6 +1760,25 @@ const TR = {
     th_loc:['Candidato de Imóvel','Endereço ref.','m²','Alug./ano','Alug./mês est.','Tráfego viário','Anchors vizinhos','Prós','Contras','Score'],
     th_comp:['Concorrente','Endereço','Tipo','Preço','Rating','Espera','Serviços','Fraquezas vs. Fast Escova','Ameaça'],
     lbl_traffic:'tráfego',lbl_rec:'Rec.',
+    // Financial section
+    s7t:'7. Modelo Financeiro — Fast Escova International',
+    s7s:'P&L de 5 Anos · Fonte: FastEscova_PL_Model_Miami_rev1.xlsx · 30 tickets/dia · AOV $90 · 310 dias/ano · Aluguel $5.000/mês',
+    fh_inv:'$210K',fhl_inv:'Investimento inicial total (CAPEX)',
+    fh_rev:'$862K',fhl_rev:'Revenue bruto ano 1',
+    fh_ebitda:'$71K',fhl_ebitda:'EBITDA ano 1 (8,9%)',
+    fh_margin:'$207K',fhl_margin:'EBITDA ano 5 (17,7%)',
+    fh_payback:'Ano 3',fhl_payback:'Payback (FC acumulado +)',
+    ct_inv:'CAPEX — Detalhamento do Investimento Inicial',
+    ct_scen:'Evolução do EBITDA — 5 anos (USD)',
+    ct_pnl:'Distribuição de Custos — Ano 1 (% Net Revenue)',
+    ct_pl5:'P&L 5 Anos — Resumo por Linha ($USD, Anual)',
+    ct_assum:'Premissas Chave do Modelo (Ano 1)',
+    ct_labor:'Marco Trabalhista — Flórida 2025–2026 & Faixas Salariais',
+    ret1_lbl:'Payback (FC acumulado +)',ret2_lbl:'NPV @ 10% (5 anos)',ret3_lbl:'EBITDA acumulado 5 anos',
+    pl_line:'Linha P&L',pl_y1:'Ano 1',pl_y2:'Ano 2',pl_y3:'Ano 3',pl_y4:'Ano 4',pl_y5:'Ano 5',pl_notes:'Notas',
+    kpi_warn_lbl:'⚠️ Ratio de pessoal ano 1',
+    kpi_warn_txt:'do Net Revenue (meta do setor: ≤40%). O modelo reflete folha completa desde a abertura. Escalar tickets/dia e AOV é a alavanca principal para melhorar esse ratio nos anos 2–3.',
+    fin_src:'Fonte: FastEscova_PL_Model_Miami_rev1.xlsx — Modelo Financeiro Interno, Junho 2026. Premissas calibradas para o mercado de Coral Gables, FL (cenário benchmark). As projeções são estimativas de referência e não constituem projeção financeira auditada.',
   }
 };
 function T(k){ return TR[currentLang][k] || TR.es[k] || k; }
@@ -1647,6 +1791,21 @@ function applyLang() {
   set('ck4', T('ck4')); set('ck5', T('ck5')); set('ck6', T('ck6'));
   set('zona-rec-box', T('zona_rec'));
   set('exec-p1', T('exec_p1'));
+  // Financial section
+  set('s7t',T('s7t'));set('s7s',T('s7s'));
+  set('fh-inv',T('fh_inv'));set('fhl-inv',T('fhl_inv'));
+  set('fh-rev',T('fh_rev'));set('fhl-rev',T('fhl_rev'));
+  set('fh-ebitda',T('fh_ebitda'));set('fhl-ebitda',T('fhl_ebitda'));
+  set('fh-margin',T('fh_margin'));set('fhl-margin',T('fhl_margin'));
+  set('fh-payback',T('fh_payback'));set('fhl-payback',T('fhl_payback'));
+  set('ct-inv',T('ct_inv'));set('ct-scen',T('ct_scen'));set('ct-pnl',T('ct_pnl'));
+  set('ct-pl5',T('ct_pl5'));set('ct-assum',T('ct_assum'));set('ct-labor',T('ct_labor'));
+  set('ret1-lbl',T('ret1_lbl'));set('ret2-lbl',T('ret2_lbl'));set('ret3-lbl',T('ret3_lbl'));
+  set('pl-line',T('pl_line'));set('pl-y1',T('pl_y1'));set('pl-y2',T('pl_y2'));
+  set('pl-y3',T('pl_y3'));set('pl-y4',T('pl_y4'));set('pl-y5',T('pl_y5'));set('pl-notes',T('pl_notes'));
+  set('kpi-warn-lbl',T('kpi_warn_lbl'));set('kpi-warn-txt',T('kpi_warn_txt'));
+  set('fin-src',T('fin_src'));
+  var _pl=document.getElementById('pl5body');if(_pl){_pl.innerHTML='';buildPL5Table();}
   // Doral section
   set('s6bt',T('s6bt'));set('s6bs',T('s6bs'));
   set('dkpi1',T('dkpi1'));set('dkpi2',T('dkpi2'));set('dkpi3',T('dkpi3'));set('dkpi4',T('dkpi4'));set('dkpi5',T('dkpi5'));
@@ -1704,6 +1863,7 @@ window.addEventListener('load', function() {
   safe(buildRisks);
   safe(buildSteps);
   safe(buildMap);
+  safe(buildPL5Table);
   safe(buildDoralSection);
   safe(buildBrickellSection);
   safe(buildCoralGablesSection);
